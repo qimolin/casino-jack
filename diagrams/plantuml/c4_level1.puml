@@ -1,0 +1,13 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+title System Context diagram for Casino System
+
+Person(player, "Player", "A human user")
+
+System(casino, "Casino", "Allows user to simulate behavior of casinos")
+System_Ext(gambling_authority, "Gambling authority", "API that generates tokens and a random winning game number. It also logs the betting activity and player card information.")
+
+Rel(player, casino, "Runs casino simulation using")
+Rel(casino, gambling_authority, "Gets token and winning game number using")
+@enduml
