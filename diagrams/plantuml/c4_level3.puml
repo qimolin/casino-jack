@@ -1,0 +1,36 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!include DEVICONS/java.puml
+
+title Java App Component diagram for Casino System
+
+Container(application, "Casino application", "java", "Handles the simulation of the casino behavior", "java")
+
+System_Boundary(app_components, "Java application"){
+    Component(casino, "Casino", "Generates unique BettingRoundId")
+    Component(game, "Game", "A playable game which consists of rules and rounds")
+    Component(betting_round, "Betting Round", "Keeps track of bets made in a round")
+    Component(player, "Player", "A simulated player that can bet in the casino")
+    Component(cashier, "Cashier", "Distributes cards to players and keeps administration of amount of money on card")
+    Component(card, "Card", "Generates unique betID's and stores money")
+    Component(gaming_machines, "Gaming Machine", "A machine to connect to games")
+}
+
+System_Ext(gambling_authority, "Gambling authority", "API that generates tokens and a random winning game number. It also logs the betting activity and player card information.")
+
+Rel(application, casino, "Simulates")
+Rel(casino, game, "Creates")
+Rel(game, betting_round, "Submits bets to")
+Rel(casino, player, "Has")
+Rel(betting_round, gaming_machines, "Notifies winner to")
+Rel(cashier, card, "Distributes")
+Rel(player, cashier, "Get cards from")
+Rel(cashier, player, "Hands leftover money back")
+Rel(player, card, "Has")
+Rel(gaming_machines, card, "Uses")
+Rel(betting_round, gambling_authority, "Sends BettingRoundId")
+Rel(gambling_authority, betting_round, "Sends winvalue")
+@enduml
