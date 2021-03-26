@@ -43,6 +43,7 @@ public class Cashier implements ICashier {
      * and the amount stored on the card is changed to zero.
      * The stored betID’s on the card are also removed.
      * Note: also use the appropiate required methods from the gambling authority API
+     * @should call returnBetIDs
      * @should log betIDs to logging authority
      * @should set amount on card to zero
      * @should clear stored betIDs

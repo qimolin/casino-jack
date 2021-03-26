@@ -1,15 +1,18 @@
 package casino.cashier;
 
+import casino.bet.BetID;
 import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.IBetLoggingAuthority;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 public class CashierTest {
     /**
@@ -54,6 +57,7 @@ public class CashierTest {
         IGamblerCard gamblerCard = sut.distributeGamblerCard();
         // Assert
         assertThat(gamblerCard).isNotNull();
+        assertThat(gamblerCard).isInstanceOf(GamblerCard.class);
     }
 
     /**
@@ -73,13 +77,28 @@ public class CashierTest {
     }
 
     /**
+     * @verifies call returnBetIDs
+     * @see Cashier#returnGamblerCard(IGamblerCard)
+     */
+    @Test
+    public void returnGamblerCard_shouldCallReturnBetIDs() throws Exception {
+        // Arrange
+        IBetLoggingAuthority betLogging = new BetLoggingAuthority();
+        Cashier sut = new Cashier(betLogging);
+        GamblerCard card = mock(GamblerCard.class);
+        // Act
+        sut.returnGamblerCard(card);
+        // Assert
+        verify(card).returnBetIDs();
+    }
+
+    /**
      * @verifies log betIDs to logging authority
      * @see Cashier#returnGamblerCard(IGamblerCard)
      */
     @Test
     public void returnGamblerCard_shouldLogBetIDsToLoggingAuthority() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
+
     }
     /**
      * @verifies set amount on card to zero
