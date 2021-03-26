@@ -66,9 +66,10 @@ public class CashierTest {
         IBetLoggingAuthority betLogging = new BetLoggingAuthority();
         Cashier sut = new Cashier(betLogging);
         // Act
-        Set<GamblerCard> cards = sut.getGamblerCards();
+        sut.distributeGamblerCard();
+        Set<IGamblerCard> gamblerCards = sut.getGamblerCards();
         // Assert
-        assertThat(cards).isNotEmpty();
+        assertThat(gamblerCards).isNotEmpty();
     }
 
     /**

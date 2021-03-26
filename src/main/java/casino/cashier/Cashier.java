@@ -13,12 +13,14 @@ import java.util.Set;
 public class Cashier implements ICashier {
 
     private final IBetLoggingAuthority loggingAuthority;
+    private final Set<IGamblerCard> gamblerCards;
     /**
      * @should create a cashier and set logging authority
      * @param loggingAuthority
      */
     public Cashier(IBetLoggingAuthority loggingAuthority) {
         this.loggingAuthority = loggingAuthority;
+        this.gamblerCards = new HashSet<>();
     }
     /**
      * Cards are distributed by a Cashier to a gambler
@@ -31,6 +33,7 @@ public class Cashier implements ICashier {
     @Override
     public IGamblerCard distributeGamblerCard() {
         IGamblerCard gamblerCard = new GamblerCard();
+        gamblerCards.add(gamblerCard);
         return gamblerCard;
     }
 
@@ -96,5 +99,9 @@ public class Cashier implements ICashier {
     @Override
     public int hashCode() {
         return Objects.hash(loggingAuthority);
+    }
+
+    public Set<IGamblerCard> getGamblerCards() {
+        return gamblerCards;
     }
 }
