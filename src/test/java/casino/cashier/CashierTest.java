@@ -29,7 +29,14 @@ public class CashierTest {
      */
     @Test
     public void Cashier_withSameLoggingAuthorityAreLogicallyEqual() {
-
+        // Arrange
+        IBetLoggingAuthority betLogging = new BetLoggingAuthority();
+        Cashier A = new Cashier(betLogging);
+        Cashier B = new Cashier(betLogging);
+        // Act
+        // Assert
+        assertThat(A).isEqualTo(B);
+        assertThat(A).hasSameHashCodeAs(B);
     }
 
     /**
