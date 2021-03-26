@@ -65,6 +65,16 @@ public class CashierTest {
     }
 
     /**
+     * @verifies put cards in a set
+     * @see Cashier#distributeGamblerCard()
+     */
+    @Test
+    public void distributeGamblerCard_shouldPutCardsInASet() throws Exception {
+        //TODO auto-generated
+        Assertions.fail("Not yet implemented");
+    }
+
+    /**
      * @verifies set amount on card to zero
      * @see Cashier#returnGamblerCard(IGamblerCard)
      */

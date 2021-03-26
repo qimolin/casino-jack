@@ -22,11 +22,13 @@ public class Cashier implements ICashier {
      * bankteller keeps track of which cards are handed out.
      * Note: also use the appropiate required methods from the gambling authority API
      * @should return a gambling card
+     * @should put cards in a set
      * @return null
      */
     @Override
     public IGamblerCard distributeGamblerCard() {
-        return null;
+        IGamblerCard gamblerCard = new GamblerCard();
+        return gamblerCard;
     }
 
     /**
