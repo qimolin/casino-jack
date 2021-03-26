@@ -74,5 +74,7 @@ public class Cashier implements ICashier {
 
     }
 
-
+    public IBetLoggingAuthority getLoggingAuthority() {
+        return loggingAuthority;
+    }
 }
