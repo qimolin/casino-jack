@@ -6,6 +6,8 @@ import gamblingauthoritiy.IBetLoggingAuthority;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Set;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
@@ -64,14 +66,20 @@ public class CashierTest {
         IBetLoggingAuthority betLogging = new BetLoggingAuthority();
         Cashier sut = new Cashier(betLogging);
         // Act
-        Set<BetID> cards = sut.getGamblerCards();
+        Set<GamblerCard> cards = sut.getGamblerCards();
         // Assert
         assertThat(cards).isNotEmpty();
+    }
+
+    /**
+     * @verifies log betIDs to logging authority
+     * @see Cashier#returnGamblerCard(IGamblerCard)
+     */
+    @Test
     public void returnGamblerCard_shouldLogBetIDsToLoggingAuthority() throws Exception {
         //TODO auto-generated
         Assertions.fail("Not yet implemented");
     }
-
     /**
      * @verifies set amount on card to zero
      * @see Cashier#returnGamblerCard(IGamblerCard)
