@@ -59,17 +59,15 @@ public class CashierTest {
      * @see Cashier#returnGamblerCard(IGamblerCard)
      */
     @Test
-    public void returnGamblerCard_shouldLogBetIDsToLoggingAuthority() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
-    }
-
-    /**
-     * @verifies put cards in a set
-     * @see Cashier#distributeGamblerCard()
-     */
-    @Test
     public void distributeGamblerCard_shouldPutCardsInASet() throws Exception {
+        // Arrange
+        IBetLoggingAuthority betLogging = new BetLoggingAuthority();
+        Cashier sut = new Cashier(betLogging);
+        // Act
+        Set<BetID> cards = sut.getGamblerCards();
+        // Assert
+        assertThat(cards).isNotEmpty();
+    public void returnGamblerCard_shouldLogBetIDsToLoggingAuthority() throws Exception {
         //TODO auto-generated
         Assertions.fail("Not yet implemented");
     }

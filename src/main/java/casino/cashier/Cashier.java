@@ -2,10 +2,13 @@ package casino.cashier;
 
 
 import casino.bet.Bet;
+import casino.bet.BetID;
 import casino.bet.MoneyAmount;
 import gamblingauthoritiy.IBetLoggingAuthority;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class Cashier implements ICashier {
 
