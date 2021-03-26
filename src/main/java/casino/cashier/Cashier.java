@@ -5,6 +5,8 @@ import casino.bet.Bet;
 import casino.bet.MoneyAmount;
 import gamblingauthoritiy.IBetLoggingAuthority;
 
+import java.util.Objects;
+
 public class Cashier implements ICashier {
 
     private final IBetLoggingAuthority loggingAuthority;
@@ -76,5 +78,18 @@ public class Cashier implements ICashier {
 
     public IBetLoggingAuthority getLoggingAuthority() {
         return loggingAuthority;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cashier)) return false;
+        Cashier cashier = (Cashier) o;
+        return loggingAuthority.equals(cashier.loggingAuthority);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(loggingAuthority);
     }
 }
