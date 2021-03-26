@@ -1,0 +1,74 @@
+@startuml
+
+!define LIGHTBLUE
+!include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+interface ICashier {
+    IGamblerCard distributeGamblerCard()
+    returnGamblerCard(IGamblerCard card)
+    checkIfBetIsValid(IGamblerCard card, Bet betToCheck)
+    addAmount(IGamblerCard card, MoneyAmount amount)
+}
+
+class Cashier {
+
+}
+
+ICashier <|.. Cashier : implements
+Cashier --> GamblerCard : distributes
+
+interface IBettingRound {
+    BettingRoundID getBettingRoundID()
+    boolean placeBet(Bet bet)
+    Set<Bet> getAllBetsMade()
+    BetToken getBetToken()
+    int numberOFBetsMade()
+    sendInformationToAuthority()
+}
+
+class BettingRound {
+    BettingRoundID roundID
+    Set<Bet> bettingRounds
+}
+
+IBettingRound <|.. BettingRound : implements
+AbstractGame --> BettingRound : has
+
+interface IGame {
+    startBettingRound()
+    generateBettingRoundID()
+    acceptBet(Bet bet, IGamingMachine gamingMachine)
+    void determineWinner()
+    isBettingRoundFinished()
+}
+
+abstract AbstractGame {
+    GameRule gameRule
+    BettingRound bettingRound
+    AbstractGame()
+}
+
+IGame <|.. AbstractGame : implements
+
+interface IGamblerCard {
+    Set<BetID> returnBetIDs()
+    Set<BetID> returnBetIDsAndClearCard()
+    BetID generateNewBetID()
+    int getNumberOfBetIDs()
+    CardID getCardID()
+    addOrSubtractMoney(double amount)
+}
+
+class GamblerCard {
+    int cardNumber
+    double moneyAmount
+    Set<BetID> placedBets
+}
+
+IGamblerCard <|.. GamblerCard : implements
+
+class BetID {
+    int id
+}
+
+@enduml

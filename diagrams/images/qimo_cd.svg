@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="490px" preserveAspectRatio="none" style="width:985px;height:490px;" version="1.1" viewBox="0 0 985 490" width="985px" zoomAndPan="magnify"><defs><filter height="300%" id="f4mx6n6pxy6y8" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[9478c1941cb67305d7a446323d60c139]
+class ICashier--><rect codeLine="5" fill="#CCCCCC" filter="url(#f4mx6n6pxy6y8)" height="97.3438" id="ICashier" style="stroke:#AAAAAA;stroke-width:1.5;" width="278" x="7" y="14"/><ellipse cx="118.5" cy="27" fill="#B4A7E5" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M120.8438,31 L116.1563,31 L116.1563,29.5781 L117.4688,29.5781 L117.4688,24.4219 L116.1563,24.4219 L116.1563,23 L120.8438,23 L120.8438,24.4219 L119.5313,24.4219 L119.5313,29.5781 L120.8438,29.5781 L120.8438,31 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="48" x="134.5" y="31.3748">ICashier</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="8" x2="284" y1="40" y2="40"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="8" x2="284" y1="48" y2="48"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="183" x="13" y="63.4189">IGamblerCard distributeGamblerCard()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="190" x="13" y="77.2549">returnGamblerCard(IGamblerCard card)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="263" x="13" y="91.0908">checkIfBetIsValid(IGamblerCard card, Bet betToCheck)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="266" x="13" y="104.9268">addAmount(IGamblerCard card, MoneyAmount amount)</text><!--MD5=[696ee820e96b7cd0d9933d0c6198e4ed]
+class Cashier--><rect codeLine="12" fill="#CCCCCC" filter="url(#f4mx6n6pxy6y8)" height="42" id="Cashier" style="stroke:#AAAAAA;stroke-width:1.5;" width="70" x="111" y="234.5"/><ellipse cx="123" cy="247.5" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M123.6406,251.6563 Q122.75,251.6563 121.9844,251.3906 Q121.2344,251.125 120.6875,250.6094 Q120.1563,250.0938 119.8438,249.3125 Q119.5469,248.5313 119.5469,247.5156 Q119.5469,246.5625 119.8281,245.7969 Q120.125,245.0156 120.6719,244.4531 Q121.1875,243.9219 121.9531,243.6406 Q122.7344,243.3438 123.6406,243.3438 Q124.1406,243.3438 124.5469,243.4063 Q124.9531,243.4531 125.2969,243.5469 Q125.6563,243.6563 125.9531,243.7813 Q126.25,243.9063 126.4688,244.0156 L126.4688,245.9531 L126.2344,245.9531 Q126.0781,245.8281 125.8438,245.6563 Q125.625,245.4688 125.3281,245.2969 Q125.0313,245.125 124.6875,245.0156 Q124.3438,244.8906 123.9531,244.8906 Q123.5156,244.8906 123.125,245.0313 Q122.7344,245.1563 122.4063,245.4844 Q122.0938,245.7813 121.8906,246.2969 Q121.7031,246.7969 121.7031,247.5156 Q121.7031,248.2656 121.9063,248.7813 Q122.125,249.2813 122.4375,249.5625 Q122.7656,249.8594 123.1719,249.9844 Q123.5781,250.1094 123.9688,250.1094 Q124.3438,250.1094 124.7031,250 Q125.0781,249.8906 125.3906,249.6875 Q125.6563,249.5469 125.875,249.375 Q126.1094,249.1875 126.25,249.0625 L126.4688,249.0625 L126.4688,250.9688 Q126.1719,251.1094 125.8906,251.2344 Q125.625,251.3438 125.3125,251.4219 Q124.9219,251.5313 124.5781,251.5938 Q124.2344,251.6563 123.6406,251.6563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="44" x="134" y="251.8748">Cashier</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="112" x2="180" y1="260.5" y2="260.5"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="112" x2="180" y1="268.5" y2="268.5"/><!--MD5=[cc599488317a47e3a541bad38ec53300]
+class GamblerCard--><rect codeLine="61" fill="#CCCCCC" filter="url(#f4mx6n6pxy6y8)" height="83.5078" id="GamblerCard" style="stroke:#AAAAAA;stroke-width:1.5;" width="122" x="189" y="393"/><ellipse cx="209.55" cy="406" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M210.1906,410.1563 Q209.3,410.1563 208.5344,409.8906 Q207.7844,409.625 207.2375,409.1094 Q206.7063,408.5938 206.3938,407.8125 Q206.0969,407.0313 206.0969,406.0156 Q206.0969,405.0625 206.3781,404.2969 Q206.675,403.5156 207.2219,402.9531 Q207.7375,402.4219 208.5031,402.1406 Q209.2844,401.8438 210.1906,401.8438 Q210.6906,401.8438 211.0969,401.9063 Q211.5031,401.9531 211.8469,402.0469 Q212.2063,402.1563 212.5031,402.2813 Q212.8,402.4063 213.0188,402.5156 L213.0188,404.4531 L212.7844,404.4531 Q212.6281,404.3281 212.3938,404.1563 Q212.175,403.9688 211.8781,403.7969 Q211.5813,403.625 211.2375,403.5156 Q210.8938,403.3906 210.5031,403.3906 Q210.0656,403.3906 209.675,403.5313 Q209.2844,403.6563 208.9563,403.9844 Q208.6438,404.2813 208.4406,404.7969 Q208.2531,405.2969 208.2531,406.0156 Q208.2531,406.7656 208.4563,407.2813 Q208.675,407.7813 208.9875,408.0625 Q209.3156,408.3594 209.7219,408.4844 Q210.1281,408.6094 210.5188,408.6094 Q210.8938,408.6094 211.2531,408.5 Q211.6281,408.3906 211.9406,408.1875 Q212.2063,408.0469 212.425,407.875 Q212.6594,407.6875 212.8,407.5625 L213.0188,407.5625 L213.0188,409.4688 Q212.7219,409.6094 212.4406,409.7344 Q212.175,409.8438 211.8625,409.9219 Q211.4719,410.0313 211.1281,410.0938 Q210.7844,410.1563 210.1906,410.1563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="77" x="222.45" y="410.3748">GamblerCard</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="190" x2="310" y1="419" y2="419"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="73" x="195" y="434.4189">int cardNumber</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="104" x="195" y="448.2549">double moneyAmount</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="110" x="195" y="462.0908">Set&lt;BetID&gt; placedBets</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="190" x2="310" y1="468.5078" y2="468.5078"/><!--MD5=[727e06d095df2ae76eee81f8b4df4ca5]
+class IBettingRound--><rect codeLine="19" fill="#CCCCCC" filter="url(#f4mx6n6pxy6y8)" height="125.0156" id="IBettingRound" style="stroke:#AAAAAA;stroke-width:1.5;" width="184" x="455" y="193"/><ellipse cx="503" cy="206" fill="#B4A7E5" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M505.3438,210 L500.6563,210 L500.6563,208.5781 L501.9688,208.5781 L501.9688,203.4219 L500.6563,203.4219 L500.6563,202 L505.3438,202 L505.3438,203.4219 L504.0313,203.4219 L504.0313,208.5781 L505.3438,208.5781 L505.3438,210 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="81" x="519" y="210.3748">IBettingRound</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="456" x2="638" y1="219" y2="219"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="456" x2="638" y1="227" y2="227"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="172" x="461" y="242.4189">BettingRoundID getBettingRoundID()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="125" x="461" y="256.2549">boolean placeBet(Bet bet)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="130" x="461" y="270.0908">Set&lt;Bet&gt; getAllBetsMade()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="116" x="461" y="283.9268">BetToken getBetToken()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="120" x="461" y="297.7627">int numberOFBetsMade()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="141" x="461" y="311.5986">sendInformationToAuthority()</text><!--MD5=[f5bed2e2e0b988746308d837e7e2352b]
+class BettingRound--><rect codeLine="28" fill="#CCCCCC" filter="url(#f4mx6n6pxy6y8)" height="69.6719" id="BettingRound" style="stroke:#AAAAAA;stroke-width:1.5;" width="128" x="559" y="400"/><ellipse cx="582.7" cy="413" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M583.3406,417.1563 Q582.45,417.1563 581.6844,416.8906 Q580.9344,416.625 580.3875,416.1094 Q579.8563,415.5938 579.5438,414.8125 Q579.2469,414.0313 579.2469,413.0156 Q579.2469,412.0625 579.5281,411.2969 Q579.825,410.5156 580.3719,409.9531 Q580.8875,409.4219 581.6531,409.1406 Q582.4344,408.8438 583.3406,408.8438 Q583.8406,408.8438 584.2469,408.9063 Q584.6531,408.9531 584.9969,409.0469 Q585.3563,409.1563 585.6531,409.2813 Q585.95,409.4063 586.1688,409.5156 L586.1688,411.4531 L585.9344,411.4531 Q585.7781,411.3281 585.5438,411.1563 Q585.325,410.9688 585.0281,410.7969 Q584.7313,410.625 584.3875,410.5156 Q584.0438,410.3906 583.6531,410.3906 Q583.2156,410.3906 582.825,410.5313 Q582.4344,410.6563 582.1063,410.9844 Q581.7938,411.2813 581.5906,411.7969 Q581.4031,412.2969 581.4031,413.0156 Q581.4031,413.7656 581.6063,414.2813 Q581.825,414.7813 582.1375,415.0625 Q582.4656,415.3594 582.8719,415.4844 Q583.2781,415.6094 583.6688,415.6094 Q584.0438,415.6094 584.4031,415.5 Q584.7781,415.3906 585.0906,415.1875 Q585.3563,415.0469 585.575,414.875 Q585.8094,414.6875 585.95,414.5625 L586.1688,414.5625 L586.1688,416.4688 Q585.8719,416.6094 585.5906,416.7344 Q585.325,416.8438 585.0125,416.9219 Q584.6219,417.0313 584.2781,417.0938 Q583.9344,417.1563 583.3406,417.1563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="76" x="596.3" y="417.3748">BettingRound</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="560" x2="686" y1="426" y2="426"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="113" x="565" y="441.4189">BettingRoundID roundID</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="116" x="565" y="455.2549">Set&lt;Bet&gt; bettingRounds</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="560" x2="686" y1="461.6719" y2="461.6719"/><!--MD5=[374c8ed42af3c7fbb6cbeb7cecab7c31]
+class AbstractGame--><rect codeLine="44" fill="#CCCCCC" filter="url(#f4mx6n6pxy6y8)" height="83.5078" id="AbstractGame" style="stroke:#AAAAAA;stroke-width:1.5;" width="142" x="674" y="213.5"/><ellipse cx="701.75" cy="226.5" fill="#A9DCDF" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M705.6563,230 L703.5313,230 L702.9688,228.3906 L700.0156,228.3906 L699.4531,230 L697.375,230 L700.3281,222 L702.7031,222 L705.6563,230 Z M702.4688,226.9219 L701.5,224.0469 L700.5156,226.9219 L702.4688,226.9219 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="81" x="716.25" y="230.8748">AbstractGame</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="675" x2="815" y1="239.5" y2="239.5"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="99" x="680" y="254.9189">GameRule gameRule</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="130" x="680" y="268.7549">BettingRound bettingRound</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="675" x2="815" y1="275.1719" y2="275.1719"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="78" x="680" y="290.5908">AbstractGame()</text><!--MD5=[4279085caaf4e2dc91d2db2579225283]
+class IGame--><rect codeLine="36" fill="#CCCCCC" filter="url(#f4mx6n6pxy6y8)" height="111.1797" id="IGame" style="stroke:#AAAAAA;stroke-width:1.5;" width="264" x="613" y="7"/><ellipse cx="722" cy="20" fill="#B4A7E5" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M724.3438,24 L719.6563,24 L719.6563,22.5781 L720.9688,22.5781 L720.9688,17.4219 L719.6563,17.4219 L719.6563,16 L724.3438,16 L724.3438,17.4219 L723.0313,17.4219 L723.0313,22.5781 L724.3438,22.5781 L724.3438,24 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="39" x="738" y="24.3748">IGame</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="614" x2="876" y1="33" y2="33"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="614" x2="876" y1="41" y2="41"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="94" x="619" y="56.4189">startBettingRound()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="124" x="619" y="70.2549">generateBettingRoundID()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="252" x="619" y="84.0908">acceptBet(Bet bet, IGamingMachine gamingMachine)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="112" x="619" y="97.9268">void determineWinner()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="120" x="619" y="111.7627">isBettingRoundFinished()</text><!--MD5=[79bda464d9533354ee0d92f2cfa20a2c]
+class IGamblerCard--><rect codeLine="52" fill="#CCCCCC" filter="url(#f4mx6n6pxy6y8)" height="125.0156" id="IGamblerCard" style="stroke:#AAAAAA;stroke-width:1.5;" width="204" x="216" y="193"/><ellipse cx="274" cy="206" fill="#B4A7E5" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M276.3438,210 L271.6563,210 L271.6563,208.5781 L272.9688,208.5781 L272.9688,203.4219 L271.6563,203.4219 L271.6563,202 L276.3438,202 L276.3438,203.4219 L275.0313,203.4219 L275.0313,208.5781 L276.3438,208.5781 L276.3438,210 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="81" x="290" y="210.3748">IGamblerCard</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="217" x2="419" y1="219" y2="219"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="217" x2="419" y1="227" y2="227"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="124" x="222" y="242.4189">Set&lt;BetID&gt; returnBetIDs()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="192" x="222" y="256.2549">Set&lt;BetID&gt; returnBetIDsAndClearCard()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="127" x="222" y="270.0908">BetID generateNewBetID()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="117" x="222" y="283.9268">int getNumberOfBetIDs()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="90" x="222" y="297.7627">CardID getCardID()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="181" x="222" y="311.5986">addOrSubtractMoney(double amount)</text><!--MD5=[7126b9f7927322ee1baaac2efa8b8116]
+class BetID--><rect codeLine="69" fill="#CCCCCC" filter="url(#f4mx6n6pxy6y8)" height="55.8359" id="BetID" style="stroke:#AAAAAA;stroke-width:1.5;" width="59" x="912.5" y="34.5"/><ellipse cx="924.5" cy="47.5" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M925.1406,51.6563 Q924.25,51.6563 923.4844,51.3906 Q922.7344,51.125 922.1875,50.6094 Q921.6563,50.0938 921.3438,49.3125 Q921.0469,48.5313 921.0469,47.5156 Q921.0469,46.5625 921.3281,45.7969 Q921.625,45.0156 922.1719,44.4531 Q922.6875,43.9219 923.4531,43.6406 Q924.2344,43.3438 925.1406,43.3438 Q925.6406,43.3438 926.0469,43.4063 Q926.4531,43.4531 926.7969,43.5469 Q927.1563,43.6563 927.4531,43.7813 Q927.75,43.9063 927.9688,44.0156 L927.9688,45.9531 L927.7344,45.9531 Q927.5781,45.8281 927.3438,45.6563 Q927.125,45.4688 926.8281,45.2969 Q926.5313,45.125 926.1875,45.0156 Q925.8438,44.8906 925.4531,44.8906 Q925.0156,44.8906 924.625,45.0313 Q924.2344,45.1563 923.9063,45.4844 Q923.5938,45.7813 923.3906,46.2969 Q923.2031,46.7969 923.2031,47.5156 Q923.2031,48.2656 923.4063,48.7813 Q923.625,49.2813 923.9375,49.5625 Q924.2656,49.8594 924.6719,49.9844 Q925.0781,50.1094 925.4688,50.1094 Q925.8438,50.1094 926.2031,50 Q926.5781,49.8906 926.8906,49.6875 Q927.1563,49.5469 927.375,49.375 Q927.6094,49.1875 927.75,49.0625 L927.9688,49.0625 L927.9688,50.9688 Q927.6719,51.1094 927.3906,51.2344 Q927.125,51.3438 926.8125,51.4219 Q926.4219,51.5313 926.0781,51.5938 Q925.7344,51.6563 925.1406,51.6563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="33" x="935.5" y="51.8748">BetID</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="913.5" x2="970.5" y1="60.5" y2="60.5"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="22" x="918.5" y="75.9189">int id</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="913.5" x2="970.5" y1="82.3359" y2="82.3359"/><!--MD5=[217f2a3e414fb88d4e82c226a860b891]
+reverse link ICashier to Cashier--><path codeLine="16" d="M146,131.43 C146,167.7 146,209.77 146,234.14 " fill="none" id="ICashier-backto-Cashier" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="139,131.2,146,111.2,153,131.2,139,131.2" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="66" x="147" y="160.0591">implements</text><!--MD5=[f934a1eda0e5ad5d441e884ce1f1ea08]
+link Cashier to GamblerCard--><path codeLine="17" d="M157.73,276.52 C173.55,303.52 202.2,352.42 223.39,388.58 " fill="none" id="Cashier-to-GamblerCard" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="225.94,392.93,224.8401,383.1427,223.4118,388.6163,217.9382,387.1879,225.94,392.93" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="59" x="209" y="360.0591">distributes</text><!--MD5=[8faa1feb269918bae2cab9c668e436c7]
+reverse link IBettingRound to BettingRound--><path codeLine="33" d="M577.98,336.84 C581.6,345.7 585.32,354.57 589,363 C594.3,375.15 600.46,388.29 606.08,399.92 " fill="none" id="IBettingRound-backto-BettingRound" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="571.45,339.36,570.47,318.19,584.43,334.13,571.45,339.36" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="66" x="590" y="360.0591">implements</text><!--MD5=[ce09c6d1614984e586c83d8925709974]
+link AbstractGame to BettingRound--><path codeLine="34" d="M716.7,297.67 C696.38,327.24 669.17,366.83 649.31,395.72 " fill="none" id="AbstractGame-to-BettingRound" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="646.43,399.91,654.8166,394.7462,649.256,395.7852,648.2169,390.2246,646.43,399.91" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="20" x="682" y="360.0591">has</text><!--MD5=[fcb4674e0448fa230f0f0376fd855ed6]
+reverse link IGame to AbstractGame--><path codeLine="50" d="M745,138.55 C745,164.05 745,191.58 745,213.42 " fill="none" id="IGame-backto-AbstractGame" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="738,138.23,745,118.23,752,138.23,738,138.23" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="66" x="746" y="160.0591">implements</text><!--MD5=[ea0406124471aea521b684236e2d321e]
+reverse link IGamblerCard to GamblerCard--><path codeLine="67" d="M287.25,336.78 C279.81,356.18 272.17,376.13 265.76,392.86 " fill="none" id="IGamblerCard-backto-GamblerCard" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="280.72,334.25,294.41,318.08,293.79,339.26,280.72,334.25" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="66" x="283" y="360.0591">implements</text><!--MD5=[421a16316da497119134a654b6827ba1]
+@startuml
+
+!define LIGHTBLUE
+!include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+interface ICashier {
+    IGamblerCard distributeGamblerCard()
+    returnGamblerCard(IGamblerCard card)
+    checkIfBetIsValid(IGamblerCard card, Bet betToCheck)
+    addAmount(IGamblerCard card, MoneyAmount amount)
+}
+
+class Cashier {
+
+}
+
+ICashier <|.. Cashier : implements
+Cashier - -> GamblerCard : distributes
+
+interface IBettingRound {
+    BettingRoundID getBettingRoundID()
+    boolean placeBet(Bet bet)
+    Set<Bet> getAllBetsMade()
+    BetToken getBetToken()
+    int numberOFBetsMade()
+    sendInformationToAuthority()
+}
+
+class BettingRound {
+    BettingRoundID roundID
+    Set<Bet> bettingRounds
+}
+
+IBettingRound <|.. BettingRound : implements
+AbstractGame - -> BettingRound : has
+
+interface IGame {
+    startBettingRound()
+    generateBettingRoundID()
+    acceptBet(Bet bet, IGamingMachine gamingMachine)
+    void determineWinner()
+    isBettingRoundFinished()
+}
+
+abstract AbstractGame {
+    GameRule gameRule
+    BettingRound bettingRound
+    AbstractGame()
+}
+
+IGame <|.. AbstractGame : implements
+
+interface IGamblerCard {
+    Set<BetID> returnBetIDs()
+    Set<BetID> returnBetIDsAndClearCard()
+    BetID generateNewBetID()
+    int getNumberOfBetIDs()
+    CardID getCardID()
+    addOrSubtractMoney(double amount)
+}
+
+class GamblerCard {
+    int cardNumber
+    double moneyAmount
+    Set<BetID> placedBets
+}
+
+IGamblerCard <|.. GamblerCard : implements
+
+class BetID {
+    int id
+}
+
+@enduml
+
+@startuml
+
+
+
+
+
+skinparam stereotypeCBackgroundColor 1a66c2
+
+
+
+
+
+
+
+skinparam backgroundColor fff
+
+
+
+
+
+
+
+
+skinparam circledCharacter {
+  radius 8
+  fontSize 11
+  fontName Verdana
+}
+
+skinparam class {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+
+  attributeFontColor 333
+  attributeFontSize 11
+  attributeIconSize 11
+}
+
+
+skinparam actor {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam participant {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam collections {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam SequenceBox{
+    backgroundColor e0e0e0
+  borderColor cccccc
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+skinparam interface {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam component {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam node {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam database {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam queue {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+skinparam usecase {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+skinparam activity {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+skinparam sequence {
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+
+  lifeLineBorderColor 2a86e2
+  lifeLineBackgroundColor e0e0e0
+}
+
+skinparam boundary {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam control {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam entity {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+skinparam state {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+  startColor 2a86e2
+  endColor 1a66c2
+}
+
+
+skinparam object {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+
+skinparam note {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam cloud {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+skinparam rectangle {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam storage {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+interface ICashier {
+    IGamblerCard distributeGamblerCard()
+    returnGamblerCard(IGamblerCard card)
+    checkIfBetIsValid(IGamblerCard card, Bet betToCheck)
+    addAmount(IGamblerCard card, MoneyAmount amount)
+}
+
+class Cashier {
+
+}
+
+ICashier <|.. Cashier : implements
+Cashier - -> GamblerCard : distributes
+
+interface IBettingRound {
+    BettingRoundID getBettingRoundID()
+    boolean placeBet(Bet bet)
+    Set<Bet> getAllBetsMade()
+    BetToken getBetToken()
+    int numberOFBetsMade()
+    sendInformationToAuthority()
+}
+
+class BettingRound {
+    BettingRoundID roundID
+    Set<Bet> bettingRounds
+}
+
+IBettingRound <|.. BettingRound : implements
+AbstractGame - -> BettingRound : has
+
+interface IGame {
+    startBettingRound()
+    generateBettingRoundID()
+    acceptBet(Bet bet, IGamingMachine gamingMachine)
+    void determineWinner()
+    isBettingRoundFinished()
+}
+
+abstract AbstractGame {
+    GameRule gameRule
+    BettingRound bettingRound
+    AbstractGame()
+}
+
+IGame <|.. AbstractGame : implements
+
+interface IGamblerCard {
+    Set<BetID> returnBetIDs()
+    Set<BetID> returnBetIDsAndClearCard()
+    BetID generateNewBetID()
+    int getNumberOfBetIDs()
+    CardID getCardID()
+    addOrSubtractMoney(double amount)
+}
+
+class GamblerCard {
+    int cardNumber
+    double moneyAmount
+    Set<BetID> placedBets
+}
+
+IGamblerCard <|.. GamblerCard : implements
+
+class BetID {
+    int id
+}
+
+@enduml
+
+PlantUML version 1.2021.3(Mon Mar 22 17:53:19 CET 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
