@@ -1,7 +1,13 @@
 package casino.cashier;
 
+import gamblingauthoritiy.BetLoggingAuthority;
+import gamblingauthoritiy.IBetLoggingAuthority;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 public class CashierTest {
     /**
@@ -9,9 +15,21 @@ public class CashierTest {
      * @see Cashier#Cashier(gamblingauthoritiy.IBetLoggingAuthority)
      */
     @Test
-    public void Cashier_shouldCreateACashierAndSetLoggingAuthority() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
+    public void Cashier_shouldCreateACashierAndSetLoggingAuthority() {
+        // Arrange
+        IBetLoggingAuthority betLogging = new BetLoggingAuthority();
+        Cashier sut = new Cashier(betLogging);
+        // Act
+        // Assert
+        assertThat(sut.getLoggingAuthority()).isEqualTo(betLogging);
+    }
+
+    /**
+     * @verifies cashier object is logically equal
+     */
+    @Test
+    public void Cashier_withSameLoggingAuthorityAreLogicallyEqual() {
+
     }
 
     /**

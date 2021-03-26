@@ -1,8 +1,11 @@
 package gamblingauthoritiy;
 
 import casino.bet.Bet;
+import casino.bet.BetID;
 import casino.bet.BetResult;
+import casino.game.BettingRoundID;
 import casino.game.IBettingRound;
+import casino.gamingmachine.GamingMachineID;
 import casino.idfactory.GeneralID;
 
 import java.util.Set;

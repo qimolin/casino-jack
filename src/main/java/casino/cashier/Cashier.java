@@ -73,4 +73,6 @@ public class Cashier implements ICashier {
     public void addAmount(IGamblerCard card, MoneyAmount amount) throws InvalidAmountException {
 
     }
+
+
 }
