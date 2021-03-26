@@ -4,6 +4,7 @@ services:
     container_name: jenkins-docker
     privileged: true
     network_mode: jenkins
+    restart: unless-stopped
     environment:
       - DOCKER_TLS_CERTDIR=/certs
     volumes:
@@ -13,10 +14,12 @@ services:
       - 3000:3000
       - 2376:2376
     image: docker:dind
-    build: ./
+
   myjenkins-blueocean:
     container_name: jenkins-blueocean
     network_mode: jenkins
+    restart: unless-stopped
+    build: .
     environment:
       - DOCKER_HOST=tcp://docker:2376
       - DOCKER_CERT_PATH=/certs/client
@@ -27,5 +30,3 @@ services:
       - ./jenkins-blueocean:/var/jenkins_home
       - ./jenkins-blueocean:/certs/client:ro
       - C:\Users\Qi-Mo:/home #Change to own home directory
-    image: myjenkins-blueocean:1.1
-
