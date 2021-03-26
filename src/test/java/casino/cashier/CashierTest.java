@@ -45,8 +45,13 @@ public class CashierTest {
      */
     @Test
     public void distributeGamblerCard_shouldReturnAGamblingCard() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
+        // Arrange
+        IBetLoggingAuthority betLogging = new BetLoggingAuthority();
+        Cashier sut = new Cashier(betLogging);
+        // Act
+        IGamblerCard gamblerCard = sut.distributeGamblerCard();
+        // Assert
+        assertThat(gamblerCard).isNotNull();
     }
 
     /**
