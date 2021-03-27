@@ -22,7 +22,7 @@ public class CashierTest {
     @Test
     public void Cashier_shouldCreateACashierAndSetLoggingAuthority() {
         // Arrange
-        IBetLoggingAuthority betLogging = new BetLoggingAuthority();
+        IBetLoggingAuthority betLogging = mock(BetLoggingAuthority.class);
         Cashier sut = new Cashier(betLogging);
         // Act
         // Assert
@@ -35,7 +35,7 @@ public class CashierTest {
     @Test
     public void Cashier_withSameLoggingAuthorityAreLogicallyEqual() {
         // Arrange
-        IBetLoggingAuthority betLogging = new BetLoggingAuthority();
+        IBetLoggingAuthority betLogging = mock(BetLoggingAuthority.class);
         Cashier A = new Cashier(betLogging);
         Cashier B = new Cashier(betLogging);
         // Act
@@ -51,7 +51,7 @@ public class CashierTest {
     @Test
     public void distributeGamblerCard_shouldReturnAGamblingCard() throws Exception {
         // Arrange
-        IBetLoggingAuthority betLogging = new BetLoggingAuthority();
+        IBetLoggingAuthority betLogging = mock(BetLoggingAuthority.class);
         Cashier sut = new Cashier(betLogging);
         // Act
         IGamblerCard gamblerCard = sut.distributeGamblerCard();
@@ -67,7 +67,7 @@ public class CashierTest {
     @Test
     public void distributeGamblerCard_shouldPutCardsInASet() throws Exception {
         // Arrange
-        IBetLoggingAuthority betLogging = new BetLoggingAuthority();
+        IBetLoggingAuthority betLogging = mock(BetLoggingAuthority.class);
         Cashier sut = new Cashier(betLogging);
         // Act
         sut.distributeGamblerCard();
@@ -84,7 +84,7 @@ public class CashierTest {
     @Test
     public void returnGamblerCard_shouldCallReturnBetIDsAndGetCardID() throws Exception {
         // Arrange
-        IBetLoggingAuthority betLogging = new BetLoggingAuthority();
+        IBetLoggingAuthority betLogging = mock(BetLoggingAuthority.class);
         Cashier sut = new Cashier(betLogging);
         GamblerCard card = mock(GamblerCard.class);
         // Act
@@ -94,14 +94,6 @@ public class CashierTest {
         verify(card).getCardID();
     }
 
-    /**
-     * @verifies log betIDs to logging authority
-     * @see Cashier#returnGamblerCard(IGamblerCard)
-     */
-    @Test
-    public void returnGamblerCard_shouldLogBetIDsToLoggingAuthority() throws Exception {
-
-    }
     /**
      * @verifies set amount on card to zero
      * @see Cashier#returnGamblerCard(IGamblerCard)
