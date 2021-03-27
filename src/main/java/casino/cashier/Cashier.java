@@ -51,7 +51,7 @@ public class Cashier implements ICashier {
      */
     @Override
     public void returnGamblerCard(IGamblerCard card) {
-
+        this.loggingAuthority.logHandInGamblingCard(card.getCardID(), card.returnBetIDs());
     }
 
     /**
