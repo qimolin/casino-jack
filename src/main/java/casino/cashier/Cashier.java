@@ -16,6 +16,7 @@ public class Cashier implements ICashier {
     private final Set<IGamblerCard> gamblerCards;
     /**
      * @should create a cashier and set logging authority
+     * @should create an IDFactory
      * @param loggingAuthority
      */
     public Cashier(IBetLoggingAuthority loggingAuthority) {
