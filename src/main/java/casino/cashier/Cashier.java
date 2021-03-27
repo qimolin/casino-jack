@@ -59,7 +59,7 @@ public class Cashier implements ICashier {
      * if the bet is valid, the amount of the bet is subtracted from the amount belonging to
      * the card.
      * @should throw BetNotFoundException if bet amount is invalid
-     * @should subtract bet amount from the card
+     * @should subtract bet amount from the card and return true
      * @param card
      * @param betToCheck
      * @return
@@ -67,7 +67,11 @@ public class Cashier implements ICashier {
      */
     @Override
     public boolean checkIfBetIsValid(IGamblerCard card, Bet betToCheck) throws BetNotExceptedException {
-        return false;
+        if (card.getMoneyAmountInCents() < betToCheck.getMoneyAmount().getAmountInCents()) {
+            throw new BetNotExceptedException("Bet amount is bigger than amount on card");
+        } else {
+            return true;
+        }
     }
 
     /**
