@@ -80,8 +80,9 @@ public class CashierTest {
      * @verifies call returnBetIDs
      * @see Cashier#returnGamblerCard(IGamblerCard)
      */
+
     @Test
-    public void returnGamblerCard_shouldCallReturnBetIDs() throws Exception {
+    public void returnGamblerCard_shouldCallReturnBetIDsAndGetCardID() throws Exception {
         // Arrange
         IBetLoggingAuthority betLogging = new BetLoggingAuthority();
         Cashier sut = new Cashier(betLogging);
@@ -90,6 +91,7 @@ public class CashierTest {
         sut.returnGamblerCard(card);
         // Assert
         verify(card).returnBetIDs();
+        verify(card).getCardID();
     }
 
     /**
