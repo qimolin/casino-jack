@@ -3,6 +3,14 @@
 !define LIGHTBLUE
 !include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
 
+class Casino {
+    BettingAuthority bettingAuthority
+    ICashier teller
+    Map<string, IGame> games
+}
+
+Casino --> Cashier : has
+
 interface ICashier {
     IGamblerCard distributeGamblerCard()
     returnGamblerCard(IGamblerCard card)
@@ -45,10 +53,21 @@ interface IGame {
 abstract AbstractGame {
     GameRule gameRule
     BettingRound bettingRound
-    AbstractGame()
+}
+
+class DefaultGame {
+    
 }
 
 IGame <|.. AbstractGame : implements
+IGame --> IGameRule : has
+AbstractGame --> GameMachine : connects
+AbstractGame <|-- DefaultGame : extends
+
+interface IGameRule {
+    BetResult determineWinner(Integer randomWinValue, Set<Bet> bets)
+    int getMaxBetsPerRound()
+}
 
 interface IGamblerCard {
     Set<BetID> returnBetIDs()
@@ -65,10 +84,61 @@ class GamblerCard {
     Set<BetID> placedBets
 }
 
+interface IGamingMachine {
+    boolean placeBet(long amountInCents)
+    void acceptWinner(BetResult winResult)
+    GamingMachineID getGamingMachineID()
+    void connectCard(IGamblerCard card)
+    void disconnectCard()
+}
+
+class GamingMachine {
+
+}
+
+IGamingMachine <|-- GamingMachine : implements
+GamingMachine --> GamblerCard : connects
+
 IGamblerCard <|.. GamblerCard : implements
 
-class BetID {
-    int id
+class BetToken {
+    BettingRoundID bettingRoundID
+    UUID uniqueTokenID
+    Instant creationTime
 }
+
+class IDFactory {
+    GeneralID generateID(String idType)
+}
+
+abstract GeneralID {
+    UUID uniqueTokenID
+    Instant timeStamp
+}
+
+class BettingRoundID {
+
+}
+
+class GamingMachineID {
+
+}
+
+class CardID {
+
+}
+
+class BetID {
+
+}
+
+IDFactory --> GeneralID : creates
+
+GeneralID <|-- BetID
+GeneralID <|-- BettingRoundID
+GeneralID <|-- GamingMachineID
+GeneralID <|-- CardID
+
+BetToken --> BettingRoundID : relates to
 
 @enduml
