@@ -121,7 +121,8 @@ public class CashierTest {
         Bet bet = mock(Bet.class);
         MoneyAmount amount = mock(MoneyAmount.class);
         // Act
-        when(amount.getAmountInCents()).thenReturn(Long.valueOf(-1));
+        when(card.getMoneyAmountInCents()).thenReturn(1L);
+        when(amount.getAmountInCents()).thenReturn(5L);
         when(bet.getMoneyAmount()).thenReturn(amount);
         // Assert
         assertThatExceptionOfType(BetNotExceptedException.class)
