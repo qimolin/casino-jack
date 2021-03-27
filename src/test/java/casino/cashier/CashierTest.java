@@ -121,8 +121,8 @@ public class CashierTest {
         Bet bet = mock(Bet.class);
         MoneyAmount amount = mock(MoneyAmount.class);
         // Act
-        when(card.getMoneyAmountInCents()).thenReturn(1L);
-        when(amount.getAmountInCents()).thenReturn(5L);
+        when(card.getMoneyAmountInCents()).thenReturn(1l);
+        when(amount.getAmountInCents()).thenReturn(5l);
         when(bet.getMoneyAmount()).thenReturn(amount);
         // Assert
         assertThatExceptionOfType(BetNotExceptedException.class)
@@ -132,11 +132,11 @@ public class CashierTest {
     }
 
     /**
-     * @verifies subtract bet amount from the card and return true
-     * @see Cashier#checkIfBetIsValid(IGamblerCard, casino.bet.Bet)
+     * @verifies call setMoneyAmountInCents and return true
+     * @see Cashier#checkIfBetIsValid(IGamblerCard, Bet)
      */
     @Test
-    public void checkIfBetIsValid_shouldSubtractBetAmountFromTheCardAndReturnTrue() throws Exception {
+    public void checkIfBetIsValid_shouldCallSetMoneyAmountInCentsAndReturnTrue() throws BetNotExceptedException {
         // Arrange
         IBetLoggingAuthority betLogging = mock(BetLoggingAuthority.class);
         Cashier sut = new Cashier(betLogging);
@@ -147,10 +147,11 @@ public class CashierTest {
         when(card.getMoneyAmountInCents()).thenReturn(4L);
         when(amount.getAmountInCents()).thenReturn(2L);
         when(bet.getMoneyAmount()).thenReturn(amount);
+        sut.checkIfBetIsValid(card, bet);
         // Assert
-        assertThat(card.getMoneyAmountInCents()).isEqualTo(2L);
+        verify(card).setMoneyAmountInCents(-2L);
+        assertThat(sut.checkIfBetIsValid(card, bet)).isTrue();
     }
-
     /**
      * @verifies add correct amount to players card
      * @see Cashier#addAmount(IGamblerCard, casino.bet.MoneyAmount)
