@@ -1,4 +1,4 @@
 package casino.cashier;
 
-public class CardID {
+public class CardID: GeneralI {
 }
