@@ -6,6 +6,8 @@ import casino.bet.BetID;
 import java.util.Set;
 
 public class GamblerCard implements IGamblerCard {
+
+    private long moneyAmountInCents;
     /**
      * returns all generated betID's by this card
      *
@@ -50,5 +52,13 @@ public class GamblerCard implements IGamblerCard {
     @Override
     public CardID getCardID() {
         return null;
+    }
+
+    public long getMoneyAmountInCents() {
+        return moneyAmountInCents;
+    }
+
+    public void setMoneyAmountInCents(long moneyAmountInCents) {
+        this.moneyAmountInCents += moneyAmountInCents;
     }
 }
