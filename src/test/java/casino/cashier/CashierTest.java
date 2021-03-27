@@ -132,13 +132,23 @@ public class CashierTest {
     }
 
     /**
-     * @verifies subtract bet amount from the card
+     * @verifies subtract bet amount from the card and return true
      * @see Cashier#checkIfBetIsValid(IGamblerCard, casino.bet.Bet)
      */
     @Test
-    public void checkIfBetIsValid_shouldSubtractBetAmountFromTheCard() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
+    public void checkIfBetIsValid_shouldSubtractBetAmountFromTheCardAndReturnTrue() throws Exception {
+        // Arrange
+        IBetLoggingAuthority betLogging = mock(BetLoggingAuthority.class);
+        Cashier sut = new Cashier(betLogging);
+        GamblerCard card = mock(GamblerCard.class);
+        Bet bet = mock(Bet.class);
+        MoneyAmount amount = mock(MoneyAmount.class);
+        // Act
+        when(card.getMoneyAmountInCents()).thenReturn(4L);
+        when(amount.getAmountInCents()).thenReturn(2L);
+        when(bet.getMoneyAmount()).thenReturn(amount);
+        // Assert
+        assertThat(card.getMoneyAmountInCents()).isEqualTo(2L);
     }
 
     /**
