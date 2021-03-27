@@ -65,7 +65,7 @@ public class CashierTest {
      * @see Cashier#returnGamblerCard(IGamblerCard)
      */
     @Test
-    public void distributeGamblerCard_shouldPutCardsInASet() throws Exception {
+    public void distributeGamblerCard_shouldPutCardsInASet() {
         // Arrange
         IBetLoggingAuthority betLogging = mock(BetLoggingAuthority.class);
         Cashier sut = new Cashier(betLogging);
@@ -77,12 +77,11 @@ public class CashierTest {
     }
 
     /**
-     * @verifies call returnBetIDs
+     * @verifies call returnBetIDsAndClearCard and getCardID
      * @see Cashier#returnGamblerCard(IGamblerCard)
      */
-
     @Test
-    public void returnGamblerCard_shouldCallReturnBetIDsAndGetCardID() throws Exception {
+    public void returnGamblerCard_shouldCallReturnBetIDsAndClearCardAndGetCardID() {
         // Arrange
         IBetLoggingAuthority betLogging = mock(BetLoggingAuthority.class);
         Cashier sut = new Cashier(betLogging);
@@ -90,28 +89,24 @@ public class CashierTest {
         // Act
         sut.returnGamblerCard(card);
         // Assert
-        verify(card).returnBetIDs();
+        verify(card).returnBetIDsAndClearCard();
         verify(card).getCardID();
     }
 
     /**
-     * @verifies set amount on card to zero
+     * @verifies call logHandInGamblingCard
      * @see Cashier#returnGamblerCard(IGamblerCard)
      */
     @Test
-    public void returnGamblerCard_shouldSetAmountOnCardToZero() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
-    }
-
-    /**
-     * @verifies clear stored betIDs
-     * @see Cashier#returnGamblerCard(IGamblerCard)
-     */
-    @Test
-    public void returnGamblerCard_shouldClearStoredBetIDs() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
+    public void returnGamblerCard_shouldCallLogHandInGamblingCard() throws Exception {
+        // Arrange
+        IBetLoggingAuthority betLogging = mock(BetLoggingAuthority.class);
+        Cashier sut = new Cashier(betLogging);
+        GamblerCard card = mock(GamblerCard.class);
+        // Act
+        sut.returnGamblerCard(card);
+        // Assert
+        verify(sut.getLoggingAuthority()).logHandInGamblingCard(card.getCardID(), card.returnBetIDsAndClearCard());
     }
 
     /**
