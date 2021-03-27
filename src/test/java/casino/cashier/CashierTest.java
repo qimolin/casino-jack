@@ -1,14 +1,13 @@
 package casino.cashier;
 
-import casino.bet.BetID;
+import casino.bet.Bet;
+import casino.bet.MoneyAmount;
 import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.IBetLoggingAuthority;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
@@ -98,7 +97,7 @@ public class CashierTest {
      * @see Cashier#returnGamblerCard(IGamblerCard)
      */
     @Test
-    public void returnGamblerCard_shouldCallLogHandInGamblingCard() throws Exception {
+    public void returnGamblerCard_shouldCallLogHandInGamblingCard() {
         // Arrange
         IBetLoggingAuthority betLogging = mock(BetLoggingAuthority.class);
         Cashier sut = new Cashier(betLogging);
@@ -114,9 +113,21 @@ public class CashierTest {
      * @see Cashier#checkIfBetIsValid(IGamblerCard, casino.bet.Bet)
      */
     @Test
-    public void checkIfBetIsValid_shouldThrowBetNotFoundExceptionIfBetAmountIsInvalid() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
+    public void checkIfBetIsValid_shouldThrowBetNotFoundExceptionIfBetAmountIsInvalid() {
+        // Arrange
+        IBetLoggingAuthority betLogging = mock(BetLoggingAuthority.class);
+        Cashier sut = new Cashier(betLogging);
+        GamblerCard card = mock(GamblerCard.class);
+        Bet bet = mock(Bet.class);
+        MoneyAmount amount = mock(MoneyAmount.class);
+        // Act
+        when(amount.getAmountInCents()).thenReturn(Long.valueOf(-1));
+        when(bet.getMoneyAmount()).thenReturn(amount);
+        // Assert
+        assertThatExceptionOfType(BetNotExceptedException.class)
+                .isThrownBy(() -> {
+                   sut.checkIfBetIsValid(card, bet);
+                });
     }
 
     /**
