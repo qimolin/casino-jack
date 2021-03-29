@@ -12,6 +12,8 @@ public class DefaultGame extends AbstractGame {
      * bettinground is created, which becomes the current bettinground.
      * <p>
      * Note: also use the appropiate required methods from the gambling authority API
+     *
+     * @should log to BettingAuthority
      */
     @Override
     public void startBettingRound() {
