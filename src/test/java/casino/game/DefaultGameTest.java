@@ -16,7 +16,7 @@ public class DefaultGameTest {
     @Mock
     private BetLoggingAuthority betLoggingAuthority;
     @Mock
-    private BettingRoundID bettingRoundID;
+    private BettingRound bettingRound;
 
     private AutoCloseable closeable;
     private DefaultGame game;
@@ -38,10 +38,10 @@ public class DefaultGameTest {
     @Test
     public void startBettingRound_shouldLogToBettingAuthority() {
         game = new DefaultGame();
-        bettingRoundID = new BettingRoundID();
+        bettingRound = new BettingRound();
         game.startBettingRound();
 
         verify(betLoggingAuthority, times(1))
-                .logStartBettingRound(bettingRoundID);
+                .logStartBettingRound(bettingRound);
     }
 }
