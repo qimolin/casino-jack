@@ -1,5 +1,9 @@
 package casino.game;
 
+import casino.bet.Bet;
+import casino.bet.BetID;
+import casino.bet.BetResult;
+import casino.bet.MoneyAmount;
 import gamblingauthoritiy.BetLoggingAuthority;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,9 +40,14 @@ public class DefaultGameTest {
     @Test
     public void startBettingRound_shouldLogToBettingAuthority() {
         game = new DefaultGame();
+        BettingRound currentRound = game.getBettingRound();
+        BettingRound newBettingRound = new BettingRound();
+        Bet bet = new Bet(new BetID(), new MoneyAmount(2000));
+        BetResult betResult = new BetResult(bet, new MoneyAmount(4000));
 
         game.startBettingRound();
 
-        verify(betLoggingAuthority).logStartBettingRound(bettingRound);
+        verify(betLoggingAuthority).logEndBettingRound(currentRound, betResult);
+        verify(betLoggingAuthority).logStartBettingRound(newBettingRound);
     }
 }

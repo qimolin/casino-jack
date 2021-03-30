@@ -14,6 +14,7 @@ public class DefaultGame extends AbstractGame {
      * <p>
      * Note: also use the appropiate required methods from the gambling authority API
      *
+     * @should
      * @should log to BettingAuthority
      */
     @Override
