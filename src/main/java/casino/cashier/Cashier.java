@@ -3,8 +3,12 @@ package casino.cashier;
 
 import casino.bet.Bet;
 import casino.bet.MoneyAmount;
+import gamblingauthoritiy.IBetLoggingAuthority;
 
 public class Cashier implements ICashier {
+
+    public Cashier(IBetLoggingAuthority loggingAuthority) {
+    }
 
     /**
      * Cards are distributed by a Cashier to a gambler
