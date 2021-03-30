@@ -1,5 +1,7 @@
 package gamblingauthoritiy;
 
+import casino.game.BettingRoundID;
+
 public interface IBetTokenAuthority {
 
     /**

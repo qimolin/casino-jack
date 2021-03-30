@@ -2,13 +2,11 @@ package casino.game;
 
 import gamblingauthoritiy.BetLoggingAuthority;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 public class DefaultGameTest {
@@ -38,10 +36,9 @@ public class DefaultGameTest {
     @Test
     public void startBettingRound_shouldLogToBettingAuthority() {
         game = new DefaultGame();
-        bettingRound = new BettingRound();
+
         game.startBettingRound();
 
-        verify(betLoggingAuthority, times(1))
-                .logStartBettingRound(bettingRound);
+        verify(betLoggingAuthority).logStartBettingRound(bettingRound);
     }
 }

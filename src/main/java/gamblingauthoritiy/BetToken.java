@@ -1,6 +1,8 @@
 package gamblingauthoritiy;
 
 
+import casino.game.BettingRoundID;
+
 import java.time.Instant;
 import java.util.Objects;
 import java.util.UUID;

@@ -3,6 +3,7 @@ package casino.game;
 
 import casino.bet.Bet;
 import casino.gamingmachine.IGamingMachine;
+import gamblingauthoritiy.BetLoggingAuthority;
 
 public class DefaultGame extends AbstractGame {
 
@@ -17,7 +18,10 @@ public class DefaultGame extends AbstractGame {
      */
     @Override
     public void startBettingRound() {
-        
+        BettingRound bettingRound = new BettingRound();
+        BetLoggingAuthority betLoggingAuthority = new BetLoggingAuthority();
+
+        betLoggingAuthority.logStartBettingRound(bettingRound);
     }
 
     /**
