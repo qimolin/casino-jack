@@ -2,10 +2,26 @@ package casino.game;
 
 
 import casino.bet.Bet;
+import casino.bet.BetID;
+import casino.bet.BetResult;
+import casino.bet.MoneyAmount;
 import casino.gamingmachine.IGamingMachine;
 import gamblingauthoritiy.BetLoggingAuthority;
+import gamblingauthoritiy.IBetLoggingAuthority;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class DefaultGame extends AbstractGame {
+    private BettingRound bettingRound;
+    private IGameRule gameRule;
+    private IBetLoggingAuthority betLoggingAuthority;
+
+    public DefaultGame(IGameRule gameRule, BettingRound bettingRound, IBetLoggingAuthority betLoggingAuthority) {
+        this.gameRule = gameRule;
+        this.bettingRound = bettingRound;
+        this.betLoggingAuthority = betLoggingAuthority;
+    }
 
     /**
      * create and start a new BettingRound.
@@ -19,11 +35,18 @@ public class DefaultGame extends AbstractGame {
      */
     @Override
     public void startBettingRound() {
-        BettingRound bettingRound = new BettingRound();
-        BetLoggingAuthority betLoggingAuthority = new BetLoggingAuthority();
+        determineWinner();
+
+        bettingRound = new BettingRound();
 
         betLoggingAuthority.logStartBettingRound(bettingRound);
     }
+
+    public BettingRound getBettingRound() {
+        return bettingRound;
+    }
+
+    public BettingRound getNewBettingRound() { return new BettingRound(); }
 
     /**
      * Accept a bet on the current betting round.
@@ -52,7 +75,15 @@ public class DefaultGame extends AbstractGame {
      */
     @Override
     public void determineWinner() {
+        if (bettingRound == null) return;
 
+        BetResult betResult = null;
+        try {
+            betResult = gameRule.determineWinner(2, new HashSet<>());
+            betLoggingAuthority.logEndBettingRound(bettingRound, betResult);
+        } catch (NoBetsMadeException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

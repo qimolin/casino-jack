@@ -1,9 +1,6 @@
 package casino.game;
 
-import casino.bet.Bet;
-import casino.bet.BetID;
 import casino.bet.BetResult;
-import casino.bet.MoneyAmount;
 import gamblingauthoritiy.BetLoggingAuthority;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
