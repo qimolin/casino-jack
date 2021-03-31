@@ -31,4 +31,7 @@ public interface IGamblerCard {
     int getNumberOfBetIDs();
 
     CardID getCardID();
+
+    long getMoneyAmountInCents();
+    void setMoneyAmountInCents(long moneyAmountInCents);
 }
