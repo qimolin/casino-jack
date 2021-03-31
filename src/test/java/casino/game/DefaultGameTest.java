@@ -132,4 +132,19 @@ public class DefaultGameTest {
 
         verify(gameSpy, times(0)).determineWinner();
     }
+
+    /**
+     * @verifies return false if the bet is invalid
+     * @see DefaultGame#acceptBet(Bet, casino.gamingmachine.IGamingMachine)
+     */
+    @Test
+    public void acceptBet_shouldReturnFalseIfTheBetIsInvalid() throws Exception {
+        BettingRound currentRound = mock(BettingRound.class);
+        Bet bet = mock(Bet.class);
+        GamingMachine gamingMachine = mock(GamingMachine.class);
+        DefaultGame game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
+        when(gamingMachine.placeBet(5000)).thenReturn(false);
+
+        assertThat(game.acceptBet(bet, gamingMachine)).isFalse();
+    }
 }
