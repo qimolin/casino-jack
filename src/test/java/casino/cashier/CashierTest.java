@@ -171,9 +171,16 @@ public class CashierTest {
      */
     @Test
     public void addAmount_shouldThrowInvalidAmountExceptionIfAmountIsNegativeOrNull() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
+        // Arrange
+        Cashier sut = new Cashier(iBetLoggingAuthority);
+        GamblerCard card = mock(GamblerCard.class);
+        MoneyAmount amount = mock(MoneyAmount.class);
+        // Act
+        when(amount.getAmountInCents()).thenReturn(-2L);
+        // Assert
+        assertThatExceptionOfType(InvalidAmountException.class)
+                .isThrownBy(() -> {
+                    sut.addAmount(card, amount);
+                });
     }
-
-
 }
