@@ -79,7 +79,7 @@ public class Cashier implements ICashier {
 
     /**
      * add amount to the players card.
-     * @should add correct amount to players card
+     * @should call setMoneyAmountInCents on card
      * @should throw InvalidAmountException if amount is negative or null
      * @param card   card to add amount to
      * @param amount amount to add to card
