@@ -93,9 +93,12 @@ public class DefaultGame extends AbstractGame {
      * Note: also use the appropiate required methods from the gambling authority API
      *
      * @return true if all necessary bets are made in the betting round, otherwise false
+     *
+     * @should return true if the number of bets equal the max number of bets per round defined by the game rule
+     * @should return false if the number of bets are less the max number of bets per round defined by the game rule
      */
     @Override
     public boolean isBettingRoundFinished() {
-        return false;
+        return bettingRound.numberOFBetsMade() == gameRule.getMaxBetsPerRound();
     }
 }
