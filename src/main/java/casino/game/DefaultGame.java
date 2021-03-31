@@ -62,6 +62,7 @@ public class DefaultGame extends AbstractGame {
      *
      * @should check that the current betting round is finished
      * @should determine the winner if the current betting round is finished
+     * @should continue if the current betting round is not finished
      * @should return false if the bet is invalid
      * @should call the required methods in the correct order
      */

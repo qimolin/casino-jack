@@ -109,10 +109,27 @@ public class DefaultGameTest {
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
         DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
-        when(gameSpy.isBettingRoundFinished()).thenReturn(true);
+        doReturn(true).when(gameSpy).isBettingRoundFinished();
 
         gameSpy.acceptBet(bet, gamingMachine);
 
         verify(gameSpy).determineWinner();
+    }
+
+    /**
+     * @verifies continue if the current betting round is not finished
+     * @see DefaultGame#acceptBet(Bet, casino.gamingmachine.IGamingMachine)
+     */
+    @Test
+    public void acceptBet_shouldContinueIfTheCurrentBettingRoundIsNotFinished() throws Exception {
+        BettingRound currentRound = mock(BettingRound.class);
+        Bet bet = mock(Bet.class);
+        GamingMachine gamingMachine = mock(GamingMachine.class);
+        DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
+        doReturn(false).when(gameSpy).isBettingRoundFinished();
+
+        gameSpy.acceptBet(bet, gamingMachine);
+
+        verify(gameSpy, times(0)).determineWinner();
     }
 }
