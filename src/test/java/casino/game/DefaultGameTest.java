@@ -109,6 +109,7 @@ public class DefaultGameTest {
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
         DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
+        when(gameSpy.isBettingRoundFinished()).thenReturn(true);
 
         gameSpy.acceptBet(bet, gamingMachine);
 
