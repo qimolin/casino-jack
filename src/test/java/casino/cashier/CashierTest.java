@@ -176,18 +176,16 @@ public class CashierTest {
         GamblerCard card = mock(GamblerCard.class);
         MoneyAmount amount = mock(MoneyAmount.class);
         // Act
-
-        // Assert
         when(amount.getAmountInCents()).thenReturn(-2L);
+        // Assert
         assertThatExceptionOfType(InvalidAmountException.class)
                 .isThrownBy(() -> {
                     sut.addAmount(card, amount);
                 });
-        
-        when(amount.getAmountInCents()).thenReturn(null);
+
         assertThatExceptionOfType(InvalidAmountException.class)
                 .isThrownBy(() -> {
-                    sut.addAmount(card, amount);
+                    sut.addAmount(card, null);
                 });
     }
 }
