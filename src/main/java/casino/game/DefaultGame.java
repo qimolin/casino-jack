@@ -61,6 +61,9 @@ public class DefaultGame extends AbstractGame {
      * @throws NoCurrentRoundException when no BettingRound is currently active.
      *
      * @should check that the current betting round is finished
+     * @should determine the winner if the current betting round is finished
+     * @should return false if the bet is invalid
+     * @should call the required methods in the correct order
      */
     @Override
     public boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException {

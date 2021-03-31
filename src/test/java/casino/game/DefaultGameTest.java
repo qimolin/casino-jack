@@ -98,4 +98,20 @@ public class DefaultGameTest {
 
         verify(gameSpy).isBettingRoundFinished();
     }
+
+    /**
+     * @verifies determine the winner if the current betting round is finished
+     * @see DefaultGame#acceptBet(Bet, casino.gamingmachine.IGamingMachine)
+     */
+    @Test
+    public void acceptBet_shouldDetermineTheWinnerIfTheCurrentBettingRoundIsFinished() throws Exception {
+        BettingRound currentRound = mock(BettingRound.class);
+        Bet bet = mock(Bet.class);
+        GamingMachine gamingMachine = mock(GamingMachine.class);
+        DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
+
+        gameSpy.acceptBet(bet, gamingMachine);
+
+        verify(gameSpy).determineWinner();
+    }
 }
