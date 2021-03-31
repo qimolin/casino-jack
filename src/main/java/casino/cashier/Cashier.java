@@ -87,7 +87,7 @@ public class Cashier implements ICashier {
      */
     @Override
     public void addAmount(IGamblerCard card, MoneyAmount amount) throws InvalidAmountException {
-
+        card.setMoneyAmountInCents(amount.getAmountInCents());
     }
 
     public IBetLoggingAuthority getLoggingAuthority() {
