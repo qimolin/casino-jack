@@ -84,7 +84,7 @@ public class CashierTest {
     public void returnGamblerCard_shouldCallReturnBetIDsAndClearCardAndGetCardID() {
         // Arrange
         Cashier sut = new Cashier(iBetLoggingAuthority);
-        GamblerCard card = mock(GamblerCard.class);
+        IGamblerCard card = mock(GamblerCard.class);
         // Act
         sut.returnGamblerCard(card);
         // Assert
@@ -100,7 +100,7 @@ public class CashierTest {
     public void returnGamblerCard_shouldCallLogHandInGamblingCard() {
         // Arrange
         Cashier sut = new Cashier(iBetLoggingAuthority);
-        GamblerCard card = mock(GamblerCard.class);
+        IGamblerCard card = mock(GamblerCard.class);
         // Act
         sut.returnGamblerCard(card);
         // Assert
@@ -115,7 +115,7 @@ public class CashierTest {
     public void checkIfBetIsValid_shouldThrowBetNotFoundExceptionIfBetAmountIsInvalid() {
         // Arrange
         Cashier sut = new Cashier(iBetLoggingAuthority);
-        GamblerCard card = mock(GamblerCard.class);
+        IGamblerCard card = mock(GamblerCard.class);
         Bet bet = mock(Bet.class);
         MoneyAmount amount = mock(MoneyAmount.class);
         // Act
@@ -137,7 +137,7 @@ public class CashierTest {
     public void checkIfBetIsValid_shouldCallSetMoneyAmountInCentsAndReturnTrue() throws BetNotExceptedException {
         // Arrange
         Cashier sut = new Cashier(iBetLoggingAuthority);
-        GamblerCard card = mock(GamblerCard.class);
+        IGamblerCard card = mock(GamblerCard.class);
         Bet bet = mock(Bet.class);
         MoneyAmount amount = mock(MoneyAmount.class);
         // Act
@@ -155,8 +155,15 @@ public class CashierTest {
      */
     @Test
     public void addAmount_shouldCallSetMoneyAmountInCentsOnCard() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
+        // Arrange
+        Cashier sut = new Cashier(iBetLoggingAuthority);
+        GamblerCard card = mock(GamblerCard.class);
+        MoneyAmount amount = mock(MoneyAmount.class);
+        // Act
+        when(amount.getAmountInCents()).thenReturn(2L);
+        sut.addAmount(card, amount);
+        // Assert
+        verify(card).setMoneyAmountInCents(2L);
     }
     /**
      * @verifies throw InvalidAmountException if amount is negative or null
