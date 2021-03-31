@@ -3,6 +3,7 @@ package casino.game;
 
 import casino.bet.Bet;
 import casino.gamingmachine.IGamingMachine;
+import gamblingauthoritiy.BetLoggingAuthority;
 
 public class DefaultGame extends AbstractGame {
 
@@ -12,10 +13,15 @@ public class DefaultGame extends AbstractGame {
      * bettinground is created, which becomes the current bettinground.
      * <p>
      * Note: also use the appropiate required methods from the gambling authority API
+     *
+     * @should log to BettingAuthority
      */
     @Override
     public void startBettingRound() {
-        
+        BettingRound bettingRound = new BettingRound();
+        BetLoggingAuthority betLoggingAuthority = new BetLoggingAuthority();
+
+        betLoggingAuthority.logStartBettingRound(bettingRound);
     }
 
     /**

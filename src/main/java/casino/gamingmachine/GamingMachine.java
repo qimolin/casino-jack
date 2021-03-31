@@ -27,6 +27,7 @@ public class GamingMachine implements IGamingMachine {
      *
      * @param winResult result of a betting round. can be null when there is no winner.
      */
+
     @Override
     public void acceptWinner(BetResult winResult) {
 
