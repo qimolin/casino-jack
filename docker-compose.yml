@@ -31,3 +31,4 @@ services:
       - ./jenkins-data:/var/jenkins_home
       - ./jenkins-docker-certs:/certs/client:ro
       - C:\Users\Qi-Mo:/home #Change to own home directory
+
