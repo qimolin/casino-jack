@@ -31,3 +31,7 @@ services:
       - ./jenkins-data:/var/jenkins_home
       - ./jenkins-docker-certs:/certs/client:ro
       - C:\Users\stuci:/home #Change to own home directory
+=======
+      - C:\Users\Qi-Mo:/home #Change to own home directory
+
+>>>>>>> 49e99edc55a8bce93e9060cf0e4a05fd0439c8df

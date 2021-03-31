@@ -1,4 +1,6 @@
 package casino.cashier;
 
-public class CardID {
+import casino.idfactory.GeneralID;
+
+public class CardID extends GeneralID {
 }
