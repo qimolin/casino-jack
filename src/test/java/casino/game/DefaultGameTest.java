@@ -1,6 +1,8 @@
 package casino.game;
 
+import casino.bet.Bet;
 import casino.bet.BetResult;
+import casino.gamingmachine.GamingMachine;
 import gamblingauthoritiy.BetLoggingAuthority;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -79,5 +81,21 @@ public class DefaultGameTest {
         when(currentRound.numberOFBetsMade()).thenReturn(4);
 
         assertThat(game.isBettingRoundFinished()).isFalse();
+    }
+
+    /**
+     * @verifies check that the current betting round is finished
+     * @see DefaultGame#acceptBet(casino.bet.Bet, casino.gamingmachine.IGamingMachine)
+     */
+    @Test
+    public void acceptBet_shouldCheckThatTheCurrentBettingRoundIsFinished() throws Exception {
+        BettingRound currentRound = mock(BettingRound.class);
+        Bet bet = mock(Bet.class);
+        GamingMachine gamingMachine = mock(GamingMachine.class);
+        DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
+
+        gameSpy.acceptBet(bet, gamingMachine);
+
+        verify(gameSpy).isBettingRoundFinished();
     }
 }
