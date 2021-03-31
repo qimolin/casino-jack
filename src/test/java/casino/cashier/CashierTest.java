@@ -18,7 +18,7 @@ import static org.mockito.Mockito.*;
 public class CashierTest {
 
     @Mock
-    private IBetLoggingAuthority iBetLoggingAuthority;
+    private final IBetLoggingAuthority iBetLoggingAuthority = mock(IBetLoggingAuthority.class);
     /**
      * @verifies create a cashier and set logging authority
      * @see Cashier#Cashier(gamblingauthoritiy.IBetLoggingAuthority)
