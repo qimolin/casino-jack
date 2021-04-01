@@ -171,4 +171,23 @@ public class DefaultGameTest {
 
         assertThat(game.acceptBet(bet, gamingMachine)).isTrue();
     }
+
+    /**
+     * @verifies throw NoCurrentRoundException when no betting round is active
+     * @see DefaultGame#acceptBet(Bet, casino.gamingmachine.IGamingMachine)
+     */
+    @Test
+    public void acceptBet_shouldThrowNoCurrentRoundExceptionWhenNoBettingRoundIsActive() throws Exception {
+        BettingRound currentRound = null;
+        Bet bet = mock(Bet.class);
+        GamingMachine gamingMachine = mock(GamingMachine.class);
+        DefaultGame game = new DefaultGame(gameRule, currentRound, betLoggingAuthority);
+        when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
+        when(gamingMachine.placeBet(anyLong())).thenReturn(true);
+
+        assertThatExceptionOfType(NoCurrentRoundException.class)
+                .isThrownBy(() -> {
+                    game.acceptBet(bet, gamingMachine);
+                });
+    }
 }
