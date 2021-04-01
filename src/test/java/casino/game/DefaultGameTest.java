@@ -2,6 +2,7 @@ package casino.game;
 
 import casino.bet.Bet;
 import casino.bet.BetResult;
+import casino.bet.MoneyAmount;
 import casino.gamingmachine.GamingMachine;
 import gamblingauthoritiy.BetLoggingAuthority;
 import org.junit.jupiter.api.AfterEach;
@@ -93,6 +94,8 @@ public class DefaultGameTest {
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
         DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
+        when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
+        when(gamingMachine.placeBet(anyLong())).thenReturn(true);
 
         gameSpy.acceptBet(bet, gamingMachine);
 
@@ -110,6 +113,8 @@ public class DefaultGameTest {
         GamingMachine gamingMachine = mock(GamingMachine.class);
         DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
         doReturn(true).when(gameSpy).isBettingRoundFinished();
+        when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
+        when(gamingMachine.placeBet(anyLong())).thenReturn(true);
 
         gameSpy.acceptBet(bet, gamingMachine);
 
@@ -127,6 +132,8 @@ public class DefaultGameTest {
         GamingMachine gamingMachine = mock(GamingMachine.class);
         DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
         doReturn(false).when(gameSpy).isBettingRoundFinished();
+        when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
+        when(gamingMachine.placeBet(anyLong())).thenReturn(true);
 
         gameSpy.acceptBet(bet, gamingMachine);
 
@@ -143,8 +150,25 @@ public class DefaultGameTest {
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
         DefaultGame game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
-        when(gamingMachine.placeBet(5000)).thenReturn(false);
+        when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
+        when(gamingMachine.placeBet(anyLong())).thenReturn(false);
 
         assertThat(game.acceptBet(bet, gamingMachine)).isFalse();
+    }
+
+    /**
+     * @verifies return true if the bet is valid
+     * @see DefaultGame#acceptBet(Bet, casino.gamingmachine.IGamingMachine)
+     */
+    @Test
+    public void acceptBet_shouldReturnTrueIfTheBetIsValid() throws Exception {
+        BettingRound currentRound = mock(BettingRound.class);
+        Bet bet = mock(Bet.class);
+        GamingMachine gamingMachine = mock(GamingMachine.class);
+        DefaultGame game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
+        when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
+        when(gamingMachine.placeBet(anyLong())).thenReturn(true);
+
+        assertThat(game.acceptBet(bet, gamingMachine)).isTrue();
     }
 }
