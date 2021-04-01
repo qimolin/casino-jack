@@ -74,7 +74,7 @@ public class DefaultGame extends AbstractGame {
     @Override
     public boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException, NoPlayerCardException {
         if (bettingRound == null) throw new NoCurrentRoundException();
-        
+
         MoneyAmount betAmount = bet.getMoneyAmount();
         if (!gamingMachine.placeBet(betAmount.getAmountInCents())) {
             return false;
@@ -94,10 +94,12 @@ public class DefaultGame extends AbstractGame {
      * and end the current bettinground.
      * <p>
      * Note: also use the appropiate required methods from the gambling authority API
+     *
+     * @should end the current round
      */
     @Override
     public void determineWinner() {
-        if (bettingRound == null) return;
+        //if (bettingRound == null) return;
 
         BetResult betResult = null;
         try {
