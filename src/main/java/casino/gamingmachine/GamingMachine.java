@@ -12,7 +12,12 @@ import casino.cashier.IGamblerCard;
 
 public class GamingMachine implements IGamingMachine {
 
+    private GamblerCard gamblerCard = null;
+    private Cashier cashier;
 
+    public GamingMachine(Cashier cashier) {
+        this.cashier = cashier;
+    }
 
     /**
      * try to place bet with given amount and connected card.
@@ -25,6 +30,16 @@ public class GamingMachine implements IGamingMachine {
      */
     @Override
     public boolean placeBet(long amountInCents) throws NoPlayerCardException {
+        if (gamblerCard == null){
+            throw new NoPlayerCardException("No card exception");
+        }else {
+            try {
+                boolean isValid = cashier.checkIfBetIsValid(gamblerCard, new Bet(new BetID(), new MoneyAmount(amountInCents)));
+                return isValid;
+            } catch (BetNotExceptedException ex) {
+
+            }
+        }
         return false;
     }
 
@@ -58,7 +73,7 @@ public class GamingMachine implements IGamingMachine {
      */
     @Override
     public void connectCard(IGamblerCard card) {
-
+        gamblerCard = (GamblerCard) card;
     }
 
     /**
