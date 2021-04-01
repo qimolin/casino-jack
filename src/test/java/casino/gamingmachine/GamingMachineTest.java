@@ -1,11 +1,13 @@
 package casino.gamingmachine;
 
 import casino.bet.Bet;
+import casino.cashier.BetNotExceptedException;
 import casino.cashier.Cashier;
 import casino.cashier.GamblerCard;
 import casino.cashier.IGamblerCard;
 import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.IBetLoggingAuthority;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -56,6 +58,7 @@ class GamingMachineTest {
 
     }
 
+
     /**
      * @verifies if moneyInCard < moneyToBet should return true and pass
      * @see GamingMachine#placeBet(long)
@@ -75,7 +78,7 @@ class GamingMachineTest {
 
     @Test
     public void Machine_shouldAcceptWinner() {
-
+        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
 
     }
 
@@ -88,4 +91,20 @@ class GamingMachineTest {
 
     }
 
+    /**
+     * @verifies throw bet not accepted
+     * @see GamingMachine#placeBet(long)
+     */
+    @Test
+    public void placeBet_shouldThrowBetNotAccepted() throws Exception {
+        long moneyInCard = 5L;
+        long moneyToBet = 6L;
+        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
+        GamblerCard gamblerCard = mock(GamblerCard.class);
+        when(gamblerCard.getMoneyAmountInCents()).thenReturn(moneyInCard);
+        sut.connectCard(gamblerCard);
+        BetNotExceptedException exception = assertThrows(BetNotExceptedException.class, () ->
+                sut.placeBet(moneyToBet));
+        assertEquals("Bet amount larger than card amount", exception.getMessage());
+    }
 }

@@ -17,6 +17,7 @@ public class GamingMachine implements IGamingMachine {
     private GamblerCard gamblerCard = null;
     private Cashier cashier;
     private GeneralID generalID;
+    private Bet bet;
 
     public GamingMachine(Cashier cashier) {
         this.cashier = cashier;
@@ -31,6 +32,7 @@ public class GamingMachine implements IGamingMachine {
      * @param amountInCents amount in cents to gamble
      * @return true if bet is valid, excepted and added to betting round.
      * @throws NoPlayerCardException when no card is connected to this machine.
+     * @should throw bet not accepted
      */
     @Override
     public boolean placeBet(long amountInCents) throws NoPlayerCardException {
@@ -38,8 +40,13 @@ public class GamingMachine implements IGamingMachine {
             throw new NoPlayerCardException("No card exception");
         }else {
             try {
-                boolean isValid = cashier.checkIfBetIsValid(gamblerCard, new Bet(new BetID(), new MoneyAmount(amountInCents)));
-                return isValid;
+                bet = new Bet(new BetID(), new MoneyAmount(amountInCents));
+                boolean isValid = cashier.checkIfBetIsValid(gamblerCard, bet);
+                if (isValid) {
+                    return isValid;
+                }else {
+                    bet = null;
+                }
             } catch (BetNotExceptedException ex) {
 
             }
