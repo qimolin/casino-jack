@@ -46,13 +46,10 @@ public class DefaultGameTest {
     @Test
     public void startBettingRound_shouldLogToBettingAuthority() throws NoBetsMadeException {
         BettingRound currentRound = mock(BettingRound.class);
-        BetResult betResult = mock(BetResult.class);
         game = new DefaultGame(gameRule, currentRound, betLoggingAuthority);
-        when(gameRule.determineWinner(anyInt(), any(Set.class))).thenReturn(betResult);
 
         game.startBettingRound();
 
-        verify(betLoggingAuthority).logEndBettingRound(currentRound, betResult);
         verify(betLoggingAuthority).logStartBettingRound(any(IBettingRound.class));
     }
 
@@ -196,12 +193,28 @@ public class DefaultGameTest {
      * @see DefaultGame#determineWinner()
      */
     @Test
-    public void determineWinner_shouldEndTheCurrentRound() throws Exception {
+    public void determineWinner_shouldEndTheCurrentRound() {
         BettingRound currentRound = mock(BettingRound.class);
         DefaultGame game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
 
         game.determineWinner();
 
         assertThat(game.getBettingRound()).isNull();
+    }
+
+    /**
+     * @verifies log to betting authority
+     * @see DefaultGame#determineWinner()
+     */
+    @Test
+    public void determineWinner_shouldLogToBettingAuthority() throws Exception {
+        BettingRound currentRound = mock(BettingRound.class);
+        BetResult betResult = mock(BetResult.class);
+        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority);
+        when(gameRule.determineWinner(anyInt(), any(Set.class))).thenReturn(betResult);
+
+        game.determineWinner();
+
+        verify(betLoggingAuthority).logEndBettingRound(currentRound, betResult);
     }
 }

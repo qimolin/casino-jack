@@ -96,6 +96,7 @@ public class DefaultGame extends AbstractGame {
      * Note: also use the appropiate required methods from the gambling authority API
      *
      * @should end the current round
+     * @should log to betting authority
      */
     @Override
     public void determineWinner() {
