@@ -6,6 +6,7 @@ import casino.bet.MoneyAmount;
 import casino.gamingmachine.GamingMachine;
 import gamblingauthoritiy.BetLoggingAuthority;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -240,5 +241,22 @@ public class DefaultGameTest {
         verify(machineA).acceptWinner(betResult);
         verify(machineB).acceptWinner(betResult);
         verify(machineC).acceptWinner(betResult);
+    }
+
+    /**
+     * @verifies only log to betlogging authority if no bets have been made
+     * @see DefaultGame#determineWinner()
+     */
+    @Test
+    public void determineWinner_shouldOnlyLogToBetloggingAuthorityIfNoBetsHaveBeenMade() throws Exception {
+        BettingRound currentRound = mock(BettingRound.class);
+        when(currentRound.numberOFBetsMade()).thenReturn(0);
+        IGameRule gameRuleSpy = spy(IGameRule.class);
+        game = new DefaultGame(gameRuleSpy, currentRound, betLoggingAuthority);
+
+        game.determineWinner();
+
+        verify(gameRuleSpy, times(0)).determineWinner(anyInt(), any(Set.class));
+        verify(betLoggingAuthority).logEndBettingRound(currentRound, null);
     }
 }

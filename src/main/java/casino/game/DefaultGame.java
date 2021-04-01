@@ -107,6 +107,7 @@ public class DefaultGame extends AbstractGame {
      * @should end the current round
      * @should log to betting authority
      * @should notify all connected game machines
+     * @should only log to betlogging authority if no bets have been made
      */
     @Override
     public void determineWinner() {
