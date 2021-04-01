@@ -99,12 +99,11 @@ public class DefaultGame extends AbstractGame {
      */
     @Override
     public void determineWinner() {
-        //if (bettingRound == null) return;
-
         BetResult betResult = null;
         try {
             betResult = gameRule.determineWinner(2, new HashSet<>());
             betLoggingAuthority.logEndBettingRound(bettingRound, betResult);
+            bettingRound = null;
         } catch (NoBetsMadeException e) {
             e.printStackTrace();
         }
