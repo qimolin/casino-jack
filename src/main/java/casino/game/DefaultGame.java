@@ -5,23 +5,38 @@ import casino.bet.Bet;
 import casino.bet.BetID;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
+import casino.gamingmachine.GamingMachine;
 import casino.gamingmachine.IGamingMachine;
 import casino.gamingmachine.NoPlayerCardException;
 import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.IBetLoggingAuthority;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class DefaultGame extends AbstractGame {
     private BettingRound bettingRound;
     private IGameRule gameRule;
     private IBetLoggingAuthority betLoggingAuthority;
+    private List<GamingMachine> gamingMachines;
 
     public DefaultGame(IGameRule gameRule, BettingRound bettingRound, IBetLoggingAuthority betLoggingAuthority) {
         this.gameRule = gameRule;
         this.bettingRound = bettingRound;
         this.betLoggingAuthority = betLoggingAuthority;
+        this.gamingMachines = new ArrayList<>();
+    }
+
+    public BettingRound getBettingRound() {
+        return bettingRound;
+    }
+
+    public List<GamingMachine> getGamingMachines() { return gamingMachines; }
+
+    public void connectGamingMachine(GamingMachine gamingMachine) {
+        gamingMachines.add(gamingMachine);
     }
 
     /**
@@ -42,12 +57,6 @@ public class DefaultGame extends AbstractGame {
 
         betLoggingAuthority.logStartBettingRound(bettingRound);
     }
-
-    public BettingRound getBettingRound() {
-        return bettingRound;
-    }
-
-    public BettingRound getNewBettingRound() { return new BettingRound(); }
 
     /**
      * Accept a bet on the current betting round.
@@ -101,14 +110,18 @@ public class DefaultGame extends AbstractGame {
      */
     @Override
     public void determineWinner() {
-        BetResult betResult = null;
+        BetResult winResult = null;
         try {
-            betResult = gameRule.determineWinner(2, new HashSet<>());
+            winResult = gameRule.determineWinner(2, new HashSet<>());
+            BetResult finalWinResult = winResult;
+            gamingMachines.forEach(gamingMachine -> {
+                gamingMachine.acceptWinner(finalWinResult);
+            });
         } catch (NoBetsMadeException e) {
             e.printStackTrace();
         }
 
-        betLoggingAuthority.logEndBettingRound(bettingRound, betResult);
+        betLoggingAuthority.logEndBettingRound(bettingRound, winResult);
         bettingRound = null;
     }
 

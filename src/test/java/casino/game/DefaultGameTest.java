@@ -225,14 +225,18 @@ public class DefaultGameTest {
     public void determineWinner_shouldNotifyAllConnectedGameMachines() throws Exception {
         BettingRound currentRound = mock(BettingRound.class);
         BetResult betResult = mock(BetResult.class);
-        game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
         when(gameRule.determineWinner(anyInt(), any(Set.class))).thenReturn(betResult);
         GamingMachine machineA = spy(new GamingMachine());
         GamingMachine machineB = spy(new GamingMachine());
         GamingMachine machineC = spy(new GamingMachine());
+        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority);
+        game.connectGamingMachine(machineA);
+        game.connectGamingMachine(machineB);
+        game.connectGamingMachine(machineC);
 
         game.determineWinner();
 
+        assertThat(game.getGamingMachines().size()).isEqualTo(3);
         verify(machineA).acceptWinner(betResult);
         verify(machineB).acceptWinner(betResult);
         verify(machineC).acceptWinner(betResult);
