@@ -79,7 +79,7 @@ public class DefaultGame extends AbstractGame {
             determineWinner();
         }
 
-        return false;
+        return true;
     }
 
     /**
