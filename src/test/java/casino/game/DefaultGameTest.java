@@ -1,5 +1,6 @@
 package casino.game;
 
+import casino.bet.BetResult;
 import gamblingauthoritiy.BetLoggingAuthority;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,14 +8,18 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.mockito.Mockito.verify;
+import java.util.Set;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.*;
 
 public class DefaultGameTest {
 
     @Mock
     private BetLoggingAuthority betLoggingAuthority;
     @Mock
-    private BettingRound bettingRound;
+    private IGameRule gameRule;
 
     private AutoCloseable closeable;
     private DefaultGame game;
@@ -34,11 +39,15 @@ public class DefaultGameTest {
      * @see DefaultGame#startBettingRound()
      */
     @Test
-    public void startBettingRound_shouldLogToBettingAuthority() {
-        game = new DefaultGame();
+    public void startBettingRound_shouldLogToBettingAuthority() throws NoBetsMadeException {
+        BettingRound currentRound = mock(BettingRound.class);
+        BetResult betResult = mock(BetResult.class);
+        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority);
+        when(gameRule.determineWinner(anyInt(), any(Set.class))).thenReturn(betResult);
 
         game.startBettingRound();
 
-        verify(betLoggingAuthority).logStartBettingRound(bettingRound);
+        verify(betLoggingAuthority).logEndBettingRound(currentRound, betResult);
+        verify(betLoggingAuthority).logStartBettingRound(any(IBettingRound.class));
     }
 }
