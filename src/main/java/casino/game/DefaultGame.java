@@ -6,6 +6,7 @@ import casino.bet.BetID;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
 import casino.gamingmachine.IGamingMachine;
+import casino.gamingmachine.NoPlayerCardException;
 import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.IBetLoggingAuthority;
 
@@ -68,7 +69,12 @@ public class DefaultGame extends AbstractGame {
      * @should call the required methods in the correct order
      */
     @Override
-    public boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException {
+    public boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException, NoPlayerCardException {
+        MoneyAmount betAmount = bet.getMoneyAmount();
+        if (!gamingMachine.placeBet(betAmount.getAmountInCents())) {
+            return false;
+        }
+
         if (isBettingRoundFinished()) {
             determineWinner();
         }
