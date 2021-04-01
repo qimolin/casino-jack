@@ -10,6 +10,7 @@ import casino.gamingmachine.IGamingMachine;
 import casino.gamingmachine.NoPlayerCardException;
 import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.IBetLoggingAuthority;
+import gamblingauthoritiy.IBetTokenAuthority;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,15 +18,20 @@ import java.util.List;
 import java.util.Set;
 
 public class DefaultGame extends AbstractGame {
+    final private IBetLoggingAuthority betLoggingAuthority;
+    final private IBetTokenAuthority betTokenAuthority;
+
     private BettingRound bettingRound;
-    private IGameRule gameRule;
-    private IBetLoggingAuthority betLoggingAuthority;
+    final private IGameRule gameRule;
+
     private List<GamingMachine> gamingMachines;
 
-    public DefaultGame(IGameRule gameRule, BettingRound bettingRound, IBetLoggingAuthority betLoggingAuthority) {
+    public DefaultGame(IGameRule gameRule, BettingRound bettingRound, IBetLoggingAuthority betLoggingAuthority,
+                       IBetTokenAuthority betTokenAuthority) {
         this.gameRule = gameRule;
         this.bettingRound = bettingRound;
         this.betLoggingAuthority = betLoggingAuthority;
+        this.betTokenAuthority = betTokenAuthority;
         this.gamingMachines = new ArrayList<>();
     }
 
@@ -116,7 +122,8 @@ public class DefaultGame extends AbstractGame {
         BetResult winResult = null;
         if (bettingRound.numberOFBetsMade() > 0) {
             try {
-                winResult = gameRule.determineWinner(2, new HashSet<>());
+                int randomInt = betTokenAuthority.getRandomInteger(bettingRound.getBetToken());
+                winResult = gameRule.determineWinner(randomInt, new HashSet<>());
                 BetResult finalWinResult = winResult;
                 gamingMachines.forEach(gamingMachine -> {
                     gamingMachine.acceptWinner(finalWinResult);

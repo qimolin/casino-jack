@@ -50,7 +50,7 @@ public class DefaultGameTest {
     @Test
     public void startBettingRound_shouldLogToBettingAuthority() throws NoBetsMadeException {
         BettingRound currentRound = mock(BettingRound.class);
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority);
+        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
 
         game.startBettingRound();
 
@@ -64,7 +64,7 @@ public class DefaultGameTest {
     @Test
     public void isBettingRoundFinished_shouldReturnTrueIfTheNumberOfBetsEqualTheMaxNumberOfBetsPerRoundDefinedByTheGameRule() {
         BettingRound currentRound = mock(BettingRound.class);
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority);
+        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
         when(gameRule.getMaxBetsPerRound()).thenReturn(5);
         when(currentRound.numberOFBetsMade()).thenReturn(5);
 
@@ -78,7 +78,7 @@ public class DefaultGameTest {
     @Test
     public void isBettingRoundFinished_shouldReturnFalseIfTheNumberOfBetsAreLessTheMaxNumberOfBetsPerRoundDefinedByTheGameRule() {
         BettingRound currentRound = mock(BettingRound.class);
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority);
+        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
         when(gameRule.getMaxBetsPerRound()).thenReturn(5);
         when(currentRound.numberOFBetsMade()).thenReturn(4);
 
@@ -94,7 +94,7 @@ public class DefaultGameTest {
         BettingRound currentRound = mock(BettingRound.class);
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
-        DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
+        DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority));
         when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
         when(gamingMachine.placeBet(anyLong())).thenReturn(true);
 
@@ -112,7 +112,7 @@ public class DefaultGameTest {
         BettingRound currentRound = mock(BettingRound.class);
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
-        DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
+        DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority));
         doReturn(true).when(gameSpy).isBettingRoundFinished();
         when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
         when(gamingMachine.placeBet(anyLong())).thenReturn(true);
@@ -131,7 +131,7 @@ public class DefaultGameTest {
         BettingRound currentRound = mock(BettingRound.class);
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
-        DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
+        DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority));
         doReturn(false).when(gameSpy).isBettingRoundFinished();
         when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
         when(gamingMachine.placeBet(anyLong())).thenReturn(true);
@@ -150,7 +150,7 @@ public class DefaultGameTest {
         BettingRound currentRound = mock(BettingRound.class);
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
-        DefaultGame game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
+        DefaultGame game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority));
         when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
         when(gamingMachine.placeBet(anyLong())).thenReturn(false);
 
@@ -166,7 +166,7 @@ public class DefaultGameTest {
         BettingRound currentRound = mock(BettingRound.class);
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
-        DefaultGame game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
+        DefaultGame game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority));
         when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
         when(gamingMachine.placeBet(anyLong())).thenReturn(true);
 
@@ -182,7 +182,7 @@ public class DefaultGameTest {
         BettingRound currentRound = null;
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
-        DefaultGame game = new DefaultGame(gameRule, currentRound, betLoggingAuthority);
+        DefaultGame game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
         when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
         when(gamingMachine.placeBet(anyLong())).thenReturn(true);
 
@@ -199,7 +199,7 @@ public class DefaultGameTest {
     @Test
     public void determineWinner_shouldEndTheCurrentRound() {
         BettingRound currentRound = mock(BettingRound.class);
-        DefaultGame game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
+        DefaultGame game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority));
 
         game.determineWinner();
 
@@ -215,7 +215,7 @@ public class DefaultGameTest {
         BettingRound currentRound = mock(BettingRound.class);
         when(currentRound.numberOFBetsMade()).thenReturn(2);
         BetResult betResult = mock(BetResult.class);
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority);
+        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
         when(gameRule.determineWinner(anyInt(), any(Set.class))).thenReturn(betResult);
 
         game.determineWinner();
@@ -236,7 +236,7 @@ public class DefaultGameTest {
         GamingMachine machineA = spy(new GamingMachine());
         GamingMachine machineB = spy(new GamingMachine());
         GamingMachine machineC = spy(new GamingMachine());
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority);
+        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
         game.connectGamingMachine(machineA);
         game.connectGamingMachine(machineB);
         game.connectGamingMachine(machineC);
@@ -258,7 +258,7 @@ public class DefaultGameTest {
         BettingRound currentRound = mock(BettingRound.class);
         when(currentRound.numberOFBetsMade()).thenReturn(0);
         IGameRule gameRuleSpy = spy(IGameRule.class);
-        game = new DefaultGame(gameRuleSpy, currentRound, betLoggingAuthority);
+        game = new DefaultGame(gameRuleSpy, currentRound, betLoggingAuthority, betTokenAuthority);
 
         game.determineWinner();
 
@@ -274,9 +274,10 @@ public class DefaultGameTest {
     public void determineWinner_shouldGetRandomwinvalueFromBettokenAuthorityUsingTokenFromBettingRound() throws Exception {
         BetToken betToken = mock(BetToken.class);
         BettingRound currentRound = mock(BettingRound.class);
+        when(currentRound.numberOFBetsMade()).thenReturn(2);
         when(currentRound.getAllBetsMade()).thenReturn(mock(Set.class));
         when(currentRound.getBetToken()).thenReturn(betToken);
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority);
+        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
         when(betTokenAuthority.getRandomInteger(betToken)).thenReturn(42);
 
         game.determineWinner();
