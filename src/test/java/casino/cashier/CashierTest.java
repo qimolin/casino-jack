@@ -2,11 +2,8 @@ package casino.cashier;
 
 import casino.bet.Bet;
 import casino.bet.MoneyAmount;
-import casino.game.BettingRound;
-import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.IBetLoggingAuthority;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
@@ -123,7 +120,7 @@ public class CashierTest {
         when(amount.getAmountInCents()).thenReturn(5l);
         when(bet.getMoneyAmount()).thenReturn(amount);
         // Assert
-        assertThatExceptionOfType(BetNotExceptedException.class)
+        assertThatExceptionOfType(BetNotAcceptedException.class)
                 .isThrownBy(() -> {
                    sut.checkIfBetIsValid(card, bet);
                 });
@@ -134,7 +131,7 @@ public class CashierTest {
      * @see Cashier#checkIfBetIsValid(IGamblerCard, Bet)
      */
     @Test
-    public void checkIfBetIsValid_shouldCallSetMoneyAmountInCentsAndReturnTrue() throws BetNotExceptedException {
+    public void checkIfBetIsValid_shouldCallSetMoneyAmountInCentsAndReturnTrue() throws BetNotAcceptedException {
         // Arrange
         Cashier sut = new Cashier(iBetLoggingAuthority);
         IGamblerCard card = mock(GamblerCard.class);

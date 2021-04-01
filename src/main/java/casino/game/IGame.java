@@ -2,6 +2,7 @@ package casino.game;
 
 import casino.bet.Bet;
 import casino.gamingmachine.IGamingMachine;
+import casino.gamingmachine.NoPlayerCardException;
 
 /**
  * represents a game in a casino.
@@ -35,7 +36,7 @@ public interface IGame {
      * @return true when bet is accepted by the game, otherwise false.
      * @throws NoCurrentRoundException when no BettingRound is currently active.
      */
-    boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException;
+    boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException, NoPlayerCardException;
 
 
     /**
