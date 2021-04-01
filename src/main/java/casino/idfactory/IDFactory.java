@@ -1,5 +1,10 @@
 package casino.idfactory;
 
+import casino.bet.BetID;
+import casino.cashier.CardID;
+import casino.game.BettingRoundID;
+import casino.gamingmachine.GamingMachineID;
+
 /**
  * Factory for creation of GeneralID objects.
  * creation of the right object is done by specifying the type to create as a string
@@ -22,7 +27,20 @@ public class IDFactory {
      * @return an instance of the correct GeneralID object type, or null otherwise.
      */
     public static GeneralID generateID(String idType){
-        return null; // TODO replace by correct code after creating tests first.
+        if(idType == null){
+            return null;
+        }
+        if(idType.equalsIgnoreCase("CARDID")){
+            return new CardID();
+        } else if(idType.equalsIgnoreCase("BETID")){
+            return new BetID();
+        } else if(idType.equalsIgnoreCase("BETTINGROUNDID")){
+            return new BettingRoundID();
+        } else if(idType.equalsIgnoreCase("GAMINGMACHINEID")){
+            return new GamingMachineID();
+        }
+
+        return null;
     };
 
 

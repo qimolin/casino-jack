@@ -1,4 +1,6 @@
 package casino.game;
 
-public class BettingRoundID {
+import casino.idfactory.GeneralID;
+
+public class BettingRoundID  extends GeneralID {
 }

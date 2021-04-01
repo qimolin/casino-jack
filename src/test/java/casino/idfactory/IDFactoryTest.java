@@ -14,7 +14,7 @@ class IDFactoryTest {
     @Test
     public void IDFactory_shouldReturnCardIDObject() {
         GeneralID cardID = IDFactory.generateID("CARDID");
-
+        System.out.println(cardID.getID());
         assertThat(cardID).isNotNull();
         assertThat(cardID).isInstanceOf(CardID.class);
     }
@@ -22,7 +22,7 @@ class IDFactoryTest {
     @Test
     public void IDFactory_shouldReturnBettingIDObject() {
         GeneralID bettingRoundID = IDFactory.generateID("BETTINGROUNDID");
-
+        System.out.println(bettingRoundID.getID());
         assertThat(bettingRoundID).isNotNull();
         assertThat(bettingRoundID).isInstanceOf(BettingRoundID.class);
     }
@@ -30,7 +30,7 @@ class IDFactoryTest {
     @Test
     public void IDFactory_shouldReturnGamingMachineID() {
         GeneralID gamingMachineID = IDFactory.generateID("GAMINGMACHINEID");
-
+        System.out.println(gamingMachineID.getID());
         assertThat(gamingMachineID).isNotNull();
         assertThat(gamingMachineID).isInstanceOf(GamingMachineID.class);
     }

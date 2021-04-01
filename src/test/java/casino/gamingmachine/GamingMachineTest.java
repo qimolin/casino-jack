@@ -8,6 +8,7 @@ import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.IBetLoggingAuthority;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -52,6 +53,38 @@ class GamingMachineTest {
         sut.connectCard(gamblerCard);
 
         assertTrue(sut.placeBet(moneyToBet));
+
+    }
+
+    /**
+     * @verifies if moneyInCard < moneyToBet should return true and pass
+     * @see GamingMachine#placeBet(long)
+     */
+    @Test
+    public void Machine_shouldNotPlaceBet() throws NoPlayerCardException {
+        long moneyInCard = 5L;
+        long moneyToBet = 6L;
+        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
+        GamblerCard gamblerCard = mock(GamblerCard.class);
+        when(gamblerCard.getMoneyAmountInCents()).thenReturn(moneyInCard);
+        sut.connectCard(gamblerCard);
+
+        assertFalse(sut.placeBet(moneyToBet));
+
+    }
+
+    @Test
+    public void Machine_shouldAcceptWinner() {
+
+
+    }
+
+    @Test
+    public void Machine_shouldReturnGamingMachineId() {
+
+        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
+
+        assertThat(sut.getGamingMachineID()).isInstanceOf(GamingMachineID.class);
 
     }
 
