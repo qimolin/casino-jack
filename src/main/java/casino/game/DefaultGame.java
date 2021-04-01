@@ -112,14 +112,16 @@ public class DefaultGame extends AbstractGame {
     @Override
     public void determineWinner() {
         BetResult winResult = null;
-        try {
-            winResult = gameRule.determineWinner(2, new HashSet<>());
-            BetResult finalWinResult = winResult;
-            gamingMachines.forEach(gamingMachine -> {
-                gamingMachine.acceptWinner(finalWinResult);
-            });
-        } catch (NoBetsMadeException e) {
-            e.printStackTrace();
+        if (bettingRound.numberOFBetsMade() > 0) {
+            try {
+                winResult = gameRule.determineWinner(2, new HashSet<>());
+                BetResult finalWinResult = winResult;
+                gamingMachines.forEach(gamingMachine -> {
+                    gamingMachine.acceptWinner(finalWinResult);
+                });
+            } catch (NoBetsMadeException e) {
+                e.printStackTrace();
+            }
         }
 
         betLoggingAuthority.logEndBettingRound(bettingRound, winResult);

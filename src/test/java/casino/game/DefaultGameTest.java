@@ -209,6 +209,7 @@ public class DefaultGameTest {
     @Test
     public void determineWinner_shouldLogToBettingAuthority() throws Exception {
         BettingRound currentRound = mock(BettingRound.class);
+        when(currentRound.numberOFBetsMade()).thenReturn(2);
         BetResult betResult = mock(BetResult.class);
         game = new DefaultGame(gameRule, currentRound, betLoggingAuthority);
         when(gameRule.determineWinner(anyInt(), any(Set.class))).thenReturn(betResult);
@@ -225,6 +226,7 @@ public class DefaultGameTest {
     @Test
     public void determineWinner_shouldNotifyAllConnectedGameMachines() throws Exception {
         BettingRound currentRound = mock(BettingRound.class);
+        when(currentRound.numberOFBetsMade()).thenReturn(2);
         BetResult betResult = mock(BetResult.class);
         when(gameRule.determineWinner(anyInt(), any(Set.class))).thenReturn(betResult);
         GamingMachine machineA = spy(new GamingMachine());
