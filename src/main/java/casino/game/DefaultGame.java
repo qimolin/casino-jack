@@ -75,8 +75,9 @@ public class DefaultGame extends AbstractGame {
      * @should continue if the current betting round is not finished
      * @should return false if the bet is invalid
      * @should return true if the bet is valid
+     * @should accepted bet to betlogging authority
      * @should store accepted bet
-     * @should not store accepted bet
+     * @should not store rejected bet
      * @should call the required methods in the correct order
      * @should throw NoCurrentRoundException when no betting round is active
      */
@@ -108,6 +109,7 @@ public class DefaultGame extends AbstractGame {
      * @should log to betting authority
      * @should notify all connected game machines
      * @should only log to betlogging authority if no bets have been made
+     * @should get randomwinvalue from bettoken authority using token from betting round
      */
     @Override
     public void determineWinner() {
@@ -120,7 +122,7 @@ public class DefaultGame extends AbstractGame {
                     gamingMachine.acceptWinner(finalWinResult);
                 });
             } catch (NoBetsMadeException e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
 

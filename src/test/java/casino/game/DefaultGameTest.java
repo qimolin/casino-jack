@@ -5,6 +5,8 @@ import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
 import casino.gamingmachine.GamingMachine;
 import gamblingauthoritiy.BetLoggingAuthority;
+import gamblingauthoritiy.BetToken;
+import gamblingauthoritiy.BetTokenAuthority;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,6 +25,8 @@ public class DefaultGameTest {
 
     @Mock
     private BetLoggingAuthority betLoggingAuthority;
+    @Mock
+    private BetTokenAuthority betTokenAuthority;
     @Mock
     private IGameRule gameRule;
 
@@ -260,5 +264,23 @@ public class DefaultGameTest {
 
         verify(gameRuleSpy, times(0)).determineWinner(anyInt(), any(Set.class));
         verify(betLoggingAuthority).logEndBettingRound(currentRound, null);
+    }
+
+    /**
+     * @verifies get randomwinvalue from bettoken authority using token from betting round
+     * @see DefaultGame#determineWinner()
+     */
+    @Test
+    public void determineWinner_shouldGetRandomwinvalueFromBettokenAuthorityUsingTokenFromBettingRound() throws Exception {
+        BetToken betToken = mock(BetToken.class);
+        BettingRound currentRound = mock(BettingRound.class);
+        when(currentRound.getAllBetsMade()).thenReturn(mock(Set.class));
+        when(currentRound.getBetToken()).thenReturn(betToken);
+        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority);
+        when(betTokenAuthority.getRandomInteger(betToken)).thenReturn(42);
+
+        game.determineWinner();
+
+        verify(betTokenAuthority).getRandomInteger(betToken);
     }
 }
