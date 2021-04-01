@@ -9,14 +9,18 @@ import casino.cashier.BetNotExceptedException;
 import casino.cashier.Cashier;
 import casino.cashier.GamblerCard;
 import casino.cashier.IGamblerCard;
+import casino.idfactory.GeneralID;
+import casino.idfactory.IDFactory;
 
 public class GamingMachine implements IGamingMachine {
 
     private GamblerCard gamblerCard = null;
     private Cashier cashier;
+    private GeneralID generalID;
 
     public GamingMachine(Cashier cashier) {
         this.cashier = cashier;
+        this.generalID = IDFactory.generateID("GAMINGMACHINEID");
     }
 
     /**
@@ -63,7 +67,7 @@ public class GamingMachine implements IGamingMachine {
      */
     @Override
     public GamingMachineID getGamingMachineID() {
-        return null;
+        return (GamingMachineID) generalID;
     }
 
     /**
