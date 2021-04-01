@@ -102,11 +102,12 @@ public class DefaultGame extends AbstractGame {
         BetResult betResult = null;
         try {
             betResult = gameRule.determineWinner(2, new HashSet<>());
-            betLoggingAuthority.logEndBettingRound(bettingRound, betResult);
-            bettingRound = null;
         } catch (NoBetsMadeException e) {
             e.printStackTrace();
         }
+
+        betLoggingAuthority.logEndBettingRound(bettingRound, betResult);
+        bettingRound = null;
     }
 
     /**

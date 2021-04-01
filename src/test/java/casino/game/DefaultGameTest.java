@@ -198,11 +198,7 @@ public class DefaultGameTest {
     @Test
     public void determineWinner_shouldEndTheCurrentRound() throws Exception {
         BettingRound currentRound = mock(BettingRound.class);
-        Bet bet = mock(Bet.class);
-        GamingMachine gamingMachine = mock(GamingMachine.class);
         DefaultGame game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
-        when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
-        when(gamingMachine.placeBet(anyLong())).thenReturn(true);
 
         game.determineWinner();
 
