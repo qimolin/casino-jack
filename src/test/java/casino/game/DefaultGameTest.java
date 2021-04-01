@@ -6,7 +6,6 @@ import casino.bet.MoneyAmount;
 import casino.gamingmachine.GamingMachine;
 import gamblingauthoritiy.BetLoggingAuthority;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -216,5 +215,26 @@ public class DefaultGameTest {
         game.determineWinner();
 
         verify(betLoggingAuthority).logEndBettingRound(currentRound, betResult);
+    }
+
+    /**
+     * @verifies notify all connected game machines
+     * @see DefaultGame#determineWinner()
+     */
+    @Test
+    public void determineWinner_shouldNotifyAllConnectedGameMachines() throws Exception {
+        BettingRound currentRound = mock(BettingRound.class);
+        BetResult betResult = mock(BetResult.class);
+        game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority));
+        when(gameRule.determineWinner(anyInt(), any(Set.class))).thenReturn(betResult);
+        GamingMachine machineA = spy(new GamingMachine());
+        GamingMachine machineB = spy(new GamingMachine());
+        GamingMachine machineC = spy(new GamingMachine());
+
+        game.determineWinner();
+
+        verify(machineA).acceptWinner(betResult);
+        verify(machineB).acceptWinner(betResult);
+        verify(machineC).acceptWinner(betResult);
     }
 }
