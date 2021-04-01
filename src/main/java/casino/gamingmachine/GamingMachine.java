@@ -1,10 +1,18 @@
 package casino.gamingmachine;
 
 
+import casino.bet.Bet;
+import casino.bet.BetID;
 import casino.bet.BetResult;
+import casino.bet.MoneyAmount;
+import casino.cashier.BetNotExceptedException;
+import casino.cashier.Cashier;
+import casino.cashier.GamblerCard;
 import casino.cashier.IGamblerCard;
 
 public class GamingMachine implements IGamingMachine {
+
+
 
     /**
      * try to place bet with given amount and connected card.
