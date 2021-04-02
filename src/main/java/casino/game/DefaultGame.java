@@ -79,7 +79,7 @@ public class DefaultGame extends AbstractGame {
      * @should check that the current betting round is finished
      * @should determine the winner if the current betting round is finished
      * @should continue if the current betting round is not finished
-     * @should accepted bet to betlogging authority
+     * @should log accepted bet to betlogging authority
      * @should store accepted bet
      * @should not store rejected bet
      * @should call the required methods in the correct order
@@ -87,7 +87,7 @@ public class DefaultGame extends AbstractGame {
      * @should throw NoCurrentRoundException when no betting round is active
      */
     @Override
-    public boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException, NoPlayerCardException {
+    public boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException {
         if (bettingRound == null) throw new NoCurrentRoundException();
 
         if (isBettingRoundFinished()) {

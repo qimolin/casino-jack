@@ -4,6 +4,7 @@ import casino.bet.Bet;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
 import casino.gamingmachine.GamingMachine;
+import casino.gamingmachine.GamingMachineID;
 import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.BetTokenAuthority;
@@ -158,6 +159,25 @@ public class DefaultGameTest {
                 .isThrownBy(() -> {
                     game.acceptBet(bet, gamingMachine);
                 });
+    }
+
+    /**
+     * @verifies log accepted bet to betlogging authority
+     * @see DefaultGame#acceptBet(Bet, casino.gamingmachine.IGamingMachine)
+     */
+    @Test
+    public void acceptBet_shouldLogAcceptedBetToBetloggingAuthority() throws Exception {
+        BettingRound currentRound = mock(BettingRound.class);
+        BettingRoundID bettingRoundID = mock(BettingRoundID.class);
+        Bet bet = mock(Bet.class);
+        GamingMachine gamingMachine = mock(GamingMachine.class);
+        GamingMachineID gamingMachineID = mock(GamingMachineID.class);
+        when(currentRound.getBettingRoundID()).thenReturn(bettingRoundID);
+        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
+
+        game.acceptBet(bet, gamingMachine);
+
+        verify(betLoggingAuthority).logAddAcceptedBet(bet, bettingRoundID, gamingMachineID);
     }
 
     /**
