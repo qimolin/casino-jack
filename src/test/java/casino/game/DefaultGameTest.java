@@ -142,38 +142,6 @@ public class DefaultGameTest {
     }
 
     /**
-     * @verifies return false if the bet is invalid
-     * @see DefaultGame#acceptBet(Bet, casino.gamingmachine.IGamingMachine)
-     */
-    @Test
-    public void acceptBet_shouldReturnFalseIfTheBetIsInvalid() throws Exception {
-        BettingRound currentRound = mock(BettingRound.class);
-        Bet bet = mock(Bet.class);
-        GamingMachine gamingMachine = mock(GamingMachine.class);
-        DefaultGame game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority));
-        when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
-        when(gamingMachine.placeBet(anyLong())).thenReturn(false);
-
-        assertThat(game.acceptBet(bet, gamingMachine)).isFalse();
-    }
-
-    /**
-     * @verifies return true if the bet is valid
-     * @see DefaultGame#acceptBet(Bet, casino.gamingmachine.IGamingMachine)
-     */
-    @Test
-    public void acceptBet_shouldReturnTrueIfTheBetIsValid() throws Exception {
-        BettingRound currentRound = mock(BettingRound.class);
-        Bet bet = mock(Bet.class);
-        GamingMachine gamingMachine = mock(GamingMachine.class);
-        DefaultGame game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority));
-        when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
-        when(gamingMachine.placeBet(anyLong())).thenReturn(true);
-
-        assertThat(game.acceptBet(bet, gamingMachine)).isTrue();
-    }
-
-    /**
      * @verifies throw NoCurrentRoundException when no betting round is active
      * @see DefaultGame#acceptBet(Bet, casino.gamingmachine.IGamingMachine)
      */
