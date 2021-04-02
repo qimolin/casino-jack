@@ -58,6 +58,22 @@ public class DefaultGameTest {
     }
 
     /**
+     * @verifies end active betting round
+     * @see DefaultGame#startBettingRound()
+     */
+    @Test
+    public void startBettingRound_shouldEndActiveBettingRound() throws Exception {
+        BettingRound currentRound = mock(BettingRound.class);
+        when(currentRound.getBettingRoundID()).thenReturn(mock(BettingRoundID.class));
+        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
+
+        game.startBettingRound();
+
+        assertThat(game.getBettingRound()).isNotEqualTo(currentRound);
+        verify(betLoggingAuthority).logEndBettingRound(any(BettingRound.class), any(BetResult.class));
+    }
+
+    /**
      * @verifies return true if the number of bets equal the max number of bets per round defined by the game rule
      * @see DefaultGame#isBettingRoundFinished()
      */

@@ -52,13 +52,12 @@ public class DefaultGame extends AbstractGame {
      * <p>
      * Note: also use the appropiate required methods from the gambling authority API
      *
-     * @should
+     * @should end active betting round
+     * @should create a new betting round
      * @should log to BettingAuthority
      */
     @Override
     public void startBettingRound() {
-        determineWinner();
-
         bettingRound = new BettingRound();
 
         betLoggingAuthority.logStartBettingRound(bettingRound);
@@ -93,6 +92,7 @@ public class DefaultGame extends AbstractGame {
 
         if (isBettingRoundFinished()) {
             determineWinner();
+            startBettingRound();
         }
 
         return true;
