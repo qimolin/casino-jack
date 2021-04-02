@@ -173,6 +173,7 @@ public class DefaultGameTest {
         GamingMachine gamingMachine = mock(GamingMachine.class);
         GamingMachineID gamingMachineID = mock(GamingMachineID.class);
         when(currentRound.getBettingRoundID()).thenReturn(bettingRoundID);
+        when(gamingMachine.getGamingMachineID()).thenReturn(gamingMachineID);
         game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
 
         game.acceptBet(bet, gamingMachine);

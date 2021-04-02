@@ -90,6 +90,9 @@ public class DefaultGame extends AbstractGame {
     public boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException {
         if (bettingRound == null) throw new NoCurrentRoundException();
 
+        betLoggingAuthority.logAddAcceptedBet(
+                bet, bettingRound.getBettingRoundID(), gamingMachine.getGamingMachineID());
+
         if (isBettingRoundFinished()) {
             determineWinner();
         }
