@@ -58,8 +58,12 @@ public class DefaultGame extends AbstractGame {
      */
     @Override
     public void startBettingRound() {
-        bettingRound = new BettingRound();
+        if (bettingRound != null) {
+            determineWinner();
+        }
 
+        bettingRound = new BettingRound();
+        
         betLoggingAuthority.logStartBettingRound(bettingRound);
     }
 

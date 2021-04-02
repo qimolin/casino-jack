@@ -66,11 +66,12 @@ public class DefaultGameTest {
         BettingRound currentRound = mock(BettingRound.class);
         when(currentRound.getBettingRoundID()).thenReturn(mock(BettingRoundID.class));
         game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
+        when(gameRule.determineWinner(anyInt(), any(Set.class))).thenReturn(null);
 
         game.startBettingRound();
 
         assertThat(game.getBettingRound()).isNotEqualTo(currentRound);
-        verify(betLoggingAuthority).logEndBettingRound(any(BettingRound.class), any(BetResult.class));
+        verify(betLoggingAuthority).logEndBettingRound(currentRound, null);
     }
 
     /**
