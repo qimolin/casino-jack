@@ -9,6 +9,7 @@ import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.BetTokenAuthority;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -195,6 +196,23 @@ public class DefaultGameTest {
         game.acceptBet(bet, gamingMachine);
 
         assertThat(currentRound.getAllBetsMade()).contains(bet);
+    }
+
+    /**
+     * @verifies start a new round if the round is finished
+     * @see DefaultGame#acceptBet(Bet, casino.gamingmachine.IGamingMachine)
+     */
+    @Test
+    public void acceptBet_shouldStartANewRoundIfTheRoundIsFinished() throws Exception {
+        BettingRound currentRound = mock(BettingRound.class);
+        GamingMachine gamingMachine = mock(GamingMachine.class);
+        Bet bet = mock(Bet.class);
+
+        DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority));
+
+        gameSpy.acceptBet(bet, gamingMachine);
+
+        verify(gameSpy).startBettingRound();
     }
 
     /**

@@ -81,8 +81,6 @@ public class DefaultGame extends AbstractGame {
      * @should continue if the current betting round is not finished
      * @should log accepted bet to betlogging authority
      * @should store accepted bet
-     * @should not store rejected bet
-     * @should call the required methods in the correct order
      * @should start a new round if the round is finished
      * @should throw NoCurrentRoundException when no betting round is active
      */
