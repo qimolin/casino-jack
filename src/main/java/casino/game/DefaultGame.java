@@ -90,11 +90,6 @@ public class DefaultGame extends AbstractGame {
     public boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException, NoPlayerCardException {
         if (bettingRound == null) throw new NoCurrentRoundException();
 
-        MoneyAmount betAmount = bet.getMoneyAmount();
-        if (!gamingMachine.placeBet(betAmount.getAmountInCents())) {
-            return false;
-        }
-
         if (isBettingRoundFinished()) {
             determineWinner();
         }
