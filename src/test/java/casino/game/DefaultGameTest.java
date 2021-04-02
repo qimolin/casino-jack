@@ -8,13 +8,11 @@ import casino.gamingmachine.GamingMachineID;
 import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.BetTokenAuthority;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -179,6 +177,24 @@ public class DefaultGameTest {
         game.acceptBet(bet, gamingMachine);
 
         verify(betLoggingAuthority).logAddAcceptedBet(bet, bettingRoundID, gamingMachineID);
+    }
+
+    /**
+     * @verifies store accepted bet
+     * @see DefaultGame#acceptBet(Bet, casino.gamingmachine.IGamingMachine)
+     */
+    @Test
+    @Disabled
+    public void acceptBet_shouldStoreAcceptedBet() throws Exception {
+        BettingRound currentRound = mock(BettingRound.class);
+        GamingMachine gamingMachine = mock(GamingMachine.class);
+        Bet bet = mock(Bet.class);
+
+        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
+
+        game.acceptBet(bet, gamingMachine);
+
+        assertThat(currentRound.getAllBetsMade()).contains(bet);
     }
 
     /**
