@@ -1,32 +1,35 @@
 package casino.game;
 
 
-import casino.cashier.ICashier;
+import casino.cashier.Cashier;
+import gamblingauthoritiy.IBetLoggingAuthority;
+import gamblingauthoritiy.IBetTokenAuthority;
 
 abstract class AbstractGame implements IGame{
 
-    private final ICashier cashier;
-    private IGameRule gameRule;
+    protected IBetLoggingAuthority betLoggingAuthority;
+    protected IBetTokenAuthority betTokenAuthority;
+    protected IGameRule gameRule;
 
     /**
      * @param cashier
      * @param gameRule
      */
-    public AbstractGame(ICashier cashier, IGameRule gameRule) {
-
-        this.cashier = cashier;
+    public AbstractGame(Cashier cashier, IGameRule gameRule) {
+        this.betLoggingAuthority = cashier.getBettingAuthority().getLoggingAuthority();
+        this.betTokenAuthority = cashier.getBettingAuthority().getTokenAuthority();
         this.gameRule = gameRule;
     }
 
-    public ICashier getCashier() {
-        return cashier;
-    }
+    //public Cashier getCashier() {
+    //    return cashier;
+    //}
 
-    public IGameRule getGameRule() {
-        return gameRule;
-    }
+    //public IGameRule getGameRule() {
+    //    return gameRule;
+    //}
 
-    public void setGameRule(IGameRule gameRule) {
+    protected void setGameRule(IGameRule gameRule) {
         this.gameRule = gameRule;
     }
 }

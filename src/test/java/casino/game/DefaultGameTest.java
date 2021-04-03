@@ -3,6 +3,7 @@ package casino.game;
 import casino.bet.Bet;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
+import casino.cashier.Cashier;
 import casino.gamingmachine.GamingMachine;
 import casino.gamingmachine.GamingMachineID;
 import casino.idfactory.GeneralID;
@@ -10,6 +11,7 @@ import casino.idfactory.IDFactory;
 import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.BetTokenAuthority;
+import gamblingauthoritiy.BettingAuthority;
 import org.junit.jupiter.api.*;
 import org.mockito.*;
 
@@ -23,28 +25,25 @@ import static org.mockito.Mockito.*;
 public class DefaultGameTest {
 
     @Mock
-    private BetLoggingAuthority betLoggingAuthority;
+    protected BetLoggingAuthority betLoggingAuthority;
     @Mock
-    private BetTokenAuthority betTokenAuthority;
+    protected BetTokenAuthority betTokenAuthority;
     @Mock
-    private IGameRule gameRule;
+    protected IGameRule gameRule;
     @Mock
     private BettingRound currentRound;
 
+    private Cashier cashier = new Cashier(mock(BettingAuthority.class));
     private AutoCloseable closeable;
 
     @InjectMocks
-    private DefaultGame game = new DefaultGame();
+    private DefaultGame game = new DefaultGame(cashier, gameRule);
 
     @BeforeEach
-    void initAuthorities() {
-        closeable = MockitoAnnotations.openMocks(this);
-    }
+    void initMocks() { closeable = MockitoAnnotations.openMocks(this); }
 
     @AfterEach
-    void closeAuthorities() throws Exception {
-        closeable.close();
-    }
+    void closeMocks() throws Exception { closeable.close(); }
 
     /**
      * @verifies log to BettingAuthority
@@ -175,7 +174,7 @@ public class DefaultGameTest {
     public void acceptBet_shouldThrowNoCurrentRoundExceptionWhenNoBettingRoundIsActive() throws Exception {
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
-        game = new DefaultGame();
+        game = new DefaultGame(cashier, gameRule);
         when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
         when(gamingMachine.placeBet(anyLong())).thenReturn(true);
 
