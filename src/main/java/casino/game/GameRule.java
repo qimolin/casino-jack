@@ -20,7 +20,25 @@ public class GameRule implements IGameRule{
      */
     @Override
     public BetResult determineWinner(Integer randomWinValue, Set<Bet> bets) throws NoBetsMadeException {
-
+        if (bets.size() != 0) {
+            Bet winner = null;
+            int index = 0;
+            long totalBet = 0;
+            for (Bet bet : bets) {
+                if (index == randomWinValue) {
+                    winner = bet;
+                }
+                totalBet += bet.getMoneyAmount().getAmountInCents();
+                index++;
+            }
+            if (winner == null) {
+                return null;
+            } else {
+                return new BetResult(winner, new MoneyAmount(totalBet));
+            }
+        }else {
+            throw new NoBetsMadeException("No bets made");
+        }
 
     }
 
