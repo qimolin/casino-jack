@@ -13,7 +13,13 @@ public class BettingRoundTest {
      */
     @Test
     public void BettingRound_withSameLoggingAuthorityAreLogicallyEqual() {
-
+        // Arrange
+        IBettingRound A = new BettingRound();
+        IBettingRound B = new BettingRound();
+        // Act
+        // Assert
+        assertThat(A).isEqualTo(B);
+        assertThat(A).hasSameHashCodeAs(B);
     }
     /**
      * @verifies create a BettingRound and set bettingRoundID and betToken
