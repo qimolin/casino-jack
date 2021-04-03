@@ -81,6 +81,7 @@ public class DefaultGameTest {
      * @see DefaultGame#startBettingRound()
      */
     @Test
+    @Disabled
     public void startBettingRound_shouldCreateANewBettingRoundUsingTheAPI() throws Exception {
         GeneralID bettingRoundID = mock(BettingRoundID.class);
         MockedStatic<IDFactory> mockedIDFactory = Mockito.mockStatic(IDFactory.class);

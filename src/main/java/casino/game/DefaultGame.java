@@ -8,7 +8,10 @@ import casino.bet.MoneyAmount;
 import casino.gamingmachine.GamingMachine;
 import casino.gamingmachine.IGamingMachine;
 import casino.gamingmachine.NoPlayerCardException;
+import casino.idfactory.GeneralID;
+import casino.idfactory.IDFactory;
 import gamblingauthoritiy.BetLoggingAuthority;
+import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.IBetLoggingAuthority;
 import gamblingauthoritiy.IBetTokenAuthority;
 
@@ -62,6 +65,10 @@ public class DefaultGame extends AbstractGame {
             determineWinner();
         }
 
+        GeneralID bettingRoundID = IDFactory.generateID("BETTINGROUND");
+        BetToken betToken = betTokenAuthority.getBetToken((BettingRoundID) bettingRoundID);
+
+        //bettingRound = new BettingRound(bettingRoundID, betToken);
         bettingRound = new BettingRound();
 
         betLoggingAuthority.logStartBettingRound(bettingRound);
