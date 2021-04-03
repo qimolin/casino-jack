@@ -32,38 +32,12 @@ class GamingMachineTest {
     @Mock
     private final IBetLoggingAuthority iBetLoggingAuthority = mock(IBetLoggingAuthority.class);
 
-    @Test
-    public void Machine_placeBetShouldThrowNoPlayerCardException() {
-        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
-        NoPlayerCardException exception = assertThrows(NoPlayerCardException.class, () ->
-                sut.placeBet(2L));
-        assertEquals("No card exception", exception.getMessage());
-
-    }
     /**
-     * @verifies if moneyInCard > moneyToBet should return true and pass
+     * @verifies should return false Money in card less than bet
      * @see GamingMachine#placeBet(long)
      */
     @Test
-    public void Machine_shouldPlaceBet() throws NoPlayerCardException {
-        long moneyInCard = 5L;
-        long moneyToBet = 2L;
-        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
-        GamblerCard gamblerCard = mock(GamblerCard.class);
-        when(gamblerCard.getMoneyAmountInCents()).thenReturn(moneyInCard);
-        sut.connectCard(gamblerCard);
-
-        assertTrue(sut.placeBet(moneyToBet));
-
-    }
-
-
-    /**
-     * @verifies if moneyInCard < moneyToBet should return true and pass
-     * @see GamingMachine#placeBet(long)
-     */
-    @Test
-    public void Machine_shouldNotPlaceBet() throws NoPlayerCardException {
+    public void placeBet_shouldShouldReturnFalseMoneyInCardLessThanBet() throws Exception {
         long moneyInCard = 5L;
         long moneyToBet = 6L;
         GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
@@ -72,13 +46,66 @@ class GamingMachineTest {
         sut.connectCard(gamblerCard);
 
         assertFalse(sut.placeBet(moneyToBet));
-
     }
 
+    /**
+     * @verifies throw NoPlayerCardException
+     * @see GamingMachine#placeBet(long)
+     */
     @Test
-    public void Machine_shouldAcceptWinnerAndUpdateCardAmount() {
+    public void placeBet_shouldThrowNoPlayerCardException() throws Exception {
+        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
+        NoPlayerCardException exception = assertThrows(NoPlayerCardException.class, () ->
+                sut.placeBet(2L));
+        assertEquals("No card exception", exception.getMessage());
+    }
 
-        //moneyInCard = 5L
+    /**
+     * @verifies place bet
+     * @see GamingMachine#placeBet(long)
+     */
+    @Test
+    public void placeBet_shouldPlaceBet() throws Exception {
+        long moneyInCard = 5L;
+        long moneyToBet = 2L;
+        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
+        GamblerCard gamblerCard = mock(GamblerCard.class);
+        when(gamblerCard.getMoneyAmountInCents()).thenReturn(moneyInCard);
+        sut.connectCard(gamblerCard);
+
+        assertTrue(sut.placeBet(moneyToBet));
+    }
+
+    /**
+     * @verifies throw a CurrentBetMadeException
+     * @see GamingMachine#disconnectCard()
+     */
+    @Test
+    public void disconnectCard_shouldThrowACurrentBetMadeException() throws Exception {
+        //TODO auto-generated
+        Assertions.fail("Not yet implemented");
+    }
+
+    /**
+     * @verifies generateId
+     * @see GamingMachine#GamingMachine(Cashier)
+     */
+    @Test
+    public void GamingMachine_shouldGenerateId() throws Exception {
+        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
+
+        assertThat(sut.getGamingMachineID()).isInstanceOf(GamingMachineID.class);
+    }
+
+    /**
+     * @verifies accept winner and update card amount
+     * @see GamingMachine#acceptWinner(BetResult)
+     */
+    @Test
+    public void acceptWinner_shouldAcceptWinnerAndUpdateCardAmount() throws Exception {
+        long BET_AMOUNT = 3L;
+        long CARD_BALANCE = 5L;
+
         Cashier cashier = mock(Cashier.class);
         GamingMachine sut = new GamingMachine(cashier);
         BetResult betResult = mock(BetResult.class);
@@ -86,13 +113,13 @@ class GamingMachineTest {
         MoneyAmount moneyAmount = mock(MoneyAmount.class);
         Bet bet = mock(Bet.class);
         GamblerCard gamblerCard = new GamblerCard();
-        gamblerCard.setMoneyAmountInCents(3L);;
-        MoneyAmount moneyAmountActual = new MoneyAmount(3L);
+        gamblerCard.setMoneyAmountInCents(CARD_BALANCE);;
+        MoneyAmount moneyAmountActual = new MoneyAmount(BET_AMOUNT);
 
         when(betResult.getWinningBet()).thenReturn(bet);
         when(betResult.getWinningBet().getMoneyAmount()).thenReturn(moneyAmount);
         when(betResult.getWinningBet().getBetID()).thenReturn(betID);
-        when(betResult.getWinningBet().getMoneyAmount().getAmountInCents()).thenReturn(5L);
+        when(betResult.getWinningBet().getMoneyAmount().getAmountInCents()).thenReturn(BET_AMOUNT);
 
         sut.connectCard(gamblerCard);
 
@@ -108,26 +135,7 @@ class GamingMachineTest {
         } catch (InvalidAmountException e) {
             e.printStackTrace();
         }
-
-    }
-
-    @Test
-    public void Machine_shouldReturnGamingMachineId() {
-
-        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
-
-        assertThat(sut.getGamingMachineID()).isInstanceOf(GamingMachineID.class);
-
     }
 
 
-    /**
-     * @verifies throw a CurrentBetMadeException
-     * @see GamingMachine#disconnectCard()
-     */
-    @Test
-    public void disconnectCard_shouldThrowACurrentBetMadeException() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
-    }
 }

@@ -11,11 +11,14 @@ import casino.idfactory.IDFactory;
 
 public class GamingMachine implements IGamingMachine {
 
-    private GamblerCard gamblerCard = null;
+    private GamblerCard gamblerCard;
     private Cashier cashier;
     private GeneralID generalID;
     private Bet bet;
 
+    /**
+    * @should generateId
+    * */
     public GamingMachine(Cashier cashier) {
         this.cashier = cashier;
         this.generalID = IDFactory.generateID("GAMINGMACHINEID");
@@ -29,7 +32,9 @@ public class GamingMachine implements IGamingMachine {
      * @param amountInCents amount in cents to gamble
      * @return true if bet is valid, excepted and added to betting round.
      * @throws NoPlayerCardException when no card is connected to this machine.
-     * @should throw bet not accepted
+     * @should throw NoPlayerCardException
+     * @should place bet
+     * @should should return false Money in card less than bet
      */
     @Override
     public boolean placeBet(long amountInCents) throws NoPlayerCardException {
@@ -57,7 +62,7 @@ public class GamingMachine implements IGamingMachine {
      * Accept the BetResult from the winner. Clear all open bets on this machine.
      * When the winner has made his bet on this machine: let the Cashier update
      * the amount of the winner.
-     *
+     * @should accept winner and update card amount
      * @param winResult result of a betting round. can be null when there is no winner.
      */
 
@@ -112,6 +117,7 @@ public class GamingMachine implements IGamingMachine {
 
     // to avoid installing PowerMockito that will allow me to mock the construction
     // of new objects  i decided to add an objectSetter in the class
+    //
     // ONLY FOR TESTING
     public void setBet(Bet bet){
         this.bet = bet;
