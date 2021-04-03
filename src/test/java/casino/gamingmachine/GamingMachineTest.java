@@ -107,6 +107,7 @@ class GamingMachineTest {
 
         try {
             verify(cashier).addAmount(gamblerCard, moneyAmountActual);
+            assertEquals(8L,gamblerCard.getMoneyAmountInCents());
         } catch (InvalidAmountException e) {
             e.printStackTrace();
         }

@@ -63,7 +63,23 @@ public class GamingMachine implements IGamingMachine {
 
     @Override
     public void acceptWinner(BetResult winResult) {
+        System.out.println("winResult" + winResult.getWinningBet().getMoneyAmount().getAmountInCents());
+        if (winResult != null) {
+            System.out.println("betID: " + bet.getBetID().getID());
+            System.out.println("betID: " + winResult.getWinningBet().getBetID().getID());
+            if (winResult.getWinningBet().getBetID().compareTo(
+                    bet.getBetID()) == 1) {
+                try {
+                    System.out.println("MONEY AMOUNT: " + bet.getMoneyAmount());
+                    cashier.addAmount(gamblerCard, bet.getMoneyAmount());
+                } catch (InvalidAmountException e) {
+                    e.printStackTrace();
+                }
 
+
+            }
+        }
+        bet = null;
     }
 
     /**
@@ -97,4 +113,10 @@ public class GamingMachine implements IGamingMachine {
 
     }
 
+    // to avoid installing PowerMockito that will allow me to mock the construction
+    // of new objects  i decided to add an objectSetter in the class
+    // ONLY FOR TESTING
+    public void setBet(Bet bet){
+        this.bet = bet;
+    }
 }
