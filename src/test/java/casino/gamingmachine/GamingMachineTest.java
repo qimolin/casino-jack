@@ -32,10 +32,6 @@ class GamingMachineTest {
     @Mock
     private final IBetLoggingAuthority iBetLoggingAuthority = mock(IBetLoggingAuthority.class);
 
-    /**
-     * @verifies throws an exception
-     * @see GamingMachine#placeBet(long)
-     */
     @Test
     public void Machine_placeBetShouldThrowNoPlayerCardException() {
         GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
@@ -80,7 +76,7 @@ class GamingMachineTest {
     }
 
     @Test
-    public void Machine_shouldAcceptWinner() {
+    public void Machine_shouldAcceptWinnerAndUpdateCardAmount() {
 
         //moneyInCard = 5L
         Cashier cashier = mock(Cashier.class);
@@ -107,6 +103,7 @@ class GamingMachineTest {
 
         try {
             verify(cashier).addAmount(gamblerCard, moneyAmountActual);
+            //should pass After Mikels implementation
             assertEquals(8L,gamblerCard.getMoneyAmountInCents());
         } catch (InvalidAmountException e) {
             e.printStackTrace();
@@ -123,4 +120,14 @@ class GamingMachineTest {
 
     }
 
+
+    /**
+     * @verifies throw a CurrentBetMadeException
+     * @see GamingMachine#disconnectCard()
+     */
+    @Test
+    public void disconnectCard_shouldThrowACurrentBetMadeException() throws Exception {
+        //TODO auto-generated
+        Assertions.fail("Not yet implemented");
+    }
 }
