@@ -21,6 +21,7 @@ public class GamingMachine implements IGamingMachine {
 
     /**
     * @should generateId
+     *
     * */
     public GamingMachine(Cashier cashier) {
         this.cashier = cashier;
@@ -78,8 +79,6 @@ public class GamingMachine implements IGamingMachine {
                 } catch (InvalidAmountException e) {
                     e.printStackTrace();
                 }
-
-
             }
         }
         bet = null;
@@ -114,7 +113,13 @@ public class GamingMachine implements IGamingMachine {
      */
     @Override
     public void disconnectCard() throws CurrentBetMadeException {
-
+        if (gamblerCard != null) {
+            if (game.isBettingRoundFinished() || bet != null) {
+                gamblerCard = null;
+            } else {
+                throw new CurrentBetMadeException("Wait for the round to finish and the winner to be announced");
+            }
+        }
     }
 
     // THE PLAYER SELECTS A GAME ON THE MACHINE
