@@ -20,9 +20,6 @@ import static org.mockito.Mockito.*;
 
 public class BettingRoundTest {
 
-    @Mock
-    private final IBetLoggingAuthority iBetLoggingAuthority = mock(IBetLoggingAuthority.class);
-
     /**
      * @verifies create and return new BettingRoundID
      * @see BettingRound#getBettingRoundID()
@@ -30,34 +27,25 @@ public class BettingRoundTest {
     @Test
     public void getBettingRoundID_shouldCreateAndReturnNewBettingRoundID() throws Exception {
         // Arrange
-        BettingRound sut = new BettingRound(iBetLoggingAuthority);
+        BettingRound sut = new BettingRound();
         // Act
         BettingRoundID id = sut.getBettingRoundID();
         // Assert
         assertThat(id).isNotNull();
     }
 
-    /**
-     * @verifies set BetLoggingAuthority
-     * @see BettingRound#BettingRound(gamblingauthoritiy.IBetLoggingAuthority)
-     */
-    @Test
-    public void BettingRound_shouldSetBetLoggingAuthority() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
-    }
 
     /**
      * @verifies create new Set of Bets
-     * @see BettingRound#BettingRound(gamblingauthoritiy.IBetLoggingAuthority)
+     * @see BettingRound#BettingRound()
      */
     @Test
     public void BettingRound_shouldCreateNewSetOfBets() throws Exception {
         // Arrange
-        BettingRound sut = new BettingRound(iBetLoggingAuthority);
+        BettingRound sut = new BettingRound();
         // Act
         // Assert
-        assertThat(sut.getBetLoggingAuthority()).isEqualTo(iBetLoggingAuthority);
+        assertThat(sut.getAllBetsMade()).isNotNull();
     }
 
     /**
@@ -67,7 +55,7 @@ public class BettingRoundTest {
     @Test
     public void placeBet_shouldAddBetToSet() throws Exception {
         // Arrange
-        BettingRound sut = new BettingRound(iBetLoggingAuthority);
+        BettingRound sut = new BettingRound();
         Bet bet = mock(Bet.class);
         // Act
         sut.placeBet(bet);
@@ -82,7 +70,7 @@ public class BettingRoundTest {
     @Test
     public void placeBet_shouldReturnFalseIfAmountIsNegative() throws Exception {
         // Arrange
-        BettingRound sut = new BettingRound(iBetLoggingAuthority);
+        BettingRound sut = new BettingRound();
         Bet bet = mock(Bet.class);
         MoneyAmount moneyAmount = mock(MoneyAmount.class);
         // Act
@@ -90,20 +78,6 @@ public class BettingRoundTest {
         when(bet.getMoneyAmount()).thenReturn(moneyAmount);
         // Assert
         assertThat(sut.placeBet(bet)).isFalse();
-    }
-
-    /**
-     * @verifies log bet to BetLoggingAuthority if successful
-     * @see BettingRound#placeBet(Bet)
-     */
-    @Test
-    public void placeBet_shouldLogBetToBetLoggingAuthorityIfSuccessful() throws Exception {
-        // Arrange
-        BettingRound sut = new BettingRound(iBetLoggingAuthority);
-        Bet bet = mock(Bet.class);
-        // Act
-        sut.placeBet(bet);
-        // Assert
     }
 
     /**
