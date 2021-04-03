@@ -79,7 +79,6 @@ public class GamblerCard implements IGamblerCard {
     public Set<BetID> returnBetIDs() {
         Set<BetID> clonedBetIDs = new HashSet<>();
         for (BetID betID : betIDs) {
-            // TODO: use clone
             clonedBetIDs.add(betID);
         }
 
@@ -95,6 +94,8 @@ public class GamblerCard implements IGamblerCard {
      */
     @Override
     public Set<BetID> returnBetIDsAndClearCard() {
-        return null;
+        Set<BetID> clonedBetIDs = returnBetIDs();
+        betIDs = null;
+        return clonedBetIDs;
     }
 }
