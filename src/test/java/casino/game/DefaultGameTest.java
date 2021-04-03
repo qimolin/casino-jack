@@ -3,7 +3,6 @@ package casino.game;
 import casino.bet.Bet;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
-import casino.cashier.CardID;
 import casino.gamingmachine.GamingMachine;
 import casino.gamingmachine.GamingMachineID;
 import casino.idfactory.GeneralID;
@@ -11,14 +10,12 @@ import casino.idfactory.IDFactory;
 import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.BetTokenAuthority;
-import gamblingauthoritiy.BettingAuthority;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.Assertions;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -34,9 +31,6 @@ public class DefaultGameTest {
     private BetTokenAuthority betTokenAuthority;
     @Mock
     private IGameRule gameRule;
-
-    @InjectMocks
-    private IDFactory idFactory;
 
     private AutoCloseable closeable;
     private DefaultGame game;
@@ -87,19 +81,18 @@ public class DefaultGameTest {
      * @see DefaultGame#startBettingRound()
      */
     @Test
-    @Disabled
     public void startBettingRound_shouldCreateANewBettingRoundUsingTheAPI() throws Exception {
-        GeneralID bettingRoundID = mock(GeneralID.class);
+        GeneralID bettingRoundID = mock(BettingRoundID.class);
+        MockedStatic<IDFactory> mockedIDFactory = Mockito.mockStatic(IDFactory.class);
+        mockedIDFactory.when(() -> { IDFactory.generateID(anyString()); }).thenReturn(bettingRoundID);
         BettingRound currentRound = mock(BettingRound.class);
-        //when(currentRound.getBettingRoundID()).thenReturn(((BettingRoundID) bettingRoundID));
+        when(currentRound.getBettingRoundID()).thenReturn((BettingRoundID) bettingRoundID);
         game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
-
-        when(IDFactory.generateID(anyString())).thenReturn(bettingRoundID);
 
         game.startBettingRound();
 
         assertThat(game.getBettingRound().getBettingRoundID()).isNotEqualTo(currentRound.getBettingRoundID());
-        //verify(betTokenAuthority).getBetToken(((BettingRoundID) bettingRoundID));
+        verify(betTokenAuthority).getBetToken((BettingRoundID) bettingRoundID);
     }
 
     /**
