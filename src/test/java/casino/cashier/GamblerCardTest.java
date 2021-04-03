@@ -1,5 +1,6 @@
 package casino.cashier;
 
+import casino.bet.BetID;
 import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.BetTokenAuthority;
 import org.junit.jupiter.api.AfterEach;
@@ -10,10 +11,13 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.sql.Array;
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class GamblerCardTest {
     @Mock
@@ -55,7 +59,7 @@ public class GamblerCardTest {
 
         card.generateNewBetID();
 
-        assertThat(card.getBetIDs().size()).isEqualTo(1);
+        assertThat(card.getBetIDs()).hasSize(1);
     }
 
     /**
@@ -64,6 +68,17 @@ public class GamblerCardTest {
      */
     @Test
     public void returnBetIDs_shouldReturnACopyOfAllBetID() throws Exception {
+        Set<BetID> betIDs = new HashSet<>();
 
+        card = new GamblerCard();
+
+        BetID betA = card.generateNewBetID();
+        BetID betB = card.generateNewBetID();
+        betIDs.add(betA);
+        betIDs.add(betB);
+
+        assertThat(card.returnBetIDs()).satisfiesAnyOf(
+                b -> assertThat(betA).isNotEqualTo(b),
+                b -> assertThat(betB).isNotEqualTo(b));
     }
 }
