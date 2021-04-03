@@ -3,7 +3,7 @@ package casino.cashier;
 
 import casino.bet.Bet;
 import casino.bet.MoneyAmount;
-import gamblingauthoritiy.IBetLoggingAuthority;
+import gamblingauthoritiy.BettingAuthority;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -11,14 +11,14 @@ import java.util.Set;
 
 public class Cashier implements ICashier {
 
-    private final IBetLoggingAuthority loggingAuthority;
+    private final BettingAuthority bettingAuthority;
     private final Set<IGamblerCard> gamblerCards;
     /**
-     * @should create a cashier and set logging authority
-     * @param loggingAuthority
+     * @should setBettingAuthority
+     * @param bettingAuthority
      */
-    public Cashier(IBetLoggingAuthority loggingAuthority) {
-        this.loggingAuthority = loggingAuthority;
+    public Cashier(BettingAuthority bettingAuthority) {
+        this.bettingAuthority = bettingAuthority;
         this.gamblerCards = new HashSet<>();
     }
     /**
@@ -48,7 +48,7 @@ public class Cashier implements ICashier {
      */
     @Override
     public void returnGamblerCard(IGamblerCard card) {
-        this.loggingAuthority.logHandInGamblingCard(card.getCardID(), card.returnBetIDsAndClearCard());
+        this.bettingAuthority.getLoggingAuthority().logHandInGamblingCard(card.getCardID(), card.returnBetIDsAndClearCard());
     }
 
     /**
@@ -91,24 +91,24 @@ public class Cashier implements ICashier {
         card.setMoneyAmountInCents(amount.getAmountInCents());
     }
 
-    public IBetLoggingAuthority getLoggingAuthority() {
-        return loggingAuthority;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Cashier)) return false;
         Cashier cashier = (Cashier) o;
-        return loggingAuthority.equals(cashier.loggingAuthority);
+        return this.bettingAuthority.equals(cashier.bettingAuthority);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(loggingAuthority);
+        return Objects.hash(bettingAuthority);
     }
 
     public Set<IGamblerCard> getGamblerCards() {
         return gamblerCards;
+    }
+
+    public BettingAuthority getBettingAuthority() {
+        return bettingAuthority;
     }
 }

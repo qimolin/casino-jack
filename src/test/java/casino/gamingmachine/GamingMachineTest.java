@@ -6,32 +6,21 @@ import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
 import casino.cashier.*;
 import casino.game.IGame;
-import gamblingauthoritiy.BetLoggingAuthority;
-import gamblingauthoritiy.IBetLoggingAuthority;
-import org.junit.jupiter.api.Assertions;
+import gamblingauthoritiy.BettingAuthority;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockedConstruction;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
-import java.util.Calendar;
-import java.util.Set;
+import org.mockito.Mock;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
 class GamingMachineTest {
 
     @Mock
-    private final IBetLoggingAuthority iBetLoggingAuthority = mock(IBetLoggingAuthority.class);
+    private final BettingAuthority bettingAuthority = mock(BettingAuthority.class);
 
     /**
      * @verifies should return false Money in card less than bet
@@ -41,7 +30,7 @@ class GamingMachineTest {
     public void placeBet_shouldShouldReturnFalseMoneyInCardLessThanBet() throws Exception {
         long moneyInCard = 5L;
         long moneyToBet = 6L;
-        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
+        GamingMachine sut = new GamingMachine(new Cashier(bettingAuthority));
         GamblerCard gamblerCard = mock(GamblerCard.class);
         when(gamblerCard.getMoneyAmountInCents()).thenReturn(moneyInCard);
         sut.connectCard(gamblerCard);
@@ -55,7 +44,7 @@ class GamingMachineTest {
      */
     @Test
     public void placeBet_shouldThrowNoPlayerCardException() throws Exception {
-        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
+        GamingMachine sut = new GamingMachine(new Cashier(bettingAuthority));
         NoPlayerCardException exception = assertThrows(NoPlayerCardException.class, () ->
                 sut.placeBet(2L));
         assertEquals("No card exception", exception.getMessage());
@@ -69,7 +58,7 @@ class GamingMachineTest {
     public void placeBet_shouldPlaceBet() throws Exception {
         long moneyInCard = 5L;
         long moneyToBet = 2L;
-        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
+        GamingMachine sut = new GamingMachine(new Cashier(bettingAuthority));
         GamblerCard gamblerCard = mock(GamblerCard.class);
 
         when(gamblerCard.getMoneyAmountInCents()).thenReturn(moneyInCard);
@@ -84,7 +73,7 @@ class GamingMachineTest {
      */
     @Test
     public void disconnectCard_shouldThrowACurrentBetMadeException() throws CurrentBetMadeException {
-        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
+        GamingMachine sut = new GamingMachine(new Cashier(bettingAuthority));
         GamblerCard gamblerCard = mock(GamblerCard.class);
         IGame game = mock(IGame.class);
         sut.connectCard(gamblerCard);
@@ -102,7 +91,7 @@ class GamingMachineTest {
      */
     @Test
     public void GamingMachine_shouldGenerateId() throws Exception {
-        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
+        GamingMachine sut = new GamingMachine(new Cashier(bettingAuthority));
 
         assertThat(sut.getGamingMachineID()).isInstanceOf(GamingMachineID.class);
     }
@@ -115,7 +104,7 @@ class GamingMachineTest {
         long BET_AMOUNT = 3L;
         long CARD_BALANCE = 5L;
 
-        Cashier cashier = spy(new Cashier(iBetLoggingAuthority));
+        Cashier cashier = spy(new Cashier(bettingAuthority));
 
         GamingMachine sut = new GamingMachine(cashier);
 

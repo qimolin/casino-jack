@@ -5,6 +5,7 @@ import casino.bet.Bet;
 import casino.bet.BetID;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
+import casino.cashier.ICashier;
 import casino.gamingmachine.GamingMachine;
 import casino.gamingmachine.IGamingMachine;
 import casino.gamingmachine.NoPlayerCardException;
@@ -29,7 +30,8 @@ public class DefaultGame extends AbstractGame {
 
     private List<GamingMachine> gamingMachines;
 
-    public DefaultGame() {
+    public DefaultGame(ICashier cashier, IGameRule gameRule) {
+        super(cashier, gameRule);
         this.gamingMachines = new ArrayList<>();
     }
 

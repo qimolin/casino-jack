@@ -2,8 +2,9 @@ package casino.cashier;
 
 import casino.bet.Bet;
 import casino.bet.MoneyAmount;
-import gamblingauthoritiy.IBetLoggingAuthority;
+import gamblingauthoritiy.BettingAuthority;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
@@ -15,18 +16,19 @@ import static org.mockito.Mockito.*;
 public class CashierTest {
 
     @Mock
-    private final IBetLoggingAuthority iBetLoggingAuthority = mock(IBetLoggingAuthority.class);
+    private final BettingAuthority bettingAuthority = mock(BettingAuthority.class);
+
     /**
-     * @verifies create a cashier and set logging authority
-     * @see Cashier#Cashier(gamblingauthoritiy.IBetLoggingAuthority)
+     * @verifies setBettingAuthority
+     * @see Cashier#Cashier(BettingAuthority)
      */
     @Test
-    public void Cashier_shouldCreateACashierAndSetLoggingAuthority() {
+    public void Cashier_shouldSetBettingAuthority() throws Exception {
         // Arrange
-        Cashier sut = new Cashier(iBetLoggingAuthority);
+        Cashier sut = new Cashier(bettingAuthority);
         // Act
         // Assert
-        assertThat(sut.getLoggingAuthority()).isEqualTo(iBetLoggingAuthority);
+        assertThat(sut.getBettingAuthority().getLoggingAuthority()).isEqualTo(bettingAuthority);
     }
 
     /**
@@ -35,8 +37,8 @@ public class CashierTest {
     @Test
     public void Cashier_withSameLoggingAuthorityAreLogicallyEqual() {
         // Arrange
-        Cashier A = new Cashier(iBetLoggingAuthority);
-        Cashier B = new Cashier(iBetLoggingAuthority);
+        Cashier A = new Cashier(bettingAuthority);
+        Cashier B = new Cashier(bettingAuthority);
         // Act
         // Assert
         assertThat(A).isEqualTo(B);
@@ -50,7 +52,7 @@ public class CashierTest {
     @Test
     public void distributeGamblerCard_shouldReturnAGamblingCard() throws Exception {
         // Arrange
-        Cashier sut = new Cashier(iBetLoggingAuthority);
+        Cashier sut = new Cashier(bettingAuthority);
         // Act
         IGamblerCard gamblerCard = sut.distributeGamblerCard();
         // Assert
@@ -65,7 +67,7 @@ public class CashierTest {
     @Test
     public void distributeGamblerCard_shouldPutCardsInASet() {
         // Arrange
-        Cashier sut = new Cashier(iBetLoggingAuthority);
+        Cashier sut = new Cashier(bettingAuthority);
         // Act
         sut.distributeGamblerCard();
         Set<IGamblerCard> gamblerCards = sut.getGamblerCards();
@@ -80,7 +82,7 @@ public class CashierTest {
     @Test
     public void returnGamblerCard_shouldCallReturnBetIDsAndClearCardAndGetCardID() {
         // Arrange
-        Cashier sut = new Cashier(iBetLoggingAuthority);
+        Cashier sut = new Cashier(bettingAuthority);
         IGamblerCard card = mock(GamblerCard.class);
         // Act
         sut.returnGamblerCard(card);
@@ -96,12 +98,12 @@ public class CashierTest {
     @Test
     public void returnGamblerCard_shouldCallLogHandInGamblingCard() {
         // Arrange
-        Cashier sut = new Cashier(iBetLoggingAuthority);
+        Cashier sut = new Cashier(bettingAuthority);
         IGamblerCard card = mock(GamblerCard.class);
         // Act
         sut.returnGamblerCard(card);
         // Assert
-        verify(sut.getLoggingAuthority()).logHandInGamblingCard(card.getCardID(), card.returnBetIDsAndClearCard());
+        verify(sut.getBettingAuthority().getLoggingAuthority()).logHandInGamblingCard(card.getCardID(), card.returnBetIDsAndClearCard());
     }
 
     /**
@@ -111,7 +113,7 @@ public class CashierTest {
     @Test
     public void checkIfBetIsValid_shouldThrowBetNotFoundExceptionIfBetAmountIsInvalid() {
         // Arrange
-        Cashier sut = new Cashier(iBetLoggingAuthority);
+        Cashier sut = new Cashier(bettingAuthority);
         IGamblerCard card = mock(GamblerCard.class);
         Bet bet = mock(Bet.class);
         MoneyAmount amount = mock(MoneyAmount.class);
@@ -133,7 +135,7 @@ public class CashierTest {
     @Test
     public void checkIfBetIsValid_shouldCallSetMoneyAmountInCentsAndReturnTrue() throws BetNotAcceptedException {
         // Arrange
-        Cashier sut = new Cashier(iBetLoggingAuthority);
+        Cashier sut = new Cashier(bettingAuthority);
         IGamblerCard card = mock(GamblerCard.class);
         Bet bet = mock(Bet.class);
         MoneyAmount amount = mock(MoneyAmount.class);
@@ -153,7 +155,7 @@ public class CashierTest {
     @Test
     public void addAmount_shouldCallSetMoneyAmountInCentsOnCard() throws Exception {
         // Arrange
-        Cashier sut = new Cashier(iBetLoggingAuthority);
+        Cashier sut = new Cashier(bettingAuthority);
         GamblerCard card = mock(GamblerCard.class);
         MoneyAmount amount = mock(MoneyAmount.class);
         // Act
@@ -169,7 +171,7 @@ public class CashierTest {
     @Test
     public void addAmount_shouldThrowInvalidAmountExceptionIfAmountIsNegativeOrNull() throws Exception {
         // Arrange
-        Cashier sut = new Cashier(iBetLoggingAuthority);
+        Cashier sut = new Cashier(bettingAuthority);
         GamblerCard card = mock(GamblerCard.class);
         MoneyAmount amount = mock(MoneyAmount.class);
         // Act
@@ -185,4 +187,6 @@ public class CashierTest {
                     sut.addAmount(card, null);
                 });
     }
+
+
 }
