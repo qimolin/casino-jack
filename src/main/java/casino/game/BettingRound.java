@@ -17,20 +17,22 @@ import java.util.Set;
 public class BettingRound implements IBettingRound {
 
     private final Set<Bet> bets;
+    private final GeneralID bettingRoundID;
+    private final BetToken token;
     /**
-     * @should create new Set of Bets
-     * @should set BetLoggingAuthority
+     * @should create new Set of Bets and bettingRoundID and BetToken
      */
     public BettingRound() {
         bets = new HashSet<>();
+        bettingRoundID = IDFactory.generateID("BETTINGROUNDID");
+        token = new BetToken(getBettingRoundID());
     }
     /**
-     * @should create and return new BettingRoundID
      * @return BettingRoundID
      */
     @Override
     public BettingRoundID getBettingRoundID() {
-        return (BettingRoundID) IDFactory.generateID("BETTINGROUNDID");
+        return (BettingRoundID) bettingRoundID;
     }
 
     /**
