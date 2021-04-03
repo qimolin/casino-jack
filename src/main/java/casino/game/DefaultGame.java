@@ -51,9 +51,10 @@ public class DefaultGame extends AbstractGame {
             determineWinner();
         }
 
-        GeneralID bettingRoundID = IDFactory.generateID("BETTINGROUND");
-        BetToken betToken = betTokenAuthority.getBetToken((BettingRoundID) bettingRoundID);
+        BettingRoundID bettingRoundID = (BettingRoundID) IDFactory.generateID("BETTINGROUNDID");
+        BetToken betToken = betTokenAuthority.getBetToken(bettingRoundID);
 
+        // TODO: waiting for Qimo
         //bettingRound = new BettingRound(bettingRoundID, betToken);
         bettingRound = new BettingRound();
 
