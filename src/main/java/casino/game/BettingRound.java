@@ -37,14 +37,17 @@ public class BettingRound implements IBettingRound {
      * <p>
      * <p>
      * Note: also use the appropiate required methods from the gambling authority API
-     * @should
+     * @should add bet to set
+     * @should return true if successful otherwise false
+     * @should throw IllegalArgumentException if bet is null
      * @param bet
      * @return true if bet is made, otherwise folse
      * @throws IllegalArgumentException when Bet is null
      */
     @Override
     public boolean placeBet(Bet bet) throws IllegalArgumentException {
-        return false;
+        this.bets.add(bet);
+        return true;
     }
 
     /**
