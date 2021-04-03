@@ -63,6 +63,18 @@ public class GamblerCardTest {
     }
 
     /**
+     * @verifies return the count of betIDs stored
+     * @see GamblerCard#getNumberOfBetIDs()
+     */
+    @Test
+    public void getNumberOfBetIDs_shouldReturnTheCountOfBetIDsStored() throws Exception {
+        card = spy(new GamblerCard());
+        when(card.getBetIDs().size()).thenReturn(5);
+
+        assertThat(card.getNumberOfBetIDs()).isEqualTo(5);
+    }
+
+    /**
      * @verifies return a copy of all betID
      * @see GamblerCard#returnBetIDs()
      */
