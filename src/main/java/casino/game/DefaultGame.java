@@ -2,35 +2,22 @@ package casino.game;
 
 
 import casino.bet.Bet;
-import casino.bet.BetID;
 import casino.bet.BetResult;
-import casino.bet.MoneyAmount;
-import casino.cashier.ICashier;
+import casino.cashier.Cashier;
 import casino.gamingmachine.GamingMachine;
 import casino.gamingmachine.IGamingMachine;
-import casino.gamingmachine.NoPlayerCardException;
-import casino.idfactory.GeneralID;
 import casino.idfactory.IDFactory;
-import gamblingauthoritiy.BetLoggingAuthority;
-import gamblingauthoritiy.BetToken;
-import gamblingauthoritiy.IBetLoggingAuthority;
-import gamblingauthoritiy.IBetTokenAuthority;
+import gamblingauthoritiy.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class DefaultGame extends AbstractGame {
-    private IBetLoggingAuthority betLoggingAuthority;
-    private IBetTokenAuthority betTokenAuthority;
 
     private BettingRound bettingRound;
-    private IGameRule gameRule;
-
     private List<GamingMachine> gamingMachines;
 
-    public DefaultGame(ICashier cashier, IGameRule gameRule) {
+    public DefaultGame(Cashier cashier, IGameRule gameRule) {
         super(cashier, gameRule);
         this.gamingMachines = new ArrayList<>();
     }
@@ -63,9 +50,10 @@ public class DefaultGame extends AbstractGame {
             determineWinner();
         }
 
-        GeneralID bettingRoundID = IDFactory.generateID("BETTINGROUND");
-        BetToken betToken = betTokenAuthority.getBetToken((BettingRoundID) bettingRoundID);
+        BettingRoundID bettingRoundID = (BettingRoundID) IDFactory.generateID("BETTINGROUNDID");
+        BetToken betToken = betTokenAuthority.getBetToken(bettingRoundID);
 
+        // TODO: waiting for Qimo
         //bettingRound = new BettingRound(bettingRoundID, betToken);
         bettingRound = new BettingRound();
 
@@ -98,6 +86,7 @@ public class DefaultGame extends AbstractGame {
 
         betLoggingAuthority.logAddAcceptedBet(
                 bet, bettingRound.getBettingRoundID(), gamingMachine.getGamingMachineID());
+        bettingRound.placeBet(bet);
 
         if (isBettingRoundFinished()) {
             determineWinner();

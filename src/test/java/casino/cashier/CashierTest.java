@@ -28,7 +28,7 @@ public class CashierTest {
         Cashier sut = new Cashier(bettingAuthority);
         // Act
         // Assert
-        assertThat(sut.getBettingAuthority().getLoggingAuthority()).isEqualTo(bettingAuthority);
+        assertThat(sut.getBettingAuthority()).isEqualTo(bettingAuthority);
     }
 
     /**

@@ -12,14 +12,14 @@ import java.util.Set;
 public class GamblerCard implements IGamblerCard {
 
     private final CardID cardID;
-    private Set<BetID> betIDs = null;
+    private Set<BetID> betIDs;
     private long moneyAmountInCents;
 
     /**
      * @should generate a cardID upon creation
      */
     public GamblerCard() {
-        cardID = (CardID) IDFactory.generateID("CARD");
+        cardID = (CardID) IDFactory.generateID("CARDID");
         betIDs = new HashSet<>();
     }
 
@@ -50,7 +50,7 @@ public class GamblerCard implements IGamblerCard {
      */
     @Override
     public BetID generateNewBetID() {
-        BetID betID = (BetID) IDFactory.generateID("BET");
+        BetID betID = (BetID) IDFactory.generateID("BETID");
         betIDs.add(betID);
 
         return betID;
@@ -77,12 +77,7 @@ public class GamblerCard implements IGamblerCard {
      */
     @Override
     public Set<BetID> returnBetIDs() {
-        Set<BetID> clonedBetIDs = new HashSet<>();
-        for (BetID betID : betIDs) {
-            clonedBetIDs.add(betID);
-        }
-
-        return clonedBetIDs;
+        return new HashSet<>(betIDs);
     }
 
     /**
