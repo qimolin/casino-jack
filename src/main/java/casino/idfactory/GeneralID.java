@@ -18,5 +18,7 @@ public abstract class GeneralID {
     }
 
     // TODO: implement necessary code. Add WHY you need it.
-
+    public String getID(){
+        return uniqueID.toString() + timeStamp.toString();
+    }
 }

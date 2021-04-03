@@ -1,4 +1,6 @@
 package casino.gamingmachine;
 
-public class GamingMachineID {
+import casino.idfactory.GeneralID;
+
+public class GamingMachineID  extends GeneralID {
 }
