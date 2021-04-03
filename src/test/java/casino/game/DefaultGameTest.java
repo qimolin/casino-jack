@@ -11,10 +11,7 @@ import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.BetTokenAuthority;
 import org.junit.jupiter.api.*;
-import org.mockito.Mock;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
 
 import java.util.Set;
 
@@ -31,9 +28,13 @@ public class DefaultGameTest {
     private BetTokenAuthority betTokenAuthority;
     @Mock
     private IGameRule gameRule;
+    @Mock
+    private BettingRound currentRound;
 
     private AutoCloseable closeable;
-    private DefaultGame game;
+
+    @InjectMocks
+    private DefaultGame game = new DefaultGame();
 
     @BeforeEach
     void initAuthorities() {
@@ -50,13 +51,10 @@ public class DefaultGameTest {
      * @see DefaultGame#startBettingRound()
      */
     @Test
-    public void startBettingRound_shouldLogToBettingAuthority() throws NoBetsMadeException {
-        BettingRound currentRound = mock(BettingRound.class);
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
-
+    public void startBettingRound_shouldLogToBettingAuthority() {
         game.startBettingRound();
 
-        verify(betLoggingAuthority).logStartBettingRound(any(IBettingRound.class));
+        verify(betLoggingAuthority).logStartBettingRound(any(BettingRound.class));
     }
 
     /**
@@ -65,9 +63,7 @@ public class DefaultGameTest {
      */
     @Test
     public void startBettingRound_shouldEndActiveBettingRound() throws Exception {
-        BettingRound currentRound = mock(BettingRound.class);
         when(currentRound.getBettingRoundID()).thenReturn(mock(BettingRoundID.class));
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
         when(gameRule.determineWinner(anyInt(), any(Set.class))).thenReturn(null);
 
         game.startBettingRound();
@@ -86,9 +82,7 @@ public class DefaultGameTest {
         GeneralID bettingRoundID = mock(BettingRoundID.class);
         MockedStatic<IDFactory> mockedIDFactory = Mockito.mockStatic(IDFactory.class);
         mockedIDFactory.when(() -> { IDFactory.generateID(anyString()); }).thenReturn(bettingRoundID);
-        BettingRound currentRound = mock(BettingRound.class);
         when(currentRound.getBettingRoundID()).thenReturn((BettingRoundID) bettingRoundID);
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
 
         game.startBettingRound();
 
@@ -102,8 +96,6 @@ public class DefaultGameTest {
      */
     @Test
     public void isBettingRoundFinished_shouldReturnTrueIfTheNumberOfBetsEqualTheMaxNumberOfBetsPerRoundDefinedByTheGameRule() {
-        BettingRound currentRound = mock(BettingRound.class);
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
         when(gameRule.getMaxBetsPerRound()).thenReturn(5);
         when(currentRound.numberOFBetsMade()).thenReturn(5);
 
@@ -116,8 +108,6 @@ public class DefaultGameTest {
      */
     @Test
     public void isBettingRoundFinished_shouldReturnFalseIfTheNumberOfBetsAreLessTheMaxNumberOfBetsPerRoundDefinedByTheGameRule() {
-        BettingRound currentRound = mock(BettingRound.class);
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
         when(gameRule.getMaxBetsPerRound()).thenReturn(5);
         when(currentRound.numberOFBetsMade()).thenReturn(4);
 
@@ -130,10 +120,9 @@ public class DefaultGameTest {
      */
     @Test
     public void acceptBet_shouldCheckThatTheCurrentBettingRoundIsFinished() throws Exception {
-        BettingRound currentRound = mock(BettingRound.class);
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
-        DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority));
+        DefaultGame gameSpy = spy(game);
         when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
         when(gamingMachine.placeBet(anyLong())).thenReturn(true);
 
@@ -148,10 +137,9 @@ public class DefaultGameTest {
      */
     @Test
     public void acceptBet_shouldDetermineTheWinnerIfTheCurrentBettingRoundIsFinished() throws Exception {
-        BettingRound currentRound = mock(BettingRound.class);
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
-        DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority));
+        DefaultGame gameSpy = spy(game);
         doReturn(true).when(gameSpy).isBettingRoundFinished();
         when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
         when(gamingMachine.placeBet(anyLong())).thenReturn(true);
@@ -167,10 +155,9 @@ public class DefaultGameTest {
      */
     @Test
     public void acceptBet_shouldContinueIfTheCurrentBettingRoundIsNotFinished() throws Exception {
-        BettingRound currentRound = mock(BettingRound.class);
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
-        DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority));
+        DefaultGame gameSpy = spy(game);
         doReturn(false).when(gameSpy).isBettingRoundFinished();
         when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
         when(gamingMachine.placeBet(anyLong())).thenReturn(true);
@@ -186,10 +173,9 @@ public class DefaultGameTest {
      */
     @Test
     public void acceptBet_shouldThrowNoCurrentRoundExceptionWhenNoBettingRoundIsActive() throws Exception {
-        BettingRound currentRound = null;
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
-        DefaultGame game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
+        game = new DefaultGame();
         when(bet.getMoneyAmount()).thenReturn(mock(MoneyAmount.class));
         when(gamingMachine.placeBet(anyLong())).thenReturn(true);
 
@@ -205,14 +191,12 @@ public class DefaultGameTest {
      */
     @Test
     public void acceptBet_shouldLogAcceptedBetToBetloggingAuthority() throws Exception {
-        BettingRound currentRound = mock(BettingRound.class);
         BettingRoundID bettingRoundID = mock(BettingRoundID.class);
         Bet bet = mock(Bet.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
         GamingMachineID gamingMachineID = mock(GamingMachineID.class);
         when(currentRound.getBettingRoundID()).thenReturn(bettingRoundID);
         when(gamingMachine.getGamingMachineID()).thenReturn(gamingMachineID);
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
 
         game.acceptBet(bet, gamingMachine);
 
@@ -226,11 +210,8 @@ public class DefaultGameTest {
     @Test
     @Disabled
     public void acceptBet_shouldStoreAcceptedBet() throws Exception {
-        BettingRound currentRound = mock(BettingRound.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
         Bet bet = mock(Bet.class);
-
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
 
         game.acceptBet(bet, gamingMachine);
 
@@ -243,11 +224,10 @@ public class DefaultGameTest {
      */
     @Test
     public void acceptBet_shouldStartANewRoundIfTheRoundIsFinished() throws Exception {
-        BettingRound currentRound = mock(BettingRound.class);
         GamingMachine gamingMachine = mock(GamingMachine.class);
         Bet bet = mock(Bet.class);
 
-        DefaultGame gameSpy = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority));
+        DefaultGame gameSpy = spy(game);
 
         gameSpy.acceptBet(bet, gamingMachine);
 
@@ -260,12 +240,11 @@ public class DefaultGameTest {
      */
     @Test
     public void determineWinner_shouldEndTheCurrentRound() {
-        BettingRound currentRound = mock(BettingRound.class);
-        DefaultGame game = spy(new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority));
+        DefaultGame gameSpy = spy(game);
 
-        game.determineWinner();
+        gameSpy.determineWinner();
 
-        assertThat(game.getBettingRound()).isNull();
+        assertThat(gameSpy.getBettingRound()).isNull();
     }
 
     /**
@@ -274,10 +253,8 @@ public class DefaultGameTest {
      */
     @Test
     public void determineWinner_shouldLogToBettingAuthority() throws Exception {
-        BettingRound currentRound = mock(BettingRound.class);
         when(currentRound.numberOFBetsMade()).thenReturn(2);
         BetResult betResult = mock(BetResult.class);
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
         when(gameRule.determineWinner(anyInt(), any(Set.class))).thenReturn(betResult);
 
         game.determineWinner();
@@ -291,14 +268,12 @@ public class DefaultGameTest {
      */
     @Test
     public void determineWinner_shouldNotifyAllConnectedGameMachines() throws Exception {
-        BettingRound currentRound = mock(BettingRound.class);
         when(currentRound.numberOFBetsMade()).thenReturn(2);
         BetResult betResult = mock(BetResult.class);
         when(gameRule.determineWinner(anyInt(), any(Set.class))).thenReturn(betResult);
         GamingMachine machineA = mock(GamingMachine.class);
         GamingMachine machineB = mock(GamingMachine.class);
         GamingMachine machineC = mock(GamingMachine.class);
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
         game.connectGamingMachine(machineA);
         game.connectGamingMachine(machineB);
         game.connectGamingMachine(machineC);
@@ -317,10 +292,8 @@ public class DefaultGameTest {
      */
     @Test
     public void determineWinner_shouldOnlyLogToBetloggingAuthorityIfNoBetsHaveBeenMade() throws Exception {
-        BettingRound currentRound = mock(BettingRound.class);
         when(currentRound.numberOFBetsMade()).thenReturn(0);
         IGameRule gameRuleSpy = spy(IGameRule.class);
-        game = new DefaultGame(gameRuleSpy, currentRound, betLoggingAuthority, betTokenAuthority);
 
         game.determineWinner();
 
@@ -335,11 +308,9 @@ public class DefaultGameTest {
     @Test
     public void determineWinner_shouldGetRandomwinvalueFromBettokenAuthorityUsingTokenFromBettingRound() throws Exception {
         BetToken betToken = mock(BetToken.class);
-        BettingRound currentRound = mock(BettingRound.class);
         when(currentRound.numberOFBetsMade()).thenReturn(2);
         when(currentRound.getAllBetsMade()).thenReturn(mock(Set.class));
         when(currentRound.getBetToken()).thenReturn(betToken);
-        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
         when(betTokenAuthority.getRandomInteger(betToken)).thenReturn(42);
 
         game.determineWinner();

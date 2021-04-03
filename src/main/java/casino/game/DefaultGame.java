@@ -21,20 +21,15 @@ import java.util.List;
 import java.util.Set;
 
 public class DefaultGame extends AbstractGame {
-    final private IBetLoggingAuthority betLoggingAuthority;
-    final private IBetTokenAuthority betTokenAuthority;
+    private IBetLoggingAuthority betLoggingAuthority;
+    private IBetTokenAuthority betTokenAuthority;
 
     private BettingRound bettingRound;
-    final private IGameRule gameRule;
+    private IGameRule gameRule;
 
     private List<GamingMachine> gamingMachines;
 
-    public DefaultGame(IGameRule gameRule, BettingRound bettingRound, IBetLoggingAuthority betLoggingAuthority,
-                       IBetTokenAuthority betTokenAuthority) {
-        this.gameRule = gameRule;
-        this.bettingRound = bettingRound;
-        this.betLoggingAuthority = betLoggingAuthority;
-        this.betTokenAuthority = betTokenAuthority;
+    public DefaultGame() {
         this.gamingMachines = new ArrayList<>();
     }
 
@@ -45,6 +40,7 @@ public class DefaultGame extends AbstractGame {
     public List<GamingMachine> getGamingMachines() { return gamingMachines; }
 
     public void connectGamingMachine(GamingMachine gamingMachine) {
+        gamingMachine.setGame(this);
         gamingMachines.add(gamingMachine);
     }
 
