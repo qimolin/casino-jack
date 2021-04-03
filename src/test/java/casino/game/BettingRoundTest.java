@@ -44,4 +44,39 @@ public class BettingRoundTest {
         // Assert
         assertThat(sets).isNotNull();
     }
+
+    /**
+     * @verifies add bet to set
+     * @see BettingRound#placeBet(Bet)
+     */
+    @Test
+    public void placeBet_shouldAddBetToSet() throws Exception {
+        // Arrange
+        BettingRound sut = new BettingRound();
+        Bet bet = mock(Bet.class);
+        // Act
+        sut.placeBet(bet);
+        // Assert
+        assertThat(sut.getAllBetsMade()).isNotEmpty();
+    }
+
+    /**
+     * @verifies return true if successful otherwise false
+     * @see BettingRound#placeBet(Bet)
+     */
+    @Test
+    public void placeBet_shouldReturnTrueIfSuccessfulOtherwiseFalse() throws Exception {
+        //TODO auto-generated
+        Assertions.fail("Not yet implemented");
+    }
+
+    /**
+     * @verifies throw IllegalArgumentException if bet is null
+     * @see BettingRound#placeBet(Bet)
+     */
+    @Test
+    public void placeBet_shouldThrowIllegalArgumentExceptionIfBetIsNull() throws Exception {
+        //TODO auto-generated
+        Assertions.fail("Not yet implemented");
+    }
 }
