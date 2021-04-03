@@ -21,20 +21,21 @@ import static org.mockito.Mockito.*;
 
 public class BettingRoundTest {
 
+
     /**
-     * @verifies create and return new BettingRoundID
-     * @see BettingRound#getBettingRoundID()
+     * @verifies create new Set of Bets and bettingRoundID and BetToken
+     * @see BettingRound#BettingRound()
      */
     @Test
-    public void getBettingRoundID_shouldCreateAndReturnNewBettingRoundID() {
+    public void BettingRound_shouldCreateNewSetOfBetsAndBettingRoundIDAndBetToken() throws Exception {
         // Arrange
         BettingRound sut = new BettingRound();
         // Act
-        BettingRoundID id = sut.getBettingRoundID();
         // Assert
-        assertThat(id).isNotNull();
+        assertThat(sut.getAllBetsMade()).isNotNull();
+        assertThat(sut.getBettingRoundID()).isNotNull();
+        assertThat(sut.getBetToken()).isNotNull();
     }
-
 
     /**
      * @verifies create new Set of Bets
@@ -97,4 +98,6 @@ public class BettingRoundTest {
                     sut.placeBet(bet);
                 });
     }
+
+
 }
