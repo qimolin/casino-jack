@@ -2,7 +2,6 @@ package casino.cashier;
 
 
 import casino.bet.Bet;
-import casino.bet.BetID;
 import casino.bet.MoneyAmount;
 import gamblingauthoritiy.IBetLoggingAuthority;
 
@@ -63,14 +62,14 @@ public class Cashier implements ICashier {
      * @param card
      * @param betToCheck
      * @return
-     * @throws BetNotExceptedException if bet amount is invalid
+     * @throws BetNotAcceptedException if bet amount is invalid
      */
     @Override
-    public boolean checkIfBetIsValid(IGamblerCard card, Bet betToCheck) throws BetNotExceptedException {
+    public boolean checkIfBetIsValid(IGamblerCard card, Bet betToCheck) throws BetNotAcceptedException {
         long cardAmount = card.getMoneyAmountInCents();
         long betAmount = betToCheck.getMoneyAmount().getAmountInCents();
         if (cardAmount < betAmount) {
-            throw new BetNotExceptedException("Bet amount is bigger than amount on card");
+            throw new BetNotAcceptedException("Bet amount is bigger than amount on card");
         } else {
             card.setMoneyAmountInCents(-betAmount);
             return true;

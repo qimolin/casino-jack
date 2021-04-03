@@ -33,9 +33,9 @@ public interface ICashier {
      * @param card
      * @param betToCheck
      * @return
-     * @throws BetNotExceptedException if bet amount is invalid
+     * @throws BetNotAcceptedException if bet amount is invalid
      */
-    boolean checkIfBetIsValid(IGamblerCard card, Bet betToCheck) throws BetNotExceptedException;
+    boolean checkIfBetIsValid(IGamblerCard card, Bet betToCheck) throws BetNotAcceptedException;
 
     /**
      * add amount to the players card.
