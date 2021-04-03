@@ -51,7 +51,7 @@ public class GamblerCard implements IGamblerCard {
     @Override
     public BetID generateNewBetID() {
         BetID betID = (BetID) IDFactory.generateID("BET");
-        betIDs.add((BetID) betID);
+        betIDs.add(betID);
 
         return betID;
     }
@@ -77,7 +77,12 @@ public class GamblerCard implements IGamblerCard {
      */
     @Override
     public Set<BetID> returnBetIDs() {
-        return null;
+        Set<BetID> clonedBetIDs = new HashSet<>();
+        for (BetID betID : betIDs) {
+            clonedBetIDs.add(betID);
+        }
+
+        return clonedBetIDs;
     }
 
     /**

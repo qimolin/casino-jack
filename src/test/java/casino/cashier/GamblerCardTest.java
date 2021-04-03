@@ -78,7 +78,7 @@ public class GamblerCardTest {
         betIDs.add(betB);
 
         assertThat(card.returnBetIDs()).satisfiesAnyOf(
-                b -> assertThat(betA).isNotEqualTo(b),
-                b -> assertThat(betB).isNotEqualTo(b));
+                b -> assertThat(betA).isNotSameAs(b),
+                b -> assertThat(betB).isNotSameAs(b));
     }
 }
