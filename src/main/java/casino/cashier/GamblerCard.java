@@ -1,21 +1,26 @@
 package casino.cashier;
 
 
+import casino.bet.Bet;
 import casino.bet.BetID;
+import casino.idfactory.GeneralID;
 import casino.idfactory.IDFactory;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class GamblerCard implements IGamblerCard {
 
-    private CardID cardID = null;
+    private final CardID cardID;
+    private Set<BetID> betIDs = null;
     private long moneyAmountInCents;
 
     /**
      * @should generate a cardID upon creation
      */
     public GamblerCard() {
-        cardID = (CardID) IDFactory.generateID("CARDID");
+        cardID = (CardID) IDFactory.generateID("CARD");
+        betIDs = new HashSet<>();
     }
 
     @Override
@@ -24,7 +29,7 @@ public class GamblerCard implements IGamblerCard {
     }
 
     public Set<BetID> getBetIDs() {
-        return null;
+        return betIDs;
     }
 
     public long getMoneyAmountInCents() {
@@ -45,7 +50,10 @@ public class GamblerCard implements IGamblerCard {
      */
     @Override
     public BetID generateNewBetID() {
-        return null;
+        BetID betID = (BetID) IDFactory.generateID("BET");
+        betIDs.add((BetID) betID);
+
+        return betID;
     }
 
     /**
