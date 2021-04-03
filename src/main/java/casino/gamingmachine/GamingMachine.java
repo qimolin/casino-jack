@@ -5,10 +5,7 @@ import casino.bet.Bet;
 import casino.bet.BetID;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
-import casino.cashier.BetNotExceptedException;
-import casino.cashier.Cashier;
-import casino.cashier.GamblerCard;
-import casino.cashier.IGamblerCard;
+import casino.cashier.*;
 import casino.idfactory.GeneralID;
 import casino.idfactory.IDFactory;
 
@@ -42,13 +39,15 @@ public class GamingMachine implements IGamingMachine {
             try {
                 bet = new Bet(new BetID(), new MoneyAmount(amountInCents));
                 boolean isValid = cashier.checkIfBetIsValid(gamblerCard, bet);
+                System.out.println("isvalid: " + isValid);
                 if (isValid) {
+
                     return isValid;
                 }else {
                     bet = null;
                 }
             } catch (BetNotExceptedException ex) {
-
+                return false;
             }
         }
         return false;
@@ -97,4 +96,5 @@ public class GamingMachine implements IGamingMachine {
     public void disconnectCard() throws CurrentBetMadeException {
 
     }
+
 }
