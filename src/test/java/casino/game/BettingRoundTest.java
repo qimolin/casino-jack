@@ -1,6 +1,7 @@
 package casino.game;
 
 import casino.bet.Bet;
+import casino.bet.MoneyAmount;
 import casino.cashier.Cashier;
 import casino.idfactory.GeneralID;
 import casino.idfactory.IDFactory;
@@ -13,8 +14,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class BettingRoundTest {
 
@@ -70,8 +70,10 @@ public class BettingRoundTest {
         // Arrange
         BettingRound sut = new BettingRound();
         Bet bet = mock(Bet.class);
+        MoneyAmount moneyAmount = mock(MoneyAmount.class);
         // Act
-        when(bet.getMoneyAmount().getAmountInCents()).thenReturn(-2L);
+        when(moneyAmount.getAmountInCents()).thenReturn(-2L);
+        when(bet.getMoneyAmount()).thenReturn(moneyAmount);
         // Assert
         assertThat(sut.placeBet(bet)).isFalse();
     }
