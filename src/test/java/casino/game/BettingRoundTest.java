@@ -13,5 +13,17 @@ import static org.mockito.Mockito.mock;
 
 public class BettingRoundTest {
 
-    
+    /**
+     * @verifies create and return new BettingRoundID
+     * @see BettingRound#getBettingRoundID()
+     */
+    @Test
+    public void getBettingRoundID_shouldCreateAndReturnNewBettingRoundID() throws Exception {
+        // Arrange
+        BettingRound sut = new BettingRound();
+        // Act
+        BettingRoundID id = sut.getBettingRoundID();
+        // Assert
+        assertThat(id).isNotNull();
+    }
 }
