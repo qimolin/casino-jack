@@ -100,4 +100,22 @@ public class BettingRoundTest {
     }
 
 
+    /**
+     * @verifies return size of bets set
+     * @see BettingRound#numberOFBetsMade()
+     */
+    @Test
+    public void numberOFBetsMade_shouldReturnSizeOfBetsSet() throws Exception {
+        // Arrange
+        BettingRound sut = new BettingRound();
+        Bet bet = mock(Bet.class);
+        MoneyAmount moneyAmount = mock(MoneyAmount.class);
+        // Act
+        when(moneyAmount.getAmountInCents()).thenReturn(2L);
+        when(bet.getMoneyAmount()).thenReturn(moneyAmount);
+
+        sut.placeBet(bet);
+        // Assert
+        assertThat(sut.numberOFBetsMade()).isEqualTo(1);
+    }
 }
