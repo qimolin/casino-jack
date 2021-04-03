@@ -6,6 +6,8 @@ import casino.bet.BetID;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
 import casino.cashier.*;
+import casino.game.IGame;
+import casino.game.NoCurrentRoundException;
 import casino.idfactory.GeneralID;
 import casino.idfactory.IDFactory;
 
@@ -15,6 +17,7 @@ public class GamingMachine implements IGamingMachine {
     private Cashier cashier;
     private GeneralID generalID;
     private Bet bet;
+    private IGame game;
 
     /**
     * @should generateId
@@ -44,14 +47,13 @@ public class GamingMachine implements IGamingMachine {
             try {
                 bet = new Bet(new BetID(), new MoneyAmount(amountInCents));
                 boolean isValid = cashier.checkIfBetIsValid(gamblerCard, bet);
-                System.out.println("isvalid: " + isValid);
                 if (isValid) {
-
-                    return isValid;
+                    game.acceptBet(bet, this);
+                    return true;
                 }else {
                     bet = null;
                 }
-            } catch (BetNotAcceptedException ex) {
+            } catch (BetNotAcceptedException | NoCurrentRoundException ex) {
                 return false;
             }
         }
@@ -113,6 +115,15 @@ public class GamingMachine implements IGamingMachine {
     @Override
     public void disconnectCard() throws CurrentBetMadeException {
 
+    }
+
+    // THE PLAYER SELECTS A GAME ON THE MACHINE
+    public void setGame(IGame game){
+        this.game = game;
+    }
+
+    public Cashier getCashier() {
+        return cashier;
     }
 
     // to avoid installing PowerMockito that will allow me to mock the construction

@@ -86,6 +86,7 @@ public class Cashier implements ICashier {
      */
     @Override
     public void addAmount(IGamblerCard card, MoneyAmount amount) throws InvalidAmountException {
+
         if (amount == null || amount.getAmountInCents() <= 0) throw new InvalidAmountException("Value has to be greater than 0");
         card.setMoneyAmountInCents(amount.getAmountInCents());
     }

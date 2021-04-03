@@ -5,6 +5,7 @@ import casino.bet.BetID;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
 import casino.cashier.*;
+import casino.game.IGame;
 import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.IBetLoggingAuthority;
 import org.junit.jupiter.api.Assertions;
@@ -81,9 +82,17 @@ class GamingMachineTest {
      * @see GamingMachine#disconnectCard()
      */
     @Test
-    public void disconnectCard_shouldThrowACurrentBetMadeException() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
+    public void disconnectCard_shouldThrowACurrentBetMadeException() throws CurrentBetMadeException {
+        GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
+        GamblerCard gamblerCard = mock(GamblerCard.class);
+        IGame game = mock(IGame.class);
+        sut.connectCard(gamblerCard);
+
+        when(game.isBettingRoundFinished()).thenReturn(false);
+        sut.setGame(game);
+
+        CurrentBetMadeException exception = assertThrows(CurrentBetMadeException.class, sut::disconnectCard);
+        assertEquals("Wait for the round to finish and the winner to be announced", exception.getMessage());
     }
 
     /**
@@ -106,7 +115,7 @@ class GamingMachineTest {
         long BET_AMOUNT = 3L;
         long CARD_BALANCE = 5L;
 
-        Cashier cashier = mock(Cashier.class);
+        Cashier cashier = spy(new Cashier(iBetLoggingAuthority));
         GamingMachine sut = new GamingMachine(cashier);
         BetResult betResult = mock(BetResult.class);
         BetID betID = new BetID();
