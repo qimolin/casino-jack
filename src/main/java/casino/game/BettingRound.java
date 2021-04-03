@@ -47,6 +47,7 @@ public class BettingRound implements IBettingRound {
      */
     @Override
     public boolean placeBet(Bet bet) throws IllegalArgumentException {
+        if (bet == null) throw new IllegalArgumentException("Bet is null");
         long amount = bet.getMoneyAmount().getAmountInCents();
         if (amount < 0) {
             return false;
