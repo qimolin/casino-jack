@@ -16,9 +16,6 @@ import java.util.Set;
  */
 public class BettingRound implements IBettingRound {
 
-    /**
-     * @should create a BettingRound and set bettingRoundID and betToken
-     */
     public BettingRound() {
 
     }
@@ -28,7 +25,7 @@ public class BettingRound implements IBettingRound {
      */
     @Override
     public BettingRoundID getBettingRoundID() {
-        return null;
+        return (BettingRoundID) IDFactory.generateID("BETTINGROUNDID");
     }
 
     /**
