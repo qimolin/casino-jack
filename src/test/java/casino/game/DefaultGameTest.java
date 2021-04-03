@@ -207,14 +207,13 @@ public class DefaultGameTest {
      * @see DefaultGame#acceptBet(Bet, casino.gamingmachine.IGamingMachine)
      */
     @Test
-    @Disabled
     public void acceptBet_shouldStoreAcceptedBet() throws Exception {
         GamingMachine gamingMachine = mock(GamingMachine.class);
         Bet bet = mock(Bet.class);
 
         game.acceptBet(bet, gamingMachine);
 
-        assertThat(currentRound.getAllBetsMade()).contains(bet);
+        verify(currentRound).placeBet(bet);
     }
 
     /**

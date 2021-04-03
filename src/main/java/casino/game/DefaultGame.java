@@ -86,6 +86,7 @@ public class DefaultGame extends AbstractGame {
 
         betLoggingAuthority.logAddAcceptedBet(
                 bet, bettingRound.getBettingRoundID(), gamingMachine.getGamingMachineID());
+        bettingRound.placeBet(bet);
 
         if (isBettingRoundFinished()) {
             determineWinner();
