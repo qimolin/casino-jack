@@ -69,7 +69,7 @@ public class DefaultGame extends AbstractGame {
         BetToken betToken = betTokenAuthority.getBetToken((BettingRoundID) bettingRoundID);
 
         //bettingRound = new BettingRound(bettingRoundID, betToken);
-        bettingRound = new BettingRound(betLoggingAuthority);
+        bettingRound = new BettingRound();
 
         betLoggingAuthority.logStartBettingRound(bettingRound);
     }

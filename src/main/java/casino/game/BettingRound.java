@@ -40,7 +40,6 @@ public class BettingRound implements IBettingRound {
      * Note: also use the appropiate required methods from the gambling authority API
      * @should add bet to set
      * @should return false if amount is negative
-     * @should log bet to BetLoggingAuthority if successful
      * @should throw IllegalArgumentException if bet is null
      * @param bet
      * @return true if bet is made, otherwise folse

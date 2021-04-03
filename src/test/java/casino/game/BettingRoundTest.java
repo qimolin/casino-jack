@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.Mockito.*;
 
 public class BettingRoundTest {
@@ -25,7 +26,7 @@ public class BettingRoundTest {
      * @see BettingRound#getBettingRoundID()
      */
     @Test
-    public void getBettingRoundID_shouldCreateAndReturnNewBettingRoundID() throws Exception {
+    public void getBettingRoundID_shouldCreateAndReturnNewBettingRoundID() {
         // Arrange
         BettingRound sut = new BettingRound();
         // Act
@@ -40,7 +41,7 @@ public class BettingRoundTest {
      * @see BettingRound#BettingRound()
      */
     @Test
-    public void BettingRound_shouldCreateNewSetOfBets() throws Exception {
+    public void BettingRound_shouldCreateNewSetOfBets() {
         // Arrange
         BettingRound sut = new BettingRound();
         // Act
@@ -53,7 +54,7 @@ public class BettingRoundTest {
      * @see BettingRound#placeBet(Bet)
      */
     @Test
-    public void placeBet_shouldAddBetToSet() throws Exception {
+    public void placeBet_shouldAddBetToSet() {
         // Arrange
         BettingRound sut = new BettingRound();
         Bet bet = mock(Bet.class);
@@ -68,7 +69,7 @@ public class BettingRoundTest {
      * @see BettingRound#placeBet(Bet)
      */
     @Test
-    public void placeBet_shouldReturnFalseIfAmountIsNegative() throws Exception {
+    public void placeBet_shouldReturnFalseIfAmountIsNegative() {
         // Arrange
         BettingRound sut = new BettingRound();
         Bet bet = mock(Bet.class);
@@ -85,8 +86,15 @@ public class BettingRoundTest {
      * @see BettingRound#placeBet(Bet)
      */
     @Test
-    public void placeBet_shouldThrowIllegalArgumentExceptionIfBetIsNull() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
+    public void placeBet_shouldThrowIllegalArgumentExceptionIfBetIsNull() {
+        // Arrange
+        BettingRound sut = new BettingRound();
+        Bet bet = null;
+        // Act
+        // Assert
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    sut.placeBet(bet);
+                });
     }
 }
