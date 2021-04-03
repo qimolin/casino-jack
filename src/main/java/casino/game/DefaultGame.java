@@ -8,8 +8,12 @@ import casino.bet.MoneyAmount;
 import casino.gamingmachine.GamingMachine;
 import casino.gamingmachine.IGamingMachine;
 import casino.gamingmachine.NoPlayerCardException;
+import casino.idfactory.GeneralID;
+import casino.idfactory.IDFactory;
 import gamblingauthoritiy.BetLoggingAuthority;
+import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.IBetLoggingAuthority;
+import gamblingauthoritiy.IBetTokenAuthority;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,15 +21,20 @@ import java.util.List;
 import java.util.Set;
 
 public class DefaultGame extends AbstractGame {
+    final private IBetLoggingAuthority betLoggingAuthority;
+    final private IBetTokenAuthority betTokenAuthority;
+
     private BettingRound bettingRound;
-    private IGameRule gameRule;
-    private IBetLoggingAuthority betLoggingAuthority;
+    final private IGameRule gameRule;
+
     private List<GamingMachine> gamingMachines;
 
-    public DefaultGame(IGameRule gameRule, BettingRound bettingRound, IBetLoggingAuthority betLoggingAuthority) {
+    public DefaultGame(IGameRule gameRule, BettingRound bettingRound, IBetLoggingAuthority betLoggingAuthority,
+                       IBetTokenAuthority betTokenAuthority) {
         this.gameRule = gameRule;
         this.bettingRound = bettingRound;
         this.betLoggingAuthority = betLoggingAuthority;
+        this.betTokenAuthority = betTokenAuthority;
         this.gamingMachines = new ArrayList<>();
     }
 
@@ -46,13 +55,20 @@ public class DefaultGame extends AbstractGame {
      * <p>
      * Note: also use the appropiate required methods from the gambling authority API
      *
-     * @should
+     * @should end active betting round
+     * @should create a new betting round using the API
      * @should log to BettingAuthority
      */
     @Override
     public void startBettingRound() {
-        determineWinner();
+        if (bettingRound != null) {
+            determineWinner();
+        }
 
+        GeneralID bettingRoundID = IDFactory.generateID("BETTINGROUND");
+        BetToken betToken = betTokenAuthority.getBetToken((BettingRoundID) bettingRoundID);
+
+        //bettingRound = new BettingRound(bettingRoundID, betToken);
         bettingRound = new BettingRound();
 
         betLoggingAuthority.logStartBettingRound(bettingRound);
@@ -73,24 +89,21 @@ public class DefaultGame extends AbstractGame {
      * @should check that the current betting round is finished
      * @should determine the winner if the current betting round is finished
      * @should continue if the current betting round is not finished
-     * @should return false if the bet is invalid
-     * @should return true if the bet is valid
+     * @should log accepted bet to betlogging authority
      * @should store accepted bet
-     * @should not store accepted bet
-     * @should call the required methods in the correct order
+     * @should start a new round if the round is finished
      * @should throw NoCurrentRoundException when no betting round is active
      */
     @Override
-    public boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException, NoPlayerCardException {
+    public boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException {
         if (bettingRound == null) throw new NoCurrentRoundException();
 
-        MoneyAmount betAmount = bet.getMoneyAmount();
-        if (!gamingMachine.placeBet(betAmount.getAmountInCents())) {
-            return false;
-        }
+        betLoggingAuthority.logAddAcceptedBet(
+                bet, bettingRound.getBettingRoundID(), gamingMachine.getGamingMachineID());
 
         if (isBettingRoundFinished()) {
             determineWinner();
+            startBettingRound();
         }
 
         return true;
@@ -108,19 +121,21 @@ public class DefaultGame extends AbstractGame {
      * @should log to betting authority
      * @should notify all connected game machines
      * @should only log to betlogging authority if no bets have been made
+     * @should get randomwinvalue from bettoken authority using token from betting round
      */
     @Override
     public void determineWinner() {
         BetResult winResult = null;
         if (bettingRound.numberOFBetsMade() > 0) {
             try {
-                winResult = gameRule.determineWinner(2, new HashSet<>());
+                int randomInt = betTokenAuthority.getRandomInteger(bettingRound.getBetToken());
+                winResult = gameRule.determineWinner(randomInt, bettingRound.getAllBetsMade());
                 BetResult finalWinResult = winResult;
                 gamingMachines.forEach(gamingMachine -> {
                     gamingMachine.acceptWinner(finalWinResult);
                 });
             } catch (NoBetsMadeException e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
 
