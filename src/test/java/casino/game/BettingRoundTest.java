@@ -7,8 +7,10 @@ import casino.idfactory.GeneralID;
 import casino.idfactory.IDFactory;
 import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.BetTokenAuthority;
+import gamblingauthoritiy.IBetLoggingAuthority;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +20,9 @@ import static org.mockito.Mockito.*;
 
 public class BettingRoundTest {
 
+    @Mock
+    private final IBetLoggingAuthority iBetLoggingAuthority = mock(IBetLoggingAuthority.class);
+
     /**
      * @verifies create and return new BettingRoundID
      * @see BettingRound#getBettingRoundID()
@@ -25,7 +30,7 @@ public class BettingRoundTest {
     @Test
     public void getBettingRoundID_shouldCreateAndReturnNewBettingRoundID() throws Exception {
         // Arrange
-        BettingRound sut = new BettingRound();
+        BettingRound sut = new BettingRound(iBetLoggingAuthority);
         // Act
         BettingRoundID id = sut.getBettingRoundID();
         // Assert
@@ -33,17 +38,26 @@ public class BettingRoundTest {
     }
 
     /**
+     * @verifies set BetLoggingAuthority
+     * @see BettingRound#BettingRound(gamblingauthoritiy.IBetLoggingAuthority)
+     */
+    @Test
+    public void BettingRound_shouldSetBetLoggingAuthority() throws Exception {
+        //TODO auto-generated
+        Assertions.fail("Not yet implemented");
+    }
+
+    /**
      * @verifies create new Set of Bets
-     * @see BettingRound#BettingRound()
+     * @see BettingRound#BettingRound(gamblingauthoritiy.IBetLoggingAuthority)
      */
     @Test
     public void BettingRound_shouldCreateNewSetOfBets() throws Exception {
         // Arrange
-        BettingRound sut = new BettingRound();
+        BettingRound sut = new BettingRound(iBetLoggingAuthority);
         // Act
-        Set<Bet> sets = sut.getAllBetsMade();
         // Assert
-        assertThat(sets).isNotNull();
+        assertThat(sut.getBetLoggingAuthority()).isEqualTo(iBetLoggingAuthority);
     }
 
     /**
@@ -53,7 +67,7 @@ public class BettingRoundTest {
     @Test
     public void placeBet_shouldAddBetToSet() throws Exception {
         // Arrange
-        BettingRound sut = new BettingRound();
+        BettingRound sut = new BettingRound(iBetLoggingAuthority);
         Bet bet = mock(Bet.class);
         // Act
         sut.placeBet(bet);
@@ -68,7 +82,7 @@ public class BettingRoundTest {
     @Test
     public void placeBet_shouldReturnFalseIfAmountIsNegative() throws Exception {
         // Arrange
-        BettingRound sut = new BettingRound();
+        BettingRound sut = new BettingRound(iBetLoggingAuthority);
         Bet bet = mock(Bet.class);
         MoneyAmount moneyAmount = mock(MoneyAmount.class);
         // Act
@@ -84,8 +98,12 @@ public class BettingRoundTest {
      */
     @Test
     public void placeBet_shouldLogBetToBetLoggingAuthorityIfSuccessful() throws Exception {
-        //TODO auto-generated
-        Assertions.fail("Not yet implemented");
+        // Arrange
+        BettingRound sut = new BettingRound(iBetLoggingAuthority);
+        Bet bet = mock(Bet.class);
+        // Act
+        sut.placeBet(bet);
+        // Assert
     }
 
     /**
