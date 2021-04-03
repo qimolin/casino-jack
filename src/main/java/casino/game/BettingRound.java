@@ -1,10 +1,14 @@
 package casino.game;
 
+import casino.idfactory.GeneralID;
+import casino.idfactory.IDFactory;
 import gamblingauthoritiy.BetToken;
+import gamblingauthoritiy.BetTokenAuthority;
 import gamblingauthoritiy.IBetLoggingAuthority;
 import casino.bet.Bet;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -12,11 +16,14 @@ import java.util.Set;
  */
 public class BettingRound implements IBettingRound {
 
+    private final GeneralID bettingRoundID;
+    private final BetToken betToken;
     /**
      * @should create a BettingRound and set bettingRoundID and betToken
      */
-    public BettingRound() {
-
+    public BettingRound(BettingRoundID id, BetToken token) {
+        this.bettingRoundID = id;
+        this.betToken = token;
     }
     /**
      * @should create and return new BettingRoundID
@@ -64,5 +71,18 @@ public class BettingRound implements IBettingRound {
     @Override
     public int numberOFBetsMade() {
         return 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BettingRound)) return false;
+        BettingRound that = (BettingRound) o;
+        return bettingRoundID.equals(that.bettingRoundID) && betToken.equals(that.betToken);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bettingRoundID, betToken);
     }
 }
