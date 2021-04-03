@@ -15,7 +15,7 @@ public class GamblerCard implements IGamblerCard {
      * @should generate a cardID upon creation
      */
     public GamblerCard() {
-        
+        cardID = (CardID) IDFactory.generateID("CARDID");
     }
 
     @Override
