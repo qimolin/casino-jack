@@ -16,14 +16,11 @@ import java.util.Set;
  */
 public class BettingRound implements IBettingRound {
 
-    private final GeneralID bettingRoundID;
-    private final BetToken betToken;
     /**
      * @should create a BettingRound and set bettingRoundID and betToken
      */
-    public BettingRound(BettingRoundID id, BetToken token) {
-        this.bettingRoundID = id;
-        this.betToken = token;
+    public BettingRound() {
+
     }
     /**
      * @should create and return new BettingRoundID
@@ -71,18 +68,5 @@ public class BettingRound implements IBettingRound {
     @Override
     public int numberOFBetsMade() {
         return 0;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof BettingRound)) return false;
-        BettingRound that = (BettingRound) o;
-        return bettingRoundID.equals(that.bettingRoundID) && betToken.equals(that.betToken);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(bettingRoundID, betToken);
     }
 }
