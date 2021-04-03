@@ -53,7 +53,7 @@ public class DefaultGame extends AbstractGame {
      * Note: also use the appropiate required methods from the gambling authority API
      *
      * @should end active betting round
-     * @should create a new betting round
+     * @should create a new betting round using the API
      * @should log to BettingAuthority
      */
     @Override
@@ -63,7 +63,7 @@ public class DefaultGame extends AbstractGame {
         }
 
         bettingRound = new BettingRound();
-        
+
         betLoggingAuthority.logStartBettingRound(bettingRound);
     }
 

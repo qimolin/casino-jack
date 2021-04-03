@@ -3,13 +3,18 @@ package casino.game;
 import casino.bet.Bet;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
+import casino.cashier.CardID;
 import casino.gamingmachine.GamingMachine;
 import casino.gamingmachine.GamingMachineID;
+import casino.idfactory.GeneralID;
+import casino.idfactory.IDFactory;
 import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.BetTokenAuthority;
+import gamblingauthoritiy.BettingAuthority;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Assertions;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -29,6 +34,9 @@ public class DefaultGameTest {
     private BetTokenAuthority betTokenAuthority;
     @Mock
     private IGameRule gameRule;
+
+    @InjectMocks
+    private IDFactory idFactory;
 
     private AutoCloseable closeable;
     private DefaultGame game;
@@ -72,6 +80,26 @@ public class DefaultGameTest {
 
         assertThat(game.getBettingRound()).isNotEqualTo(currentRound);
         verify(betLoggingAuthority).logEndBettingRound(currentRound, null);
+    }
+
+    /**
+     * @verifies create a new betting round using the API
+     * @see DefaultGame#startBettingRound()
+     */
+    @Test
+    @Disabled
+    public void startBettingRound_shouldCreateANewBettingRoundUsingTheAPI() throws Exception {
+        GeneralID bettingRoundID = mock(GeneralID.class);
+        BettingRound currentRound = mock(BettingRound.class);
+        //when(currentRound.getBettingRoundID()).thenReturn(((BettingRoundID) bettingRoundID));
+        game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
+
+        when(IDFactory.generateID(anyString())).thenReturn(bettingRoundID);
+
+        game.startBettingRound();
+
+        assertThat(game.getBettingRound().getBettingRoundID()).isNotEqualTo(currentRound.getBettingRoundID());
+        //verify(betTokenAuthority).getBetToken(((BettingRoundID) bettingRoundID));
     }
 
     /**
