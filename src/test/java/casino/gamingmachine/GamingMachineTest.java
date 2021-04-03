@@ -71,9 +71,10 @@ class GamingMachineTest {
         long moneyToBet = 2L;
         GamingMachine sut = new GamingMachine(new Cashier(iBetLoggingAuthority));
         GamblerCard gamblerCard = mock(GamblerCard.class);
+
         when(gamblerCard.getMoneyAmountInCents()).thenReturn(moneyInCard);
         sut.connectCard(gamblerCard);
-
+        sut.setGame(mock(IGame.class));
         assertTrue(sut.placeBet(moneyToBet));
     }
 
@@ -105,7 +106,6 @@ class GamingMachineTest {
 
         assertThat(sut.getGamingMachineID()).isInstanceOf(GamingMachineID.class);
     }
-
     /**
      * @verifies accept winner and update card amount
      * @see GamingMachine#acceptWinner(BetResult)
@@ -116,7 +116,9 @@ class GamingMachineTest {
         long CARD_BALANCE = 5L;
 
         Cashier cashier = spy(new Cashier(iBetLoggingAuthority));
+
         GamingMachine sut = new GamingMachine(cashier);
+
         BetResult betResult = mock(BetResult.class);
         BetID betID = new BetID();
         MoneyAmount moneyAmount = mock(MoneyAmount.class);
