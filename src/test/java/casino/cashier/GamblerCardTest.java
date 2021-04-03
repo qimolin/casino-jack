@@ -97,4 +97,18 @@ public class GamblerCardTest {
                 b -> assertThat(betA).isNotSameAs(b),
                 b -> assertThat(betB).isNotSameAs(b));
     }
+
+    /**
+     * @verifies clear all stored betIDs
+     * @see GamblerCard#returnBetIDsAndClearCard()
+     */
+    @Test
+    public void returnBetIDsAndClearCard_shouldClearAllStoredBetIDs() throws Exception {
+        card = spy(new GamblerCard());
+
+        card.returnBetIDsAndClearCard();
+
+        verify(card).returnBetIDs();
+        assertThat(card.getBetIDs()).isNull();
+    }
 }
