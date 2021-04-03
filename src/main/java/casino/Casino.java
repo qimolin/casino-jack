@@ -1,5 +1,6 @@
 package casino;
 
+import gamblingauthoritiy.BetTokenAuthority;
 import gamblingauthoritiy.BettingAuthority;
 import casino.cashier.*;
 import casino.bet.Bet;
@@ -24,13 +25,15 @@ import java.util.Map;
  */
 public final class Casino  {
     private final BettingAuthority bettingAuthority;    // object which is forced to be used by the gambling authority.
+    private final BetTokenAuthority betTokenAuthority;
     private final ICashier teller;                      // cashier of the casino
     private Map<String, IGame> games;                   // map of games in this casino.
 
 
     public Casino() {
         this.bettingAuthority = new BettingAuthority();
-        this.teller = new Cashier(this.bettingAuthority.getLoggingAuthority());
+        this.betTokenAuthority = new BetTokenAuthority();
+        this.teller = new Cashier(this.bettingAuthority);
         this.games = new HashMap<>();
     }
 

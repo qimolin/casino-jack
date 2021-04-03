@@ -9,7 +9,6 @@ abstract class AbstractGame implements IGame{
     private IGameRule gameRule;
 
     /**
-     * @should set cashier and gameRule
      * @param cashier
      * @param gameRule
      */
