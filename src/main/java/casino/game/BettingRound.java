@@ -71,7 +71,7 @@ public class BettingRound implements IBettingRound {
      */
     @Override
     public BetToken getBetToken() {
-        return null;
+        return token;
     }
 
     /**
