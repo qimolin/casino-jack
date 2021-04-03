@@ -17,11 +17,14 @@ import java.util.Set;
 public class BettingRound implements IBettingRound {
 
     private final Set<Bet> bets;
+    private final IBetLoggingAuthority betLoggingAuthority;
     /**
      * @should create new Set of Bets
+     * @should set BetLoggingAuthority
      */
-    public BettingRound() {
+    public BettingRound(IBetLoggingAuthority betLoggingAuthority) {
         bets = new HashSet<>();
+        this.betLoggingAuthority = betLoggingAuthority;
     }
     /**
      * @should create and return new BettingRoundID
@@ -77,5 +80,9 @@ public class BettingRound implements IBettingRound {
     @Override
     public int numberOFBetsMade() {
         return 0;
+    }
+
+    public IBetLoggingAuthority getBetLoggingAuthority() {
+        return betLoggingAuthority;
     }
 }
