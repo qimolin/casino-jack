@@ -6,7 +6,6 @@ import casino.bet.BetResult;
 import casino.cashier.Cashier;
 import casino.gamingmachine.GamingMachine;
 import casino.gamingmachine.IGamingMachine;
-import casino.idfactory.GeneralID;
 import casino.idfactory.IDFactory;
 import gamblingauthoritiy.*;
 
