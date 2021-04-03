@@ -23,12 +23,41 @@ public class GamblerCard implements IGamblerCard {
         return cardID;
     }
 
+    public Set<BetID> getBetIDs() {
+        return null;
+    }
+
     public long getMoneyAmountInCents() {
         return moneyAmountInCents;
     }
 
     public void setMoneyAmountInCents(long moneyAmountInCents) {
         this.moneyAmountInCents += moneyAmountInCents;
+    }
+
+    /**
+     * The card generates a unique betID for every bet made by the gambler on the machine.
+     * A list of all generated betID’s is also stored on the card. BetID’s also contain a timestamp.
+     *
+     * @return
+     *
+     * @should create and store a new betID
+     */
+    @Override
+    public BetID generateNewBetID() {
+        return null;
+    }
+
+    /**
+     * return number of betID's generated on this card.
+     *
+     * @return
+     *
+     * @should return the count of betIDs stored
+     */
+    @Override
+    public int getNumberOfBetIDs() {
+        return 0;
     }
 
     /**
@@ -55,31 +84,5 @@ public class GamblerCard implements IGamblerCard {
     @Override
     public Set<BetID> returnBetIDsAndClearCard() {
         return null;
-    }
-
-    /**
-     * The card generates a unique betID for every bet made by the gambler on the machine.
-     * A list of all generated betID’s is also stored on the card. BetID’s also contain a timestamp.
-     *
-     * @return
-     *
-     * @should create and store a new betID
-     */
-
-    @Override
-    public BetID generateNewBetID() {
-        return null;
-    }
-
-    /**
-     * return number of betID's generated on this card.
-     *
-     * @return
-     *
-     * @should return the count of betIDs stored
-     */
-    @Override
-    public int getNumberOfBetIDs() {
-        return 0;
     }
 }

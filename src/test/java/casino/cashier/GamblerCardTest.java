@@ -3,6 +3,7 @@ package casino.cashier;
 import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.BetTokenAuthority;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -42,6 +43,19 @@ public class GamblerCardTest {
 
         assertThat(card.getCardID()).isNotNull();
         assertThat(card.getCardID()).isInstanceOf(CardID.class);
+    }
+
+    /**
+     * @verifies create and store a new betID
+     * @see GamblerCard#generateNewBetID()
+     */
+    @Test
+    public void generateNewBetID_shouldCreateAndStoreANewBetID() throws Exception {
+        card = new GamblerCard();
+
+        card.generateNewBetID();
+
+        assertThat(card.getBetIDs().size()).isEqualTo(1);
     }
 
     /**
