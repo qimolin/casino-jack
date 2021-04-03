@@ -75,10 +75,11 @@ public class BettingRound implements IBettingRound {
     }
 
     /**
+     * @should return size of bets set
      * @return number of bets made in the betting round
      */
     @Override
     public int numberOFBetsMade() {
-        return 0;
+        return bets.size();
     }
 }
