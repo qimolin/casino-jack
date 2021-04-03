@@ -14,6 +14,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class BettingRoundTest {
 
@@ -61,11 +62,26 @@ public class BettingRoundTest {
     }
 
     /**
-     * @verifies return true if successful otherwise false
+     * @verifies return false if amount is negative
      * @see BettingRound#placeBet(Bet)
      */
     @Test
-    public void placeBet_shouldReturnTrueIfSuccessfulOtherwiseFalse() throws Exception {
+    public void placeBet_shouldReturnFalseIfAmountIsNegative() throws Exception {
+        // Arrange
+        BettingRound sut = new BettingRound();
+        Bet bet = mock(Bet.class);
+        // Act
+        when(bet.getMoneyAmount().getAmountInCents()).thenReturn(-2L);
+        // Assert
+        assertThat(sut.placeBet(bet)).isFalse();
+    }
+
+    /**
+     * @verifies log bet to BetLoggingAuthority if successful
+     * @see BettingRound#placeBet(Bet)
+     */
+    @Test
+    public void placeBet_shouldLogBetToBetLoggingAuthorityIfSuccessful() throws Exception {
         //TODO auto-generated
         Assertions.fail("Not yet implemented");
     }
