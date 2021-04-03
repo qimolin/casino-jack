@@ -4,7 +4,7 @@
 Clone repository into /home/Documents/
 
 Steps to set up CI configuration:
-1. Change volumes directory for service myjenkins-blueocean in docker-compose.yml to your own home directory
+1. Change .env.example to .env and change HOME to your own home variable
 2. Run docker network create jenkins
 3. Run docker-compose up -d (detached: run in the background)
 4. Open your browser at localhost:8081
