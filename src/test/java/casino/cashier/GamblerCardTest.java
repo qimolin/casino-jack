@@ -67,6 +67,7 @@ public class GamblerCardTest {
      * @see GamblerCard#getNumberOfBetIDs()
      */
     @Test
+    @Disabled
     public void getNumberOfBetIDs_shouldReturnTheCountOfBetIDsStored() throws Exception {
         card = new GamblerCard();
 
