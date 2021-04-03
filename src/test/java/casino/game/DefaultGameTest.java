@@ -295,9 +295,9 @@ public class DefaultGameTest {
         when(currentRound.numberOFBetsMade()).thenReturn(2);
         BetResult betResult = mock(BetResult.class);
         when(gameRule.determineWinner(anyInt(), any(Set.class))).thenReturn(betResult);
-        GamingMachine machineA = spy(new GamingMachine());
-        GamingMachine machineB = spy(new GamingMachine());
-        GamingMachine machineC = spy(new GamingMachine());
+        GamingMachine machineA = mock(GamingMachine.class);
+        GamingMachine machineB = mock(GamingMachine.class);
+        GamingMachine machineC = mock(GamingMachine.class);
         game = new DefaultGame(gameRule, currentRound, betLoggingAuthority, betTokenAuthority);
         game.connectGamingMachine(machineA);
         game.connectGamingMachine(machineB);
