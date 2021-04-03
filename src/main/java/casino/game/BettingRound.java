@@ -16,8 +16,12 @@ import java.util.Set;
  */
 public class BettingRound implements IBettingRound {
 
+    private final Set<Bet> bets;
+    /**
+     * @should create new Set of Bets
+     */
     public BettingRound() {
-
+        bets = new HashSet<>();
     }
     /**
      * @should create and return new BettingRoundID
@@ -33,7 +37,7 @@ public class BettingRound implements IBettingRound {
      * <p>
      * <p>
      * Note: also use the appropiate required methods from the gambling authority API
-     *
+     * @should
      * @param bet
      * @return true if bet is made, otherwise folse
      * @throws IllegalArgumentException when Bet is null
@@ -48,7 +52,7 @@ public class BettingRound implements IBettingRound {
      */
     @Override
     public Set<Bet> getAllBetsMade() {
-        return null;
+        return bets;
     }
 
     /**
