@@ -11,7 +11,6 @@ class CardIDTest {
     public void CardID_shouldGenerateAndReturnAnID(){
         CardID sut = new CardID();
         String id = sut.getID();
-        System.out.println(id);
         assertThat(id).isNotNull();
     }
 

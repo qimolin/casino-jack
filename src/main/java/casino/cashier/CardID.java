@@ -7,6 +7,10 @@ public class CardID extends GeneralID implements Comparable<GeneralID> {
 
     @Override
     public int compareTo(GeneralID o) {
-        return 0;
+        if (this.getID().equals(o.getID())){
+            return 1; //true
+        }else {
+            return 0;//false
+        }
     }
 }

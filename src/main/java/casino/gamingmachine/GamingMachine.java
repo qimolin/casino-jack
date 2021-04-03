@@ -6,16 +6,23 @@ import casino.bet.BetID;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
 import casino.cashier.*;
+import casino.game.IGame;
+import casino.game.NoCurrentRoundException;
 import casino.idfactory.GeneralID;
 import casino.idfactory.IDFactory;
 
 public class GamingMachine implements IGamingMachine {
 
-    private GamblerCard gamblerCard = null;
+    private GamblerCard gamblerCard;
     private Cashier cashier;
     private GeneralID generalID;
     private Bet bet;
+    private IGame game;
 
+    /**
+    * @should generateId
+     *
+    * */
     public GamingMachine(Cashier cashier) {
         this.cashier = cashier;
         this.generalID = IDFactory.generateID("GAMINGMACHINEID");
@@ -29,7 +36,9 @@ public class GamingMachine implements IGamingMachine {
      * @param amountInCents amount in cents to gamble
      * @return true if bet is valid, excepted and added to betting round.
      * @throws NoPlayerCardException when no card is connected to this machine.
-     * @should throw bet not accepted
+     * @should throw NoPlayerCardException
+     * @should place bet
+     * @should should return false Money in card less than bet
      */
     @Override
     public boolean placeBet(long amountInCents) throws NoPlayerCardException {
@@ -39,14 +48,13 @@ public class GamingMachine implements IGamingMachine {
             try {
                 bet = new Bet(new BetID(), new MoneyAmount(amountInCents));
                 boolean isValid = cashier.checkIfBetIsValid(gamblerCard, bet);
-                System.out.println("isvalid: " + isValid);
                 if (isValid) {
-
-                    return isValid;
+                    game.acceptBet(bet, this);
+                    return true;
                 }else {
                     bet = null;
                 }
-            } catch (BetNotAcceptedException ex) {
+            } catch (BetNotAcceptedException | NoCurrentRoundException ex) {
                 return false;
             }
         }
@@ -57,7 +65,7 @@ public class GamingMachine implements IGamingMachine {
      * Accept the BetResult from the winner. Clear all open bets on this machine.
      * When the winner has made his bet on this machine: let the Cashier update
      * the amount of the winner.
-     *
+     * @should accept winner and update card amount
      * @param winResult result of a betting round. can be null when there is no winner.
      */
 
@@ -71,8 +79,6 @@ public class GamingMachine implements IGamingMachine {
                 } catch (InvalidAmountException e) {
                     e.printStackTrace();
                 }
-
-
             }
         }
         bet = null;
@@ -107,11 +113,27 @@ public class GamingMachine implements IGamingMachine {
      */
     @Override
     public void disconnectCard() throws CurrentBetMadeException {
+        if (gamblerCard != null) {
+            if (game.isBettingRoundFinished() || bet != null) {
+                gamblerCard = null;
+            } else {
+                throw new CurrentBetMadeException("Wait for the round to finish and the winner to be announced");
+            }
+        }
+    }
 
+    // THE PLAYER SELECTS A GAME ON THE MACHINE
+    public void setGame(IGame game){
+        this.game = game;
+    }
+
+    public Cashier getCashier() {
+        return cashier;
     }
 
     // to avoid installing PowerMockito that will allow me to mock the construction
     // of new objects  i decided to add an objectSetter in the class
+    //
     // ONLY FOR TESTING
     public void setBet(Bet bet){
         this.bet = bet;
