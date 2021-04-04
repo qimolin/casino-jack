@@ -4,10 +4,11 @@
 Clone repository into /home/Documents/
 
 Steps to set up CI configuration:
-1. Change .env.example to .env and change HOME to your own home variable
-2. Run docker network create jenkins
-3. Run docker-compose up -d (detached: run in the background)
-4. Open your browser at localhost:8081
+1. Make a copy of .env.example and change it name to .env
+2. Change HOME value to your own home variable
+3. Run docker network create jenkins
+4. Run docker-compose up -d (detached: run in the background)
+5. Open your browser at localhost:8081
 
 Go to https://www.jenkins.io/doc/tutorials/build-a-java-app-with-maven/#setup-wizard for the next steps.
 
