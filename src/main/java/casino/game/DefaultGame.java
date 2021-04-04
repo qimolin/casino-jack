@@ -55,7 +55,7 @@ public class DefaultGame extends AbstractGame {
 
         // TODO: waiting for Qimo
         //bettingRound = new BettingRound(bettingRoundID, betToken);
-        bettingRound = new BettingRound();
+        bettingRound = new BettingRound(bettingRoundID, betToken);
 
         betLoggingAuthority.logStartBettingRound(bettingRound);
     }

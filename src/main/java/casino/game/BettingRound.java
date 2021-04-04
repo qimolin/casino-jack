@@ -22,10 +22,10 @@ public class BettingRound implements IBettingRound {
     /**
      * @should create new Set of Bets and bettingRoundID and BetToken
      */
-    public BettingRound() {
+    public BettingRound(GeneralID id, BetToken token) {
         bets = new HashSet<>();
-        bettingRoundID = IDFactory.generateID("BETTINGROUNDID");
-        token = new BetToken(getBettingRoundID());
+        bettingRoundID = id;
+        this.token = token;
     }
     /**
      * @return BettingRoundID

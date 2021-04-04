@@ -2,6 +2,7 @@ package casino.cashier;
 
 import casino.bet.Bet;
 import casino.bet.MoneyAmount;
+import gamblingauthoritiy.BetLoggingAuthority;
 import gamblingauthoritiy.BettingAuthority;
 
 import org.junit.jupiter.api.Assertions;
@@ -17,6 +18,8 @@ public class CashierTest {
 
     @Mock
     private final BettingAuthority bettingAuthority = mock(BettingAuthority.class);
+    @Mock
+    private final BetLoggingAuthority betLoggingAuthority = mock(BetLoggingAuthority.class);
 
     /**
      * @verifies setBettingAuthority
@@ -85,6 +88,7 @@ public class CashierTest {
         Cashier sut = new Cashier(bettingAuthority);
         IGamblerCard card = mock(GamblerCard.class);
         // Act
+        when(bettingAuthority.getLoggingAuthority()).thenReturn(betLoggingAuthority);
         sut.returnGamblerCard(card);
         // Assert
         verify(card).returnBetIDsAndClearCard();
@@ -101,6 +105,7 @@ public class CashierTest {
         Cashier sut = new Cashier(bettingAuthority);
         IGamblerCard card = mock(GamblerCard.class);
         // Act
+        when(bettingAuthority.getLoggingAuthority()).thenReturn(betLoggingAuthority);
         sut.returnGamblerCard(card);
         // Assert
         verify(sut.getBettingAuthority().getLoggingAuthority()).logHandInGamblingCard(card.getCardID(), card.returnBetIDsAndClearCard());
