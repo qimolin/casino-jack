@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1103px" preserveAspectRatio="none" style="width:2243px;height:1103px;" version="1.1" viewBox="0 0 2243 1103" width="2243px" zoomAndPan="magnify"><defs><filter height="300%" id="f10vjf6xx7p4tu" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[e7702038397ed60bcc1effc1886d5423]
+class Casino--><rect codeLine="5" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="111.1797" id="Casino" style="stroke:#AAAAAA;stroke-width:1.5;" width="247" x="1505" y="352"/><ellipse cx="1605.5" cy="365" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M1606.1406,369.1563 Q1605.25,369.1563 1604.4844,368.8906 Q1603.7344,368.625 1603.1875,368.1094 Q1602.6563,367.5938 1602.3438,366.8125 Q1602.0469,366.0313 1602.0469,365.0156 Q1602.0469,364.0625 1602.3281,363.2969 Q1602.625,362.5156 1603.1719,361.9531 Q1603.6875,361.4219 1604.4531,361.1406 Q1605.2344,360.8438 1606.1406,360.8438 Q1606.6406,360.8438 1607.0469,360.9063 Q1607.4531,360.9531 1607.7969,361.0469 Q1608.1563,361.1563 1608.4531,361.2813 Q1608.75,361.4063 1608.9688,361.5156 L1608.9688,363.4531 L1608.7344,363.4531 Q1608.5781,363.3281 1608.3438,363.1563 Q1608.125,362.9688 1607.8281,362.7969 Q1607.5313,362.625 1607.1875,362.5156 Q1606.8438,362.3906 1606.4531,362.3906 Q1606.0156,362.3906 1605.625,362.5313 Q1605.2344,362.6563 1604.9063,362.9844 Q1604.5938,363.2813 1604.3906,363.7969 Q1604.2031,364.2969 1604.2031,365.0156 Q1604.2031,365.7656 1604.4063,366.2813 Q1604.625,366.7813 1604.9375,367.0625 Q1605.2656,367.3594 1605.6719,367.4844 Q1606.0781,367.6094 1606.4688,367.6094 Q1606.8438,367.6094 1607.2031,367.5 Q1607.5781,367.3906 1607.8906,367.1875 Q1608.1563,367.0469 1608.375,366.875 Q1608.6094,366.6875 1608.75,366.5625 L1608.9688,366.5625 L1608.9688,368.4688 Q1608.6719,368.6094 1608.3906,368.7344 Q1608.125,368.8438 1607.8125,368.9219 Q1607.4219,369.0313 1607.0781,369.0938 Q1606.7344,369.1563 1606.1406,369.1563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="39" x="1621.5" y="369.3748">Casino</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1506" x2="1751" y1="378" y2="378"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="156" x="1511" y="393.4189">BettingAuthority bettingAuthority</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="180" x="1511" y="407.2549">BetTokenAuthority betTokenAuthority</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="65" x="1511" y="421.0908">ICashier teller</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="130" x="1511" y="434.9268">Map&lt;string, IGame&gt; games</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1506" x2="1751" y1="441.3438" y2="441.3438"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="235" x="1511" y="456.7627">addGame(String gameName, IGame gameToAdd)</text><!--MD5=[696ee820e96b7cd0d9933d0c6198e4ed]
+class Cashier--><rect codeLine="22" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="111.1797" id="Cashier" style="stroke:#AAAAAA;stroke-width:1.5;" width="213" x="1749" y="613.5"/><ellipse cx="1830" cy="626.5" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M1830.6406,630.6563 Q1829.75,630.6563 1828.9844,630.3906 Q1828.2344,630.125 1827.6875,629.6094 Q1827.1563,629.0938 1826.8438,628.3125 Q1826.5469,627.5313 1826.5469,626.5156 Q1826.5469,625.5625 1826.8281,624.7969 Q1827.125,624.0156 1827.6719,623.4531 Q1828.1875,622.9219 1828.9531,622.6406 Q1829.7344,622.3438 1830.6406,622.3438 Q1831.1406,622.3438 1831.5469,622.4063 Q1831.9531,622.4531 1832.2969,622.5469 Q1832.6563,622.6563 1832.9531,622.7813 Q1833.25,622.9063 1833.4688,623.0156 L1833.4688,624.9531 L1833.2344,624.9531 Q1833.0781,624.8281 1832.8438,624.6563 Q1832.625,624.4688 1832.3281,624.2969 Q1832.0313,624.125 1831.6875,624.0156 Q1831.3438,623.8906 1830.9531,623.8906 Q1830.5156,623.8906 1830.125,624.0313 Q1829.7344,624.1563 1829.4063,624.4844 Q1829.0938,624.7813 1828.8906,625.2969 Q1828.7031,625.7969 1828.7031,626.5156 Q1828.7031,627.2656 1828.9063,627.7813 Q1829.125,628.2813 1829.4375,628.5625 Q1829.7656,628.8594 1830.1719,628.9844 Q1830.5781,629.1094 1830.9688,629.1094 Q1831.3438,629.1094 1831.7031,629 Q1832.0781,628.8906 1832.3906,628.6875 Q1832.6563,628.5469 1832.875,628.375 Q1833.1094,628.1875 1833.25,628.0625 L1833.4688,628.0625 L1833.4688,629.9688 Q1833.1719,630.1094 1832.8906,630.2344 Q1832.625,630.3438 1832.3125,630.4219 Q1831.9219,630.5313 1831.5781,630.5938 Q1831.2344,630.6563 1830.6406,630.6563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="44" x="1846" y="630.8748">Cashier</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1750" x2="1961" y1="639.5" y2="639.5"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="156" x="1755" y="654.9189">BettingAuthority bettingAuthority</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="163" x="1755" y="668.7549">Set&lt;IGamblerCard&gt; gamblerCards</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1750" x2="1961" y1="675.1719" y2="675.1719"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="201" x="1755" y="690.5908">Cashier(BettingAuthority bettingAuthority)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="188" x="1755" y="704.4268">Set&lt;IGamblerCard&gt; getGamblerCards()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="180" x="1755" y="718.2627">BettingAuthority getBettingAuthority()</text><!--MD5=[9478c1941cb67305d7a446323d60c139]
+class ICashier--><rect codeLine="15" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="97.3438" id="ICashier" style="stroke:#AAAAAA;stroke-width:1.5;" width="278" x="1787.5" y="359"/><ellipse cx="1899" cy="372" fill="#B4A7E5" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M1901.3438,376 L1896.6563,376 L1896.6563,374.5781 L1897.9688,374.5781 L1897.9688,369.4219 L1896.6563,369.4219 L1896.6563,368 L1901.3438,368 L1901.3438,369.4219 L1900.0313,369.4219 L1900.0313,374.5781 L1901.3438,374.5781 L1901.3438,376 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="48" x="1915" y="376.3748">ICashier</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1788.5" x2="2064.5" y1="385" y2="385"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1788.5" x2="2064.5" y1="393" y2="393"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="183" x="1793.5" y="408.4189">IGamblerCard distributeGamblerCard()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="190" x="1793.5" y="422.2549">returnGamblerCard(IGamblerCard card)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="263" x="1793.5" y="436.0908">checkIfBetIsValid(IGamblerCard card, Bet betToCheck)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="266" x="1793.5" y="449.9268">addAmount(IGamblerCard card, MoneyAmount amount)</text><!--MD5=[cc599488317a47e3a541bad38ec53300]
+class GamblerCard--><rect codeLine="140" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="125.0156" id="GamblerCard" style="stroke:#AAAAAA;stroke-width:1.5;" width="140" x="1614.5" y="834"/><ellipse cx="1643.15" cy="847" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M1643.7906,851.1563 Q1642.9,851.1563 1642.1344,850.8906 Q1641.3844,850.625 1640.8375,850.1094 Q1640.3063,849.5938 1639.9938,848.8125 Q1639.6969,848.0313 1639.6969,847.0156 Q1639.6969,846.0625 1639.9781,845.2969 Q1640.275,844.5156 1640.8219,843.9531 Q1641.3375,843.4219 1642.1031,843.1406 Q1642.8844,842.8438 1643.7906,842.8438 Q1644.2906,842.8438 1644.6969,842.9063 Q1645.1031,842.9531 1645.4469,843.0469 Q1645.8063,843.1563 1646.1031,843.2813 Q1646.4,843.4063 1646.6188,843.5156 L1646.6188,845.4531 L1646.3844,845.4531 Q1646.2281,845.3281 1645.9938,845.1563 Q1645.775,844.9688 1645.4781,844.7969 Q1645.1813,844.625 1644.8375,844.5156 Q1644.4938,844.3906 1644.1031,844.3906 Q1643.6656,844.3906 1643.275,844.5313 Q1642.8844,844.6563 1642.5563,844.9844 Q1642.2438,845.2813 1642.0406,845.7969 Q1641.8531,846.2969 1641.8531,847.0156 Q1641.8531,847.7656 1642.0563,848.2813 Q1642.275,848.7813 1642.5875,849.0625 Q1642.9156,849.3594 1643.3219,849.4844 Q1643.7281,849.6094 1644.1188,849.6094 Q1644.4938,849.6094 1644.8531,849.5 Q1645.2281,849.3906 1645.5406,849.1875 Q1645.8063,849.0469 1646.025,848.875 Q1646.2594,848.6875 1646.4,848.5625 L1646.6188,848.5625 L1646.6188,850.4688 Q1646.3219,850.6094 1646.0406,850.7344 Q1645.775,850.8438 1645.4625,850.9219 Q1645.0719,851.0313 1644.7281,851.0938 Q1644.3844,851.1563 1643.7906,851.1563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="77" x="1657.85" y="851.3748">GamblerCard</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1615.5" x2="1753.5" y1="860" y2="860"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="66" x="1620.5" y="875.4189">CardID cardID</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="86" x="1620.5" y="889.2549">Set&lt;BetID&gt; betIDs</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="128" x="1620.5" y="903.0908">long moneyAmountInCents</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1615.5" x2="1753.5" y1="909.5078" y2="909.5078"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="71" x="1620.5" y="924.9268">GamblerCard()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="90" x="1620.5" y="938.7627">CardID getCardID()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="110" x="1620.5" y="952.5986">Set&lt;BetID&gt; getBetIDs()</text><!--MD5=[727e06d095df2ae76eee81f8b4df4ca5]
+class IBettingRound--><rect codeLine="33" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="125.0156" id="IBettingRound" style="stroke:#AAAAAA;stroke-width:1.5;" width="184" x="439.5" y="606.5"/><ellipse cx="487.5" cy="619.5" fill="#B4A7E5" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M489.8438,623.5 L485.1563,623.5 L485.1563,622.0781 L486.4688,622.0781 L486.4688,616.9219 L485.1563,616.9219 L485.1563,615.5 L489.8438,615.5 L489.8438,616.9219 L488.5313,616.9219 L488.5313,622.0781 L489.8438,622.0781 L489.8438,623.5 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="81" x="503.5" y="623.8748">IBettingRound</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="440.5" x2="622.5" y1="632.5" y2="632.5"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="440.5" x2="622.5" y1="640.5" y2="640.5"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="172" x="445.5" y="655.9189">BettingRoundID getBettingRoundID()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="125" x="445.5" y="669.7549">boolean placeBet(Bet bet)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="130" x="445.5" y="683.5908">Set&lt;Bet&gt; getAllBetsMade()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="116" x="445.5" y="697.4268">BetToken getBetToken()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="120" x="445.5" y="711.2627">int numberOFBetsMade()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="141" x="445.5" y="725.0986">sendInformationToAuthority()</text><!--MD5=[f5bed2e2e0b988746308d837e7e2352b]
+class BettingRound--><rect codeLine="42" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="69.6719" id="BettingRound" style="stroke:#AAAAAA;stroke-width:1.5;" width="128" x="505.5" y="861.5"/><ellipse cx="529.2" cy="874.5" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M529.8406,878.6563 Q528.95,878.6563 528.1844,878.3906 Q527.4344,878.125 526.8875,877.6094 Q526.3563,877.0938 526.0438,876.3125 Q525.7469,875.5313 525.7469,874.5156 Q525.7469,873.5625 526.0281,872.7969 Q526.325,872.0156 526.8719,871.4531 Q527.3875,870.9219 528.1531,870.6406 Q528.9344,870.3438 529.8406,870.3438 Q530.3406,870.3438 530.7469,870.4063 Q531.1531,870.4531 531.4969,870.5469 Q531.8563,870.6563 532.1531,870.7813 Q532.45,870.9063 532.6688,871.0156 L532.6688,872.9531 L532.4344,872.9531 Q532.2781,872.8281 532.0438,872.6563 Q531.825,872.4688 531.5281,872.2969 Q531.2313,872.125 530.8875,872.0156 Q530.5438,871.8906 530.1531,871.8906 Q529.7156,871.8906 529.325,872.0313 Q528.9344,872.1563 528.6063,872.4844 Q528.2938,872.7813 528.0906,873.2969 Q527.9031,873.7969 527.9031,874.5156 Q527.9031,875.2656 528.1063,875.7813 Q528.325,876.2813 528.6375,876.5625 Q528.9656,876.8594 529.3719,876.9844 Q529.7781,877.1094 530.1688,877.1094 Q530.5438,877.1094 530.9031,877 Q531.2781,876.8906 531.5906,876.6875 Q531.8563,876.5469 532.075,876.375 Q532.3094,876.1875 532.45,876.0625 L532.6688,876.0625 L532.6688,877.9688 Q532.3719,878.1094 532.0906,878.2344 Q531.825,878.3438 531.5125,878.4219 Q531.1219,878.5313 530.7781,878.5938 Q530.4344,878.6563 529.8406,878.6563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="76" x="542.8" y="878.8748">BettingRound</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="506.5" x2="632.5" y1="887.5" y2="887.5"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="113" x="511.5" y="902.9189">BettingRoundID roundID</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="116" x="511.5" y="916.7549">Set&lt;Bet&gt; bettingRounds</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="506.5" x2="632.5" y1="923.1719" y2="923.1719"/><!--MD5=[374c8ed42af3c7fbb6cbeb7cecab7c31]
+class AbstractGame--><rect codeLine="88" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="111.1797" id="AbstractGame" style="stroke:#AAAAAA;stroke-width:1.5;" width="273" x="218" y="352"/><ellipse cx="310.5" cy="365" fill="#A9DCDF" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M314.4063,368.5 L312.2813,368.5 L311.7188,366.8906 L308.7656,366.8906 L308.2031,368.5 L306.125,368.5 L309.0781,360.5 L311.4531,360.5 L314.4063,368.5 Z M311.2188,365.4219 L310.25,362.5469 L309.2656,365.4219 L311.2188,365.4219 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="81" x="326.5" y="369.3748">AbstractGame</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="219" x2="490" y1="378" y2="378"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="203" x="224" y="393.4189">IBetLoggingAuthority betLoggingAuthority;</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="182" x="224" y="407.2549">IBetTokenAuthority betTokenAuthority</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="101" x="224" y="421.0908">IGameRule gameRule</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="219" x2="490" y1="427.5078" y2="427.5078"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="261" x="224" y="442.9268">AbstractGame(Cashier cashier, IGameRule gameRule)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="173" x="224" y="456.7627">setGameRule(IGameRule gameRule)</text><!--MD5=[751489051ea2aa40adb3bb31af24c050]
+class BettingRoundID--><rect codeLine="191" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="55.8359" id="BettingRoundID" style="stroke:#AAAAAA;stroke-width:1.5;" width="144" x="750.5" y="1034"/><ellipse cx="775.1" cy="1047" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M775.7406,1051.1563 Q774.85,1051.1563 774.0844,1050.8906 Q773.3344,1050.625 772.7875,1050.1094 Q772.2563,1049.5938 771.9438,1048.8125 Q771.6469,1048.0313 771.6469,1047.0156 Q771.6469,1046.0625 771.9281,1045.2969 Q772.225,1044.5156 772.7719,1043.9531 Q773.2875,1043.4219 774.0531,1043.1406 Q774.8344,1042.8438 775.7406,1042.8438 Q776.2406,1042.8438 776.6469,1042.9063 Q777.0531,1042.9531 777.3969,1043.0469 Q777.7563,1043.1563 778.0531,1043.2813 Q778.35,1043.4063 778.5688,1043.5156 L778.5688,1045.4531 L778.3344,1045.4531 Q778.1781,1045.3281 777.9438,1045.1563 Q777.725,1044.9688 777.4281,1044.7969 Q777.1313,1044.625 776.7875,1044.5156 Q776.4438,1044.3906 776.0531,1044.3906 Q775.6156,1044.3906 775.225,1044.5313 Q774.8344,1044.6563 774.5063,1044.9844 Q774.1938,1045.2813 773.9906,1045.7969 Q773.8031,1046.2969 773.8031,1047.0156 Q773.8031,1047.7656 774.0063,1048.2813 Q774.225,1048.7813 774.5375,1049.0625 Q774.8656,1049.3594 775.2719,1049.4844 Q775.6781,1049.6094 776.0688,1049.6094 Q776.4438,1049.6094 776.8031,1049.5 Q777.1781,1049.3906 777.4906,1049.1875 Q777.7563,1049.0469 777.975,1048.875 Q778.2094,1048.6875 778.35,1048.5625 L778.5688,1048.5625 L778.5688,1050.4688 Q778.2719,1050.6094 777.9906,1050.7344 Q777.725,1050.8438 777.4125,1050.9219 Q777.0219,1051.0313 776.6781,1051.0938 Q776.3344,1051.1563 775.7406,1051.1563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="90" x="788.9" y="1051.3748">BettingRoundID</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="751.5" x2="893.5" y1="1060" y2="1060"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="751.5" x2="893.5" y1="1068" y2="1068"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="756.5" y="1083.4189">int compareTo(GeneralID o)</text><!--MD5=[fd0ea9bbbaf561b134a5dcf5f989ab5f]
+class Bet--><rect codeLine="51" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="111.1797" id="Bet" style="stroke:#AAAAAA;stroke-width:1.5;" width="235" x="659" y="613.5"/><ellipse cx="763.5" cy="626.5" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M764.1406,630.6563 Q763.25,630.6563 762.4844,630.3906 Q761.7344,630.125 761.1875,629.6094 Q760.6563,629.0938 760.3438,628.3125 Q760.0469,627.5313 760.0469,626.5156 Q760.0469,625.5625 760.3281,624.7969 Q760.625,624.0156 761.1719,623.4531 Q761.6875,622.9219 762.4531,622.6406 Q763.2344,622.3438 764.1406,622.3438 Q764.6406,622.3438 765.0469,622.4063 Q765.4531,622.4531 765.7969,622.5469 Q766.1563,622.6563 766.4531,622.7813 Q766.75,622.9063 766.9688,623.0156 L766.9688,624.9531 L766.7344,624.9531 Q766.5781,624.8281 766.3438,624.6563 Q766.125,624.4688 765.8281,624.2969 Q765.5313,624.125 765.1875,624.0156 Q764.8438,623.8906 764.4531,623.8906 Q764.0156,623.8906 763.625,624.0313 Q763.2344,624.1563 762.9063,624.4844 Q762.5938,624.7813 762.3906,625.2969 Q762.2031,625.7969 762.2031,626.5156 Q762.2031,627.2656 762.4063,627.7813 Q762.625,628.2813 762.9375,628.5625 Q763.2656,628.8594 763.6719,628.9844 Q764.0781,629.1094 764.4688,629.1094 Q764.8438,629.1094 765.2031,629 Q765.5781,628.8906 765.8906,628.6875 Q766.1563,628.5469 766.375,628.375 Q766.6094,628.1875 766.75,628.0625 L766.9688,628.0625 L766.9688,629.9688 Q766.6719,630.1094 766.3906,630.2344 Q766.125,630.3438 765.8125,630.4219 Q765.4219,630.5313 765.0781,630.5938 Q764.7344,630.6563 764.1406,630.6563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="19" x="779.5" y="630.8748">Bet</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="660" x2="893" y1="639.5" y2="639.5"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="52" x="665" y="654.9189">BetID betID</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="141" x="665" y="668.7549">MoneyAmount moneyAmount</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="660" x2="893" y1="675.1719" y2="675.1719"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="223" x="665" y="690.5908">Bet(BetID betID, MoneyAmount moneyAmount)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="76" x="665" y="704.4268">BetID getBetID()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="164" x="665" y="718.2627">MoneyAmount getMoneyAmount()</text><!--MD5=[28fd497cd9732a4b8cdc57a1e1ad00b0]
+class MoneyAmount--><rect codeLine="73" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="97.3438" id="MoneyAmount" style="stroke:#AAAAAA;stroke-width:1.5;" width="183" x="975" y="848"/><ellipse cx="1022.5" cy="861" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M1023.1406,865.1563 Q1022.25,865.1563 1021.4844,864.8906 Q1020.7344,864.625 1020.1875,864.1094 Q1019.6563,863.5938 1019.3438,862.8125 Q1019.0469,862.0313 1019.0469,861.0156 Q1019.0469,860.0625 1019.3281,859.2969 Q1019.625,858.5156 1020.1719,857.9531 Q1020.6875,857.4219 1021.4531,857.1406 Q1022.2344,856.8438 1023.1406,856.8438 Q1023.6406,856.8438 1024.0469,856.9063 Q1024.4531,856.9531 1024.7969,857.0469 Q1025.1563,857.1563 1025.4531,857.2813 Q1025.75,857.4063 1025.9688,857.5156 L1025.9688,859.4531 L1025.7344,859.4531 Q1025.5781,859.3281 1025.3438,859.1563 Q1025.125,858.9688 1024.8281,858.7969 Q1024.5313,858.625 1024.1875,858.5156 Q1023.8438,858.3906 1023.4531,858.3906 Q1023.0156,858.3906 1022.625,858.5313 Q1022.2344,858.6563 1021.9063,858.9844 Q1021.5938,859.2813 1021.3906,859.7969 Q1021.2031,860.2969 1021.2031,861.0156 Q1021.2031,861.7656 1021.4063,862.2813 Q1021.625,862.7813 1021.9375,863.0625 Q1022.2656,863.3594 1022.6719,863.4844 Q1023.0781,863.6094 1023.4688,863.6094 Q1023.8438,863.6094 1024.2031,863.5 Q1024.5781,863.3906 1024.8906,863.1875 Q1025.1563,863.0469 1025.375,862.875 Q1025.6094,862.6875 1025.75,862.5625 L1025.9688,862.5625 L1025.9688,864.4688 Q1025.6719,864.6094 1025.3906,864.7344 Q1025.125,864.8438 1024.8125,864.9219 Q1024.4219,865.0313 1024.0781,865.0938 Q1023.7344,865.1563 1023.1406,865.1563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="81" x="1038.5" y="865.3748">MoneyAmount</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="976" x2="1157" y1="874" y2="874"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="94" x="981" y="889.4189">long amountInCents</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="981" y="903.2549">Currency currency</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="976" x2="1157" y1="909.6719" y2="909.6719"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="171" x="981" y="925.0908">MoneyAmount(long amountInCents)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="119" x="981" y="938.9268">long getAmountInCents()</text><!--MD5=[7126b9f7927322ee1baaac2efa8b8116]
+class BetID--><rect codeLine="203" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="55.8359" id="BetID" style="stroke:#AAAAAA;stroke-width:1.5;" width="144" x="903.5" y="379.5"/><ellipse cx="955.5" cy="392.5" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M956.1406,396.6563 Q955.25,396.6563 954.4844,396.3906 Q953.7344,396.125 953.1875,395.6094 Q952.6563,395.0938 952.3438,394.3125 Q952.0469,393.5313 952.0469,392.5156 Q952.0469,391.5625 952.3281,390.7969 Q952.625,390.0156 953.1719,389.4531 Q953.6875,388.9219 954.4531,388.6406 Q955.2344,388.3438 956.1406,388.3438 Q956.6406,388.3438 957.0469,388.4063 Q957.4531,388.4531 957.7969,388.5469 Q958.1563,388.6563 958.4531,388.7813 Q958.75,388.9063 958.9688,389.0156 L958.9688,390.9531 L958.7344,390.9531 Q958.5781,390.8281 958.3438,390.6563 Q958.125,390.4688 957.8281,390.2969 Q957.5313,390.125 957.1875,390.0156 Q956.8438,389.8906 956.4531,389.8906 Q956.0156,389.8906 955.625,390.0313 Q955.2344,390.1563 954.9063,390.4844 Q954.5938,390.7813 954.3906,391.2969 Q954.2031,391.7969 954.2031,392.5156 Q954.2031,393.2656 954.4063,393.7813 Q954.625,394.2813 954.9375,394.5625 Q955.2656,394.8594 955.6719,394.9844 Q956.0781,395.1094 956.4688,395.1094 Q956.8438,395.1094 957.2031,395 Q957.5781,394.8906 957.8906,394.6875 Q958.1563,394.5469 958.375,394.375 Q958.6094,394.1875 958.75,394.0625 L958.9688,394.0625 L958.9688,395.9688 Q958.6719,396.1094 958.3906,396.2344 Q958.125,396.3438 957.8125,396.4219 Q957.4219,396.5313 957.0781,396.5938 Q956.7344,396.6563 956.1406,396.6563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="33" x="971.5" y="396.8748">BetID</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="904.5" x2="1046.5" y1="405.5" y2="405.5"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="904.5" x2="1046.5" y1="413.5" y2="413.5"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="909.5" y="428.9189">int compareTo(GeneralID o)</text><!--MD5=[81ed57b4ddc1bda97523055c5bd18228]
+class BetResult--><rect codeLine="63" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="111.1797" id="BetResult" style="stroke:#AAAAAA;stroke-width:1.5;" width="274" x="929.5" y="613.5"/><ellipse cx="1036" cy="626.5" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M1036.6406,630.6563 Q1035.75,630.6563 1034.9844,630.3906 Q1034.2344,630.125 1033.6875,629.6094 Q1033.1563,629.0938 1032.8438,628.3125 Q1032.5469,627.5313 1032.5469,626.5156 Q1032.5469,625.5625 1032.8281,624.7969 Q1033.125,624.0156 1033.6719,623.4531 Q1034.1875,622.9219 1034.9531,622.6406 Q1035.7344,622.3438 1036.6406,622.3438 Q1037.1406,622.3438 1037.5469,622.4063 Q1037.9531,622.4531 1038.2969,622.5469 Q1038.6563,622.6563 1038.9531,622.7813 Q1039.25,622.9063 1039.4688,623.0156 L1039.4688,624.9531 L1039.2344,624.9531 Q1039.0781,624.8281 1038.8438,624.6563 Q1038.625,624.4688 1038.3281,624.2969 Q1038.0313,624.125 1037.6875,624.0156 Q1037.3438,623.8906 1036.9531,623.8906 Q1036.5156,623.8906 1036.125,624.0313 Q1035.7344,624.1563 1035.4063,624.4844 Q1035.0938,624.7813 1034.8906,625.2969 Q1034.7031,625.7969 1034.7031,626.5156 Q1034.7031,627.2656 1034.9063,627.7813 Q1035.125,628.2813 1035.4375,628.5625 Q1035.7656,628.8594 1036.1719,628.9844 Q1036.5781,629.1094 1036.9688,629.1094 Q1037.3438,629.1094 1037.7031,629 Q1038.0781,628.8906 1038.3906,628.6875 Q1038.6563,628.5469 1038.875,628.375 Q1039.1094,628.1875 1039.25,628.0625 L1039.4688,628.0625 L1039.4688,629.9688 Q1039.1719,630.1094 1038.8906,630.2344 Q1038.625,630.3438 1038.3125,630.4219 Q1037.9219,630.5313 1037.5781,630.5938 Q1037.2344,630.6563 1036.6406,630.6563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="54" x="1052" y="630.8748">BetResult</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="930.5" x2="1202.5" y1="639.5" y2="639.5"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="73" x="935.5" y="654.9189">Bet winningBet</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="129" x="935.5" y="668.7549">MoneyAmount amountWon</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="930.5" x2="1202.5" y1="675.1719" y2="675.1719"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="262" x="935.5" y="690.5908">BetResult(Bet winningBet, MoneyAmount amountWon)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="96" x="935.5" y="704.4268">Bet getWinningBet()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="154" x="935.5" y="718.2627">MoneyAmount getAmountWon()</text><!--MD5=[4279085caaf4e2dc91d2db2579225283]
+class IGame--><rect codeLine="80" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="111.1797" id="IGame" style="stroke:#AAAAAA;stroke-width:1.5;" width="264" x="338.5" y="7"/><ellipse cx="447.5" cy="20" fill="#B4A7E5" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M449.8438,24 L445.1563,24 L445.1563,22.5781 L446.4688,22.5781 L446.4688,17.4219 L445.1563,17.4219 L445.1563,16 L449.8438,16 L449.8438,17.4219 L448.5313,17.4219 L448.5313,22.5781 L449.8438,22.5781 L449.8438,24 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="39" x="463.5" y="24.3748">IGame</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="339.5" x2="601.5" y1="33" y2="33"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="339.5" x2="601.5" y1="41" y2="41"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="94" x="344.5" y="56.4189">startBettingRound()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="124" x="344.5" y="70.2549">generateBettingRoundID()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="252" x="344.5" y="84.0908">acceptBet(Bet bet, IGamingMachine gamingMachine)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="112" x="344.5" y="97.9268">void determineWinner()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="120" x="344.5" y="111.7627">isBettingRoundFinished()</text><!--MD5=[fa2d0fb5b850b223c95fb57bc7a06ceb]
+class DefaultGame--><rect codeLine="96" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="180.3594" id="DefaultGame" style="stroke:#AAAAAA;stroke-width:1.5;" width="305" x="7" y="579"/><ellipse cx="118.5" cy="592" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M119.1406,596.1563 Q118.25,596.1563 117.4844,595.8906 Q116.7344,595.625 116.1875,595.1094 Q115.6563,594.5938 115.3438,593.8125 Q115.0469,593.0313 115.0469,592.0156 Q115.0469,591.0625 115.3281,590.2969 Q115.625,589.5156 116.1719,588.9531 Q116.6875,588.4219 117.4531,588.1406 Q118.2344,587.8438 119.1406,587.8438 Q119.6406,587.8438 120.0469,587.9063 Q120.4531,587.9531 120.7969,588.0469 Q121.1563,588.1563 121.4531,588.2813 Q121.75,588.4063 121.9688,588.5156 L121.9688,590.4531 L121.7344,590.4531 Q121.5781,590.3281 121.3438,590.1563 Q121.125,589.9688 120.8281,589.7969 Q120.5313,589.625 120.1875,589.5156 Q119.8438,589.3906 119.4531,589.3906 Q119.0156,589.3906 118.625,589.5313 Q118.2344,589.6563 117.9063,589.9844 Q117.5938,590.2813 117.3906,590.7969 Q117.2031,591.2969 117.2031,592.0156 Q117.2031,592.7656 117.4063,593.2813 Q117.625,593.7813 117.9375,594.0625 Q118.2656,594.3594 118.6719,594.4844 Q119.0781,594.6094 119.4688,594.6094 Q119.8438,594.6094 120.2031,594.5 Q120.5781,594.3906 120.8906,594.1875 Q121.1563,594.0469 121.375,593.875 Q121.6094,593.6875 121.75,593.5625 L121.9688,593.5625 L121.9688,595.4688 Q121.6719,595.6094 121.3906,595.7344 Q121.125,595.8438 120.8125,595.9219 Q120.4219,596.0313 120.0781,596.0938 Q119.7344,596.1563 119.1406,596.1563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="75" x="134.5" y="596.3748">DefaultGame</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="8" x2="311" y1="605" y2="605"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="130" x="13" y="620.4189">BettingRound bettingRound</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="188" x="13" y="634.2549">List&lt;GamingMachine&gt; gamingMachines</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="8" x2="311" y1="640.6719" y2="640.6719"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="253" x="13" y="656.0908">DefaultGame(Cashier cashier, IGameRule gameRule)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="154" x="13" y="669.9268">BettingRound getBettingRound()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="213" x="13" y="683.7627">List&lt;GamingMachine&gt; getGamingMachines()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="276" x="13" y="697.5986">connectGamingMachine(GamingMachine gamingMachine)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="94" x="13" y="711.4346">startBettingRound()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="293" x="13" y="725.2705">boolean acceptBet(Bet bet, IGamingMachine gamingMachine)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="89" x="13" y="739.1064">determineWinner()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="161" x="13" y="752.9424">boolean isBettingRoundFinished()</text><!--MD5=[b3623b33641110cc6022d0cdef9baf48]
+class GameRule--><rect codeLine="114" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="69.6719" id="GameRule" style="stroke:#AAAAAA;stroke-width:1.5;" width="227" x="505" y="200"/><ellipse cx="585.5" cy="213" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M586.1406,217.1563 Q585.25,217.1563 584.4844,216.8906 Q583.7344,216.625 583.1875,216.1094 Q582.6563,215.5938 582.3438,214.8125 Q582.0469,214.0313 582.0469,213.0156 Q582.0469,212.0625 582.3281,211.2969 Q582.625,210.5156 583.1719,209.9531 Q583.6875,209.4219 584.4531,209.1406 Q585.2344,208.8438 586.1406,208.8438 Q586.6406,208.8438 587.0469,208.9063 Q587.4531,208.9531 587.7969,209.0469 Q588.1563,209.1563 588.4531,209.2813 Q588.75,209.4063 588.9688,209.5156 L588.9688,211.4531 L588.7344,211.4531 Q588.5781,211.3281 588.3438,211.1563 Q588.125,210.9688 587.8281,210.7969 Q587.5313,210.625 587.1875,210.5156 Q586.8438,210.3906 586.4531,210.3906 Q586.0156,210.3906 585.625,210.5313 Q585.2344,210.6563 584.9063,210.9844 Q584.5938,211.2813 584.3906,211.7969 Q584.2031,212.2969 584.2031,213.0156 Q584.2031,213.7656 584.4063,214.2813 Q584.625,214.7813 584.9375,215.0625 Q585.2656,215.3594 585.6719,215.4844 Q586.0781,215.6094 586.4688,215.6094 Q586.8438,215.6094 587.2031,215.5 Q587.5781,215.3906 587.8906,215.1875 Q588.1563,215.0469 588.375,214.875 Q588.6094,214.6875 588.75,214.5625 L588.9688,214.5625 L588.9688,216.4688 Q588.6719,216.6094 588.3906,216.7344 Q588.125,216.8438 587.8125,216.9219 Q587.4219,217.0313 587.0781,217.0938 Q586.7344,217.1563 586.1406,217.1563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="59" x="601.5" y="217.3748">GameRule</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="506" x2="731" y1="226" y2="226"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="103" x="511" y="241.4189">int maxBetsPerRound</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="506" x2="731" y1="247.8359" y2="247.8359"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="215" x="511" y="263.2549">setMaxBetsPerRound(int maxBetsPerRound)</text><!--MD5=[f4090b16ff16da5588471bd98a3a59cd]
+class GamingMachine--><rect codeLine="161" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="97.3438" id="GamingMachine" style="stroke:#AAAAAA;stroke-width:1.5;" width="172" x="1541.5" y="620.5"/><ellipse cx="1579" cy="633.5" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M1579.6406,637.6563 Q1578.75,637.6563 1577.9844,637.3906 Q1577.2344,637.125 1576.6875,636.6094 Q1576.1563,636.0938 1575.8438,635.3125 Q1575.5469,634.5313 1575.5469,633.5156 Q1575.5469,632.5625 1575.8281,631.7969 Q1576.125,631.0156 1576.6719,630.4531 Q1577.1875,629.9219 1577.9531,629.6406 Q1578.7344,629.3438 1579.6406,629.3438 Q1580.1406,629.3438 1580.5469,629.4063 Q1580.9531,629.4531 1581.2969,629.5469 Q1581.6563,629.6563 1581.9531,629.7813 Q1582.25,629.9063 1582.4688,630.0156 L1582.4688,631.9531 L1582.2344,631.9531 Q1582.0781,631.8281 1581.8438,631.6563 Q1581.625,631.4688 1581.3281,631.2969 Q1581.0313,631.125 1580.6875,631.0156 Q1580.3438,630.8906 1579.9531,630.8906 Q1579.5156,630.8906 1579.125,631.0313 Q1578.7344,631.1563 1578.4063,631.4844 Q1578.0938,631.7813 1577.8906,632.2969 Q1577.7031,632.7969 1577.7031,633.5156 Q1577.7031,634.2656 1577.9063,634.7813 Q1578.125,635.2813 1578.4375,635.5625 Q1578.7656,635.8594 1579.1719,635.9844 Q1579.5781,636.1094 1579.9688,636.1094 Q1580.3438,636.1094 1580.7031,636 Q1581.0781,635.8906 1581.3906,635.6875 Q1581.6563,635.5469 1581.875,635.375 Q1582.1094,635.1875 1582.25,635.0625 L1582.4688,635.0625 L1582.4688,636.9688 Q1582.1719,637.1094 1581.8906,637.2344 Q1581.625,637.3438 1581.3125,637.4219 Q1580.9219,637.5313 1580.5781,637.5938 Q1580.2344,637.6563 1579.6406,637.6563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="90" x="1595" y="637.8748">GamingMachine</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1542.5" x2="1712.5" y1="646.5" y2="646.5"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1542.5" x2="1712.5" y1="654.5" y2="654.5"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="160" x="1547.5" y="669.9189">GamingMachine(Cashier cashier)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="110" x="1547.5" y="683.7549">setGame(IGame game)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="100" x="1547.5" y="697.5908">Cashier getCashier()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="73" x="1547.5" y="711.4268">setBet(Bet bet)</text><!--MD5=[cc8c51ade462609ed5143686e694f6db]
+class IGameRule--><rect codeLine="121" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="69.6719" id="IGameRule" style="stroke:#AAAAAA;stroke-width:1.5;" width="342" x="526.5" y="372.5"/><ellipse cx="662" cy="385.5" fill="#B4A7E5" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M664.3438,389.5 L659.6563,389.5 L659.6563,388.0781 L660.9688,388.0781 L660.9688,382.9219 L659.6563,382.9219 L659.6563,381.5 L664.3438,381.5 L664.3438,382.9219 L663.0313,382.9219 L663.0313,388.0781 L664.3438,388.0781 L664.3438,389.5 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="64" x="678" y="389.8748">IGameRule</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="527.5" x2="867.5" y1="398.5" y2="398.5"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="527.5" x2="867.5" y1="406.5" y2="406.5"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="330" x="532.5" y="421.9189">BetResult determineWinner(Integer randomWinValue, Set&lt;Bet&gt; bets)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="126" x="532.5" y="435.7549">int getMaxBetsPerRound()</text><!--MD5=[79bda464d9533354ee0d92f2cfa20a2c]
+class IGamblerCard--><rect codeLine="128" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="138.8516" id="IGamblerCard" style="stroke:#AAAAAA;stroke-width:1.5;" width="268" x="1238.5" y="599.5"/><ellipse cx="1328.5" cy="612.5" fill="#B4A7E5" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M1330.8438,616.5 L1326.1563,616.5 L1326.1563,615.0781 L1327.4688,615.0781 L1327.4688,609.9219 L1326.1563,609.9219 L1326.1563,608.5 L1330.8438,608.5 L1330.8438,609.9219 L1329.5313,609.9219 L1329.5313,615.0781 L1330.8438,615.0781 L1330.8438,616.5 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="81" x="1344.5" y="616.8748">IGamblerCard</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1239.5" x2="1505.5" y1="625.5" y2="625.5"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1239.5" x2="1505.5" y1="633.5" y2="633.5"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="124" x="1244.5" y="648.9189">Set&lt;BetID&gt; returnBetIDs()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="192" x="1244.5" y="662.7549">Set&lt;BetID&gt; returnBetIDsAndClearCard()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="127" x="1244.5" y="676.5908">BetID generateNewBetID()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="117" x="1244.5" y="690.4268">int getNumberOfBetIDs()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="90" x="1244.5" y="704.2627">CardID getCardID()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="151" x="1244.5" y="718.0986">long getMoneyAmountInCents()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="256" x="1244.5" y="731.9346">setMoneyAmountInCents(long moneyAmountInCents)</text><!--MD5=[4182d7a3981dfc9ab8d3ef1c6f969ea3]
+class CardID--><rect codeLine="199" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="55.8359" id="CardID" style="stroke:#AAAAAA;stroke-width:1.5;" width="144" x="2011.5" y="493"/><ellipse cx="2059" cy="506" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M2059.6406,510.1563 Q2058.75,510.1563 2057.9844,509.8906 Q2057.2344,509.625 2056.6875,509.1094 Q2056.1563,508.5938 2055.8438,507.8125 Q2055.5469,507.0313 2055.5469,506.0156 Q2055.5469,505.0625 2055.8281,504.2969 Q2056.125,503.5156 2056.6719,502.9531 Q2057.1875,502.4219 2057.9531,502.1406 Q2058.7344,501.8438 2059.6406,501.8438 Q2060.1406,501.8438 2060.5469,501.9063 Q2060.9531,501.9531 2061.2969,502.0469 Q2061.6563,502.1563 2061.9531,502.2813 Q2062.25,502.4063 2062.4688,502.5156 L2062.4688,504.4531 L2062.2344,504.4531 Q2062.0781,504.3281 2061.8438,504.1563 Q2061.625,503.9688 2061.3281,503.7969 Q2061.0313,503.625 2060.6875,503.5156 Q2060.3438,503.3906 2059.9531,503.3906 Q2059.5156,503.3906 2059.125,503.5313 Q2058.7344,503.6563 2058.4063,503.9844 Q2058.0938,504.2813 2057.8906,504.7969 Q2057.7031,505.2969 2057.7031,506.0156 Q2057.7031,506.7656 2057.9063,507.2813 Q2058.125,507.7813 2058.4375,508.0625 Q2058.7656,508.3594 2059.1719,508.4844 Q2059.5781,508.6094 2059.9688,508.6094 Q2060.3438,508.6094 2060.7031,508.5 Q2061.0781,508.3906 2061.3906,508.1875 Q2061.6563,508.0469 2061.875,507.875 Q2062.1094,507.6875 2062.25,507.5625 L2062.4688,507.5625 L2062.4688,509.4688 Q2062.1719,509.6094 2061.8906,509.7344 Q2061.625,509.8438 2061.3125,509.9219 Q2060.9219,510.0313 2060.5781,510.0938 Q2060.2344,510.1563 2059.6406,510.1563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="42" x="2075" y="510.3748">CardID</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="2012.5" x2="2154.5" y1="519" y2="519"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="2012.5" x2="2154.5" y1="527" y2="527"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="2017.5" y="542.4189">int compareTo(GeneralID o)</text><!--MD5=[92363b975cfebb52bf79294c9fc416cc]
+class IGamingMachine--><rect codeLine="151" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="111.1797" id="IGamingMachine" style="stroke:#AAAAAA;stroke-width:1.5;" width="208" x="1082.5" y="352"/><ellipse cx="1135.5" cy="365" fill="#B4A7E5" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M1137.8438,369 L1133.1563,369 L1133.1563,367.5781 L1134.4688,367.5781 L1134.4688,362.4219 L1133.1563,362.4219 L1133.1563,361 L1137.8438,361 L1137.8438,362.4219 L1136.5313,362.4219 L1136.5313,367.5781 L1137.8438,367.5781 L1137.8438,369 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="95" x="1151.5" y="369.3748">IGamingMachine</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1083.5" x2="1289.5" y1="378" y2="378"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1083.5" x2="1289.5" y1="386" y2="386"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="185" x="1088.5" y="401.4189">boolean placeBet(long amountInCents)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="195" x="1088.5" y="415.2549">void acceptWinner(BetResult winResult)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="196" x="1088.5" y="429.0908">GamingMachineID getGamingMachineID()</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="183" x="1088.5" y="442.9268">void connectCard(IGamblerCard card)</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="107" x="1088.5" y="456.7627">void disconnectCard()</text><!--MD5=[f79f0b9d2c1038f3468d9e96605fb92f]
+class GamingMachineID--><rect codeLine="195" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="55.8359" id="GamingMachineID" style="stroke:#AAAAAA;stroke-width:1.5;" width="144" x="1325.5" y="379.5"/><ellipse cx="1343.8" cy="392.5" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M1344.4406,396.6563 Q1343.55,396.6563 1342.7844,396.3906 Q1342.0344,396.125 1341.4875,395.6094 Q1340.9563,395.0938 1340.6438,394.3125 Q1340.3469,393.5313 1340.3469,392.5156 Q1340.3469,391.5625 1340.6281,390.7969 Q1340.925,390.0156 1341.4719,389.4531 Q1341.9875,388.9219 1342.7531,388.6406 Q1343.5344,388.3438 1344.4406,388.3438 Q1344.9406,388.3438 1345.3469,388.4063 Q1345.7531,388.4531 1346.0969,388.5469 Q1346.4563,388.6563 1346.7531,388.7813 Q1347.05,388.9063 1347.2688,389.0156 L1347.2688,390.9531 L1347.0344,390.9531 Q1346.8781,390.8281 1346.6438,390.6563 Q1346.425,390.4688 1346.1281,390.2969 Q1345.8313,390.125 1345.4875,390.0156 Q1345.1438,389.8906 1344.7531,389.8906 Q1344.3156,389.8906 1343.925,390.0313 Q1343.5344,390.1563 1343.2063,390.4844 Q1342.8938,390.7813 1342.6906,391.2969 Q1342.5031,391.7969 1342.5031,392.5156 Q1342.5031,393.2656 1342.7063,393.7813 Q1342.925,394.2813 1343.2375,394.5625 Q1343.5656,394.8594 1343.9719,394.9844 Q1344.3781,395.1094 1344.7688,395.1094 Q1345.1438,395.1094 1345.5031,395 Q1345.8781,394.8906 1346.1906,394.6875 Q1346.4563,394.5469 1346.675,394.375 Q1346.9094,394.1875 1347.05,394.0625 L1347.2688,394.0625 L1347.2688,395.9688 Q1346.9719,396.1094 1346.6906,396.2344 Q1346.425,396.3438 1346.1125,396.4219 Q1345.7219,396.5313 1345.3781,396.5938 Q1345.0344,396.6563 1344.4406,396.6563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="104" x="1356.2" y="396.8748">GamingMachineID</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1326.5" x2="1468.5" y1="405.5" y2="405.5"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1326.5" x2="1468.5" y1="413.5" y2="413.5"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="1331.5" y="428.9189">int compareTo(GeneralID o)</text><!--MD5=[5063dc1ccea1db09e21e5dd25a38a4ba]
+class BetToken--><rect codeLine="175" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="83.5078" id="BetToken" style="stroke:#AAAAAA;stroke-width:1.5;" width="160" x="742.5" y="854.5"/><ellipse cx="792" cy="867.5" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M792.6406,871.6563 Q791.75,871.6563 790.9844,871.3906 Q790.2344,871.125 789.6875,870.6094 Q789.1563,870.0938 788.8438,869.3125 Q788.5469,868.5313 788.5469,867.5156 Q788.5469,866.5625 788.8281,865.7969 Q789.125,865.0156 789.6719,864.4531 Q790.1875,863.9219 790.9531,863.6406 Q791.7344,863.3438 792.6406,863.3438 Q793.1406,863.3438 793.5469,863.4063 Q793.9531,863.4531 794.2969,863.5469 Q794.6563,863.6563 794.9531,863.7813 Q795.25,863.9063 795.4688,864.0156 L795.4688,865.9531 L795.2344,865.9531 Q795.0781,865.8281 794.8438,865.6563 Q794.625,865.4688 794.3281,865.2969 Q794.0313,865.125 793.6875,865.0156 Q793.3438,864.8906 792.9531,864.8906 Q792.5156,864.8906 792.125,865.0313 Q791.7344,865.1563 791.4063,865.4844 Q791.0938,865.7813 790.8906,866.2969 Q790.7031,866.7969 790.7031,867.5156 Q790.7031,868.2656 790.9063,868.7813 Q791.125,869.2813 791.4375,869.5625 Q791.7656,869.8594 792.1719,869.9844 Q792.5781,870.1094 792.9688,870.1094 Q793.3438,870.1094 793.7031,870 Q794.0781,869.8906 794.3906,869.6875 Q794.6563,869.5469 794.875,869.375 Q795.1094,869.1875 795.25,869.0625 L795.4688,869.0625 L795.4688,870.9688 Q795.1719,871.1094 794.8906,871.2344 Q794.625,871.3438 794.3125,871.4219 Q793.9219,871.5313 793.5781,871.5938 Q793.2344,871.6563 792.6406,871.6563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="54" x="808" y="871.8748">BetToken</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="743.5" x2="901.5" y1="880.5" y2="880.5"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="148" x="748.5" y="895.9189">BettingRoundID bettingRoundID</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="96" x="748.5" y="909.7549">UUID uniqueTokenID</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="96" x="748.5" y="923.5908">Instant creationTime</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="743.5" x2="901.5" y1="930.0078" y2="930.0078"/><!--MD5=[608e972b4e0ded29b4b57d455d7bb74e]
+class IDFactory--><rect codeLine="181" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="55.8359" id="IDFactory" style="stroke:#AAAAAA;stroke-width:1.5;" width="185" x="1845" y="34.5"/><ellipse cx="1906" cy="47.5" fill="#1A66C2" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M1906.6406,51.6563 Q1905.75,51.6563 1904.9844,51.3906 Q1904.2344,51.125 1903.6875,50.6094 Q1903.1563,50.0938 1902.8438,49.3125 Q1902.5469,48.5313 1902.5469,47.5156 Q1902.5469,46.5625 1902.8281,45.7969 Q1903.125,45.0156 1903.6719,44.4531 Q1904.1875,43.9219 1904.9531,43.6406 Q1905.7344,43.3438 1906.6406,43.3438 Q1907.1406,43.3438 1907.5469,43.4063 Q1907.9531,43.4531 1908.2969,43.5469 Q1908.6563,43.6563 1908.9531,43.7813 Q1909.25,43.9063 1909.4688,44.0156 L1909.4688,45.9531 L1909.2344,45.9531 Q1909.0781,45.8281 1908.8438,45.6563 Q1908.625,45.4688 1908.3281,45.2969 Q1908.0313,45.125 1907.6875,45.0156 Q1907.3438,44.8906 1906.9531,44.8906 Q1906.5156,44.8906 1906.125,45.0313 Q1905.7344,45.1563 1905.4063,45.4844 Q1905.0938,45.7813 1904.8906,46.2969 Q1904.7031,46.7969 1904.7031,47.5156 Q1904.7031,48.2656 1904.9063,48.7813 Q1905.125,49.2813 1905.4375,49.5625 Q1905.7656,49.8594 1906.1719,49.9844 Q1906.5781,50.1094 1906.9688,50.1094 Q1907.3438,50.1094 1907.7031,50 Q1908.0781,49.8906 1908.3906,49.6875 Q1908.6563,49.5469 1908.875,49.375 Q1909.1094,49.1875 1909.25,49.0625 L1909.4688,49.0625 L1909.4688,50.9688 Q1909.1719,51.1094 1908.8906,51.2344 Q1908.625,51.3438 1908.3125,51.4219 Q1907.9219,51.5313 1907.5781,51.5938 Q1907.2344,51.6563 1906.6406,51.6563 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="56" x="1922" y="51.8748">IDFactory</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1846" x2="2029" y1="60.5" y2="60.5"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1846" x2="2029" y1="68.5" y2="68.5"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="173" x="1851" y="83.9189">GeneralID generateID(String idType)</text><!--MD5=[fa34eb013a6a85b314bb9a84c85d5d5e]
+class GeneralID--><rect codeLine="185" fill="#CCCCCC" filter="url(#f10vjf6xx7p4tu)" height="83.5078" id="GeneralID" style="stroke:#AAAAAA;stroke-width:1.5;" width="108" x="1883.5" y="193"/><ellipse cx="1906.3" cy="206" fill="#A9DCDF" rx="8" ry="8" style="stroke:#AAAAAA;stroke-width:1.0;"/><path d="M1910.2063,209.5 L1908.0813,209.5 L1907.5188,207.8906 L1904.5656,207.8906 L1904.0031,209.5 L1901.925,209.5 L1904.8781,201.5 L1907.2531,201.5 L1910.2063,209.5 Z M1907.0188,206.4219 L1906.05,203.5469 L1905.0656,206.4219 L1907.0188,206.4219 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="58" x="1919.7" y="210.3748">GeneralID</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1884.5" x2="1990.5" y1="219" y2="219"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="96" x="1889.5" y="234.4189">UUID uniqueTokenID</text><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="84" x="1889.5" y="248.2549">Instant timeStamp</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="1884.5" x2="1990.5" y1="254.6719" y2="254.6719"/><text fill="#333333" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="63" x="1889.5" y="270.0908">String getID()</text><!--MD5=[193face70247c54c760d92f596014c3e]
+link Casino to Cashier--><path codeLine="13" d="M1676.36,463.22 C1713.86,506.09 1765.93,565.61 1804.27,609.43 " fill="none" id="Casino-to-Cashier" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="1807.7,613.36,1804.7838,603.9528,1804.4075,609.5971,1798.7632,609.2208,1807.7,613.36" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="20" x="1750.5" y="525.5591">has</text><!--MD5=[217f2a3e414fb88d4e82c226a860b891]
+reverse link ICashier to Cashier--><path codeLine="30" d="M1908.2,475.39 C1896.5,518.13 1881.53,572.87 1870.53,613.06 " fill="none" id="ICashier-backto-Cashier" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="1901.45,473.54,1913.48,456.1,1914.95,477.23,1901.45,473.54" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="66" x="1903.5" y="525.5591">implements</text><!--MD5=[f934a1eda0e5ad5d441e884ce1f1ea08]
+link Cashier to GamblerCard--><path codeLine="31" d="M1814.11,724.59 C1790.08,756.28 1759.64,796.41 1734.31,829.82 " fill="none" id="Cashier-to-GamblerCard" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="1731.24,833.86,1739.8591,829.0945,1734.256,829.872,1733.4784,824.2689,1731.24,833.86" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="59" x="1766.5" y="801.0591">distributes</text><!--MD5=[8faa1feb269918bae2cab9c668e436c7]
+reverse link IBettingRound to BettingRound--><path codeLine="47" d="M545.22,751.41 C551.59,789.23 558.83,832.16 563.73,861.25 " fill="none" id="IBettingRound-backto-BettingRound" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="538.3,752.5,541.88,731.62,552.11,750.18,538.3,752.5" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="66" x="555.5" y="801.0591">implements</text><!--MD5=[ce09c6d1614984e586c83d8925709974]
+link AbstractGame to BettingRound--><path codeLine="48" d="M349.41,463.13 C345.24,535.58 346.92,665.22 399.5,759 C423.07,801.04 465.24,835.02 501.69,858.57 " fill="none" id="AbstractGame-to-BettingRound" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="506.1,861.39,500.6599,853.1799,501.8835,858.7028,496.3605,859.9264,506.1,861.39" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="20" x="400.5" y="673.5591">has</text><!--MD5=[48ef7c5f7a5c2fd0e04fda4c4431d727]
+link BettingRound to BettingRoundID--><path codeLine="49" d="M622.23,931.58 C667.73,960.98 732.81,1003.04 776.3,1031.14 " fill="none" id="BettingRound-to-BettingRoundID" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="780.7,1033.99,775.3122,1025.7455,776.5006,1031.2761,770.97,1032.4645,780.7,1033.99" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="20" x="734.5" y="1001.0591">has</text><!--MD5=[25ab12a8f09650f33974c7ef0b03a425]
+link Bet to MoneyAmount--><path codeLine="59" d="M846.7,724.59 C893.73,761.15 955.21,808.96 1001.18,844.71 " fill="none" id="Bet-to-MoneyAmount" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="1005.3,847.91,1000.6429,839.2318,1001.3502,844.8442,995.7377,845.5515,1005.3,847.91" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="20" x="948.5" y="801.0591">has</text><!--MD5=[c305f9a392229a5dc6130f15cc43d692]
+reverse link Bet to BettingRound--><path codeLine="60" d="M722.92,728.37 C684.17,770.58 633.14,826.17 600.82,861.38 " fill="none" id="Bet-backto-BettingRound" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="726.39,724.59,717.364,728.531,723.0153,728.2793,723.2669,733.9306,726.39,724.59" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="20" x="668.5" y="801.0591">has</text><!--MD5=[e6d6b00ed45a77200c9a64d5badd2f57]
+reverse link BetID to Bet--><path codeLine="61" d="M940.25,439.25 C923.64,454.58 904.1,473.89 888.5,493 C857.59,530.86 828.02,577.67 807.04,613.35 " fill="none" id="BetID-backto-Bet" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="943.96,435.84,934.626,438.9827,940.2778,439.2225,940.038,444.8743,943.96,435.84" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="20" x="889.5" y="525.5591">has</text><!--MD5=[a925c002b4ebf5d0b90076445c3f978d]
+link BetResult to MoneyAmount--><path codeLine="71" d="M1066.5,724.59 C1066.5,760.49 1066.5,807.23 1066.5,842.76 " fill="none" id="BetResult-to-MoneyAmount" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="1066.5,847.91,1070.5,838.91,1066.5,842.91,1062.5,838.91,1066.5,847.91" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="20" x="1067.5" y="801.0591">has</text><!--MD5=[fcb4674e0448fa230f0f0376fd855ed6]
+reverse link IGame to AbstractGame--><path codeLine="109" d="M440.38,137.01 C433.25,155.2 425.87,174.72 419.5,193 C400.88,246.42 382.36,308.35 369.88,351.71 " fill="none" id="IGame-backto-AbstractGame" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="433.93,134.28,447.81,118.28,446.94,139.45,433.93,134.28" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="66" x="420.5" y="239.5591">implements</text><!--MD5=[ff61267f5fbac2b91a261d37e1b95c33]
+link IGame to GameRule--><path codeLine="110" d="M518.14,118.39 C540.11,143.69 565.64,173.11 585.46,195.93 " fill="none" id="IGame-to-GameRule" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="588.83,199.83,585.934,190.4165,585.5456,196.06,579.9021,195.6716,588.83,199.83" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="20" x="554.5" y="160.0591">has</text><!--MD5=[7f8cc7b0818b0681005109389e3966d3]
+link AbstractGame to GamingMachine--><path codeLine="111" d="M491.25,458.97 C497.04,460.45 502.81,461.81 508.5,463 C685.58,500.18 737.79,454.11 914.5,493 C983.59,508.21 994.34,534.09 1063.5,549 C1163.64,570.59 1428.62,540.39 1523.5,579 C1544.48,587.54 1564.25,602.05 1580.8,616.91 " fill="none" id="AbstractGame-to-GamingMachine" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="1584.5,620.28,1580.5416,611.2616,1580.8042,616.9124,1575.1534,617.1749,1584.5,620.28" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="50" x="1064.5" y="525.5591">connects</text><!--MD5=[56ac3662b2796fe774366c669f31a8e6]
+reverse link AbstractGame to DefaultGame--><path codeLine="112" d="M301.06,479.62 C278.02,510.28 250.82,546.47 226.46,578.89 " fill="none" id="AbstractGame-backto-DefaultGame" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="295.77,475,313.38,463.22,306.97,483.41,295.77,475" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="45" x="287.5" y="525.5591">extends</text><!--MD5=[654dd96f755da3e49514c2e554eae7de]
+link GameRule to IGameRule--><path codeLine="119" d="M634.3,270.09 C645.44,294.14 660.57,326.8 673.24,354.13 " fill="none" id="GameRule-to-IGameRule" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="679.67,351.38,681.73,372.47,666.97,357.26,679.67,351.38" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="66" x="659.5" y="319.0591">implements</text><!--MD5=[0006657f6f268a09f16dec9943115946]
+link IGameRule to BetResult--><path codeLine="126" d="M718.9,442.75 C740.42,474.54 776.39,521.05 818.5,549 C854.69,573.02 871.78,561.42 911.5,579 C932.34,588.22 953.98,599.48 974.25,610.84 " fill="none" id="IGameRule-to-BetResult" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="978.82,613.42,972.9455,605.5149,974.4648,610.9639,969.0158,612.4833,978.82,613.42" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="20" x="819.5" y="525.5591">has</text><!--MD5=[cf2237cbc3cd10ae59d3867df9cc369d]
+link IGamblerCard to MoneyAmount--><path codeLine="138" d="M1279.44,738.58 C1232.94,772.84 1177.66,813.58 1135.08,844.96 " fill="none" id="IGamblerCard-to-MoneyAmount" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="1131,847.97,1140.6173,845.8468,1135.0238,845.0021,1135.8686,839.4086,1131,847.97" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="20" x="1211.5" y="801.0591">has</text><!--MD5=[1e2a05919fb18d6fd1a61f301876c5a3]
+reverse link CardID to GamblerCard--><path codeLine="149" d="M2077.03,554.33 C2065.54,604.19 2037.13,700.22 1979.5,759 C1917.38,822.37 1820.27,859.39 1754.59,878.52 " fill="none" id="CardID-backto-GamblerCard" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="2078.16,549.36,2072.2759,557.2579,2077.0587,554.2372,2080.0794,559.02,2078.16,549.36" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="20" x="2070.5" y="673.5591">has</text><!--MD5=[adb76aa31961a9dc22a96f64ad01cd7a]
+link IGamingMachine to BetResult--><path codeLine="159" d="M1161.2,463.22 C1141.49,505.83 1114.18,564.89 1093.95,608.64 " fill="none" id="IGamingMachine-to-BetResult" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="1091.77,613.36,1099.1682,606.8587,1093.8617,608.8185,1091.9018,603.512,1091.77,613.36" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="20" x="1145.5" y="525.5591">has</text><!--MD5=[ea622c652cad5a97e5ccd5620536d669]
+reverse link IGamingMachine to GamingMachine--><path codeLine="169" d="M1273.6,474.69 C1311.55,500.95 1357.57,529.48 1402.5,549 C1453.32,571.08 1474.24,553.64 1523.5,579 C1544.21,589.66 1564.3,605.2 1581.22,620.32 " fill="none" id="IGamingMachine-backto-GamingMachine" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="1269.36,480.26,1257.04,463.02,1277.42,468.82,1269.36,480.26" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="66" x="1403.5" y="525.5591">implements</text><!--MD5=[251d298d1de7d13c17a25d053432050e]
+link GamingMachine to GamblerCard--><path codeLine="170" d="M1639.52,717.55 C1647.67,749.82 1658.58,792.94 1667.6,828.65 " fill="none" id="GamingMachine-to-GamblerCard" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="1668.92,833.87,1670.5841,824.1627,1667.6905,829.0235,1662.8297,826.1299,1668.92,833.87" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="50" x="1662.5" y="801.0591">connects</text><!--MD5=[c7272aff1818a78a22cd83ad221daf15]
+reverse link GamingMachineID to GamingMachine--><path codeLine="171" d="M1425.18,439.73 C1464.89,484.54 1538.37,567.44 1585,620.04 " fill="none" id="GamingMachineID-backto-GamingMachine" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="1421.68,435.78,1424.6518,445.1698,1424.9947,439.5233,1430.6412,439.8662,1421.68,435.78" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="20" x="1520.5" y="525.5591">has</text><!--MD5=[ea0406124471aea521b684236e2d321e]
+reverse link IGamblerCard to GamblerCard--><path codeLine="173" d="M1483.78,750.43 C1527.29,781.88 1575.87,816.99 1614.34,844.79 " fill="none" id="IGamblerCard-backto-GamblerCard" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="1479.49,755.96,1467.38,738.58,1487.69,744.62,1479.49,755.96" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="66" x="1557.5" y="801.0591">implements</text><!--MD5=[cd4c776579b6bd424eb6841aa920df04]
+link IDFactory to GeneralID--><path codeLine="207" d="M1937.5,90.52 C1937.5,116.52 1937.5,156.38 1937.5,187.5 " fill="none" id="IDFactory-to-GeneralID" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="1937.5,192.8,1941.5,183.8,1937.5,187.8,1933.5,183.8,1937.5,192.8" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="42" x="1938.5" y="160.0591">creates</text><!--MD5=[4eca74a946e53027aac133a6ec8ca41d]
+reverse link GeneralID to BetID--><path codeLine="209" d="M1863.01,235.62 C1709.18,237.03 1347.16,251.77 1064.5,352 C1046.06,358.54 1027.34,369.26 1011.85,379.47 " fill="none" id="GeneralID-backto-BetID" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="1863.26,228.62,1883.3,235.5,1863.34,242.62,1863.26,228.62" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="45" x="1203.5" y="319.0591">extends</text><!--MD5=[fd5d983637b0be548624fdca5db6211c]
+reverse link GeneralID to BettingRoundID--><path codeLine="210" d="M2011.17,252.5 C2085.54,274.03 2189.5,319.65 2189.5,406.5 C2189.5,406.5 2189.5,406.5 2189.5,897.5 C2189.5,1029.18 1176.49,1055.31 894.55,1060.03 " fill="none" id="GeneralID-backto-BettingRoundID" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="2009.03,259.17,1991.56,247.18,2012.7,245.66,2009.03,259.17" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="45" x="2190.5" y="673.5591">extends</text><!--MD5=[e805c11ce1632cfd14849f9fa7d16e03]
+reverse link GeneralID to GamingMachineID--><path codeLine="211" d="M1863.48,248.21 C1772.51,264.75 1614.57,298.52 1487.5,352 C1469.99,359.37 1451.85,369.75 1436.49,379.47 " fill="none" id="GeneralID-backto-GamingMachineID" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="1862.29,241.31,1883.2,244.7,1864.74,255.09,1862.29,241.31" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="45" x="1608.5" y="319.0591">extends</text><!--MD5=[fe635ed1b8d709f17395400f93b7b919]
+reverse link GeneralID to CardID--><path codeLine="212" d="M2008.91,273.66 C2037.65,292.91 2067.69,319.25 2083.5,352 C2105.43,397.44 2097.72,458.19 2090.42,492.8 " fill="none" id="GeneralID-backto-CardID" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="2004.97,279.45,1991.78,262.87,2012.44,267.61,2004.97,279.45" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="45" x="2062.5" y="319.0591">extends</text><!--MD5=[1aa2ab40ed6f2dced035ce2d8acc5f98]
+link BetToken to BettingRoundID--><path codeLine="214" d="M822.5,938.76 C822.5,966.61 822.5,1002.84 822.5,1028.61 " fill="none" id="BetToken-to-BettingRoundID" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="822.5,1033.62,826.5,1024.62,822.5,1028.62,818.5,1024.62,822.5,1033.62" style="stroke:#000000;stroke-width:1.0;"/><text fill="#333333" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="54" x="823.5" y="1001.0591">relates to</text><!--MD5=[1466544bcdeebf99074f0894247a8454]
+@startuml
+
+!define LIGHTBLUE
+!include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+class Casino {
+    BettingAuthority bettingAuthority
+    BetTokenAuthority betTokenAuthority
+    ICashier teller
+    Map<string, IGame> games
+    addGame(String gameName, IGame gameToAdd)
+}
+
+Casino - -> Cashier : has
+
+interface ICashier {
+    IGamblerCard distributeGamblerCard()
+    returnGamblerCard(IGamblerCard card)
+    checkIfBetIsValid(IGamblerCard card, Bet betToCheck)
+    addAmount(IGamblerCard card, MoneyAmount amount)
+}
+
+class Cashier {
+    BettingAuthority bettingAuthority
+    Set<IGamblerCard> gamblerCards
+    Cashier(BettingAuthority bettingAuthority)
+    Set<IGamblerCard> getGamblerCards()
+    BettingAuthority getBettingAuthority()
+}
+
+ICashier <|.. Cashier : implements
+Cashier - -> GamblerCard : distributes
+
+interface IBettingRound {
+    BettingRoundID getBettingRoundID()
+    boolean placeBet(Bet bet)
+    Set<Bet> getAllBetsMade()
+    BetToken getBetToken()
+    int numberOFBetsMade()
+    sendInformationToAuthority()
+}
+
+class BettingRound {
+    BettingRoundID roundID
+    Set<Bet> bettingRounds
+}
+
+IBettingRound <|.. BettingRound : implements
+AbstractGame - -> BettingRound : has
+BettingRound - -> BettingRoundID : has
+
+class Bet {
+    BetID betID
+    MoneyAmount moneyAmount
+    Bet(BetID betID, MoneyAmount moneyAmount)
+    BetID getBetID()
+    MoneyAmount getMoneyAmount()
+}
+
+Bet - -> MoneyAmount : has
+Bet <- - BettingRound : has
+BetID <- - Bet : has
+
+class BetResult {
+    Bet winningBet
+    MoneyAmount amountWon
+    BetResult(Bet winningBet, MoneyAmount amountWon)
+    Bet getWinningBet()
+    MoneyAmount getAmountWon()
+}
+
+BetResult - -> MoneyAmount : has
+
+class MoneyAmount {
+    long amountInCents
+    Currency currency
+    MoneyAmount(long amountInCents)
+    long getAmountInCents()
+}
+
+interface IGame {
+    startBettingRound()
+    generateBettingRoundID()
+    acceptBet(Bet bet, IGamingMachine gamingMachine)
+    void determineWinner()
+    isBettingRoundFinished()
+}
+
+abstract AbstractGame {
+    IBetLoggingAuthority betLoggingAuthority;
+    IBetTokenAuthority betTokenAuthority
+    IGameRule gameRule
+    AbstractGame(Cashier cashier, IGameRule gameRule)
+    setGameRule(IGameRule gameRule)
+}
+
+class DefaultGame {
+    BettingRound bettingRound
+    List<GamingMachine> gamingMachines
+    DefaultGame(Cashier cashier, IGameRule gameRule)
+    BettingRound getBettingRound()
+    List<GamingMachine> getGamingMachines()
+    connectGamingMachine(GamingMachine gamingMachine)
+    startBettingRound()
+    boolean acceptBet(Bet bet, IGamingMachine gamingMachine)
+    determineWinner()
+    boolean isBettingRoundFinished()
+}
+
+IGame <|.. AbstractGame : implements
+IGame - -> GameRule : has
+AbstractGame - -> GamingMachine : connects
+AbstractGame <|- - DefaultGame : extends
+
+class GameRule {
+    int maxBetsPerRound
+    setMaxBetsPerRound(int maxBetsPerRound)
+}
+
+GameRule - -|> IGameRule : implements
+
+interface IGameRule {
+    BetResult determineWinner(Integer randomWinValue, Set<Bet> bets)
+    int getMaxBetsPerRound()
+}
+
+IGameRule - -> BetResult : has
+
+interface IGamblerCard {
+    Set<BetID> returnBetIDs()
+    Set<BetID> returnBetIDsAndClearCard()
+    BetID generateNewBetID()
+    int getNumberOfBetIDs()
+    CardID getCardID()
+    long getMoneyAmountInCents()
+    setMoneyAmountInCents(long moneyAmountInCents)
+}
+
+IGamblerCard - -> MoneyAmount : has
+
+class GamblerCard {
+    CardID cardID
+    Set<BetID> betIDs
+    long moneyAmountInCents
+    GamblerCard()
+    CardID getCardID()
+    Set<BetID> getBetIDs()
+}
+
+CardID <- - GamblerCard : has
+
+interface IGamingMachine {
+    boolean placeBet(long amountInCents)
+    void acceptWinner(BetResult winResult)
+    GamingMachineID getGamingMachineID()
+    void connectCard(IGamblerCard card)
+    void disconnectCard()
+}
+
+IGamingMachine - -> BetResult : has
+
+class GamingMachine {
+    GamingMachine(Cashier cashier)
+    setGame(IGame game)
+    Cashier getCashier()
+    setBet(Bet bet)
+}
+
+
+IGamingMachine <|- - GamingMachine : implements
+GamingMachine - -> GamblerCard : connects
+GamingMachineID <- - GamingMachine : has
+
+IGamblerCard <|.. GamblerCard : implements
+
+class BetToken {
+    BettingRoundID bettingRoundID
+    UUID uniqueTokenID
+    Instant creationTime
+}
+
+class IDFactory {
+    GeneralID generateID(String idType)
+}
+
+abstract GeneralID {
+    UUID uniqueTokenID
+    Instant timeStamp
+    String getID()
+}
+
+class BettingRoundID {
+    int compareTo(GeneralID o)
+}
+
+class GamingMachineID {
+    int compareTo(GeneralID o)
+}
+
+class CardID {
+    int compareTo(GeneralID o)
+}
+
+class BetID {
+    int compareTo(GeneralID o)
+}
+
+IDFactory - -> GeneralID : creates
+
+GeneralID <|- - BetID : extends
+GeneralID <|- - BettingRoundID : extends
+GeneralID <|- - GamingMachineID : extends
+GeneralID <|- - CardID : extends
+
+BetToken - -> BettingRoundID : relates to
+
+@enduml
+
+@startuml
+
+
+
+
+
+skinparam stereotypeCBackgroundColor 1a66c2
+
+
+
+
+
+
+
+skinparam backgroundColor fff
+
+
+
+
+
+
+
+
+skinparam circledCharacter {
+  radius 8
+  fontSize 11
+  fontName Verdana
+}
+
+skinparam class {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+
+  attributeFontColor 333
+  attributeFontSize 11
+  attributeIconSize 11
+}
+
+
+skinparam actor {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam participant {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam collections {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam SequenceBox{
+    backgroundColor e0e0e0
+  borderColor cccccc
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+skinparam interface {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam component {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam node {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam database {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam queue {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+skinparam usecase {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+skinparam activity {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+skinparam sequence {
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+
+  lifeLineBorderColor 2a86e2
+  lifeLineBackgroundColor e0e0e0
+}
+
+skinparam boundary {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam control {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam entity {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+skinparam state {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+  startColor 2a86e2
+  endColor 1a66c2
+}
+
+
+skinparam object {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+
+skinparam note {
+    backgroundColor 2a86e2
+  borderColor 1a66c2
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam cloud {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+    arrowColor 000
+  arrowFontName Verdana
+  arrowFontColor 333
+  arrowFontSize 11
+}
+
+skinparam rectangle {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+skinparam storage {
+    backgroundColor ccc
+  borderColor aaa
+    fontColor 000
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor 333
+  stereotypeFontSize 11
+}
+
+
+class Casino {
+    BettingAuthority bettingAuthority
+    BetTokenAuthority betTokenAuthority
+    ICashier teller
+    Map<string, IGame> games
+    addGame(String gameName, IGame gameToAdd)
+}
+
+Casino - -> Cashier : has
+
+interface ICashier {
+    IGamblerCard distributeGamblerCard()
+    returnGamblerCard(IGamblerCard card)
+    checkIfBetIsValid(IGamblerCard card, Bet betToCheck)
+    addAmount(IGamblerCard card, MoneyAmount amount)
+}
+
+class Cashier {
+    BettingAuthority bettingAuthority
+    Set<IGamblerCard> gamblerCards
+    Cashier(BettingAuthority bettingAuthority)
+    Set<IGamblerCard> getGamblerCards()
+    BettingAuthority getBettingAuthority()
+}
+
+ICashier <|.. Cashier : implements
+Cashier - -> GamblerCard : distributes
+
+interface IBettingRound {
+    BettingRoundID getBettingRoundID()
+    boolean placeBet(Bet bet)
+    Set<Bet> getAllBetsMade()
+    BetToken getBetToken()
+    int numberOFBetsMade()
+    sendInformationToAuthority()
+}
+
+class BettingRound {
+    BettingRoundID roundID
+    Set<Bet> bettingRounds
+}
+
+IBettingRound <|.. BettingRound : implements
+AbstractGame - -> BettingRound : has
+BettingRound - -> BettingRoundID : has
+
+class Bet {
+    BetID betID
+    MoneyAmount moneyAmount
+    Bet(BetID betID, MoneyAmount moneyAmount)
+    BetID getBetID()
+    MoneyAmount getMoneyAmount()
+}
+
+Bet - -> MoneyAmount : has
+Bet <- - BettingRound : has
+BetID <- - Bet : has
+
+class BetResult {
+    Bet winningBet
+    MoneyAmount amountWon
+    BetResult(Bet winningBet, MoneyAmount amountWon)
+    Bet getWinningBet()
+    MoneyAmount getAmountWon()
+}
+
+BetResult - -> MoneyAmount : has
+
+class MoneyAmount {
+    long amountInCents
+    Currency currency
+    MoneyAmount(long amountInCents)
+    long getAmountInCents()
+}
+
+interface IGame {
+    startBettingRound()
+    generateBettingRoundID()
+    acceptBet(Bet bet, IGamingMachine gamingMachine)
+    void determineWinner()
+    isBettingRoundFinished()
+}
+
+abstract AbstractGame {
+    IBetLoggingAuthority betLoggingAuthority;
+    IBetTokenAuthority betTokenAuthority
+    IGameRule gameRule
+    AbstractGame(Cashier cashier, IGameRule gameRule)
+    setGameRule(IGameRule gameRule)
+}
+
+class DefaultGame {
+    BettingRound bettingRound
+    List<GamingMachine> gamingMachines
+    DefaultGame(Cashier cashier, IGameRule gameRule)
+    BettingRound getBettingRound()
+    List<GamingMachine> getGamingMachines()
+    connectGamingMachine(GamingMachine gamingMachine)
+    startBettingRound()
+    boolean acceptBet(Bet bet, IGamingMachine gamingMachine)
+    determineWinner()
+    boolean isBettingRoundFinished()
+}
+
+IGame <|.. AbstractGame : implements
+IGame - -> GameRule : has
+AbstractGame - -> GamingMachine : connects
+AbstractGame <|- - DefaultGame : extends
+
+class GameRule {
+    int maxBetsPerRound
+    setMaxBetsPerRound(int maxBetsPerRound)
+}
+
+GameRule - -|> IGameRule : implements
+
+interface IGameRule {
+    BetResult determineWinner(Integer randomWinValue, Set<Bet> bets)
+    int getMaxBetsPerRound()
+}
+
+IGameRule - -> BetResult : has
+
+interface IGamblerCard {
+    Set<BetID> returnBetIDs()
+    Set<BetID> returnBetIDsAndClearCard()
+    BetID generateNewBetID()
+    int getNumberOfBetIDs()
+    CardID getCardID()
+    long getMoneyAmountInCents()
+    setMoneyAmountInCents(long moneyAmountInCents)
+}
+
+IGamblerCard - -> MoneyAmount : has
+
+class GamblerCard {
+    CardID cardID
+    Set<BetID> betIDs
+    long moneyAmountInCents
+    GamblerCard()
+    CardID getCardID()
+    Set<BetID> getBetIDs()
+}
+
+CardID <- - GamblerCard : has
+
+interface IGamingMachine {
+    boolean placeBet(long amountInCents)
+    void acceptWinner(BetResult winResult)
+    GamingMachineID getGamingMachineID()
+    void connectCard(IGamblerCard card)
+    void disconnectCard()
+}
+
+IGamingMachine - -> BetResult : has
+
+class GamingMachine {
+    GamingMachine(Cashier cashier)
+    setGame(IGame game)
+    Cashier getCashier()
+    setBet(Bet bet)
+}
+
+
+IGamingMachine <|- - GamingMachine : implements
+GamingMachine - -> GamblerCard : connects
+GamingMachineID <- - GamingMachine : has
+
+IGamblerCard <|.. GamblerCard : implements
+
+class BetToken {
+    BettingRoundID bettingRoundID
+    UUID uniqueTokenID
+    Instant creationTime
+}
+
+class IDFactory {
+    GeneralID generateID(String idType)
+}
+
+abstract GeneralID {
+    UUID uniqueTokenID
+    Instant timeStamp
+    String getID()
+}
+
+class BettingRoundID {
+    int compareTo(GeneralID o)
+}
+
+class GamingMachineID {
+    int compareTo(GeneralID o)
+}
+
+class CardID {
+    int compareTo(GeneralID o)
+}
+
+class BetID {
+    int compareTo(GeneralID o)
+}
+
+IDFactory - -> GeneralID : creates
+
+GeneralID <|- - BetID : extends
+GeneralID <|- - BettingRoundID : extends
+GeneralID <|- - GamingMachineID : extends
+GeneralID <|- - CardID : extends
+
+BetToken - -> BettingRoundID : relates to
+
+@enduml
+
+PlantUML version 1.2021.3(Mon Mar 22 17:53:19 CET 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

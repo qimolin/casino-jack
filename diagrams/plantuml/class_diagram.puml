@@ -1,0 +1,217 @@
+@startuml
+
+!define LIGHTBLUE
+!include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+class Casino {
+    BettingAuthority bettingAuthority
+    BetTokenAuthority betTokenAuthority
+    ICashier teller
+    Map<string, IGame> games
+    addGame(String gameName, IGame gameToAdd)
+}
+
+Casino --> Cashier : has
+
+interface ICashier {
+    IGamblerCard distributeGamblerCard()
+    returnGamblerCard(IGamblerCard card)
+    checkIfBetIsValid(IGamblerCard card, Bet betToCheck)
+    addAmount(IGamblerCard card, MoneyAmount amount)
+}
+
+class Cashier {
+    BettingAuthority bettingAuthority
+    Set<IGamblerCard> gamblerCards
+    Cashier(BettingAuthority bettingAuthority)
+    Set<IGamblerCard> getGamblerCards()
+    BettingAuthority getBettingAuthority()
+}
+
+ICashier <|.. Cashier : implements
+Cashier --> GamblerCard : distributes
+
+interface IBettingRound {
+    BettingRoundID getBettingRoundID()
+    boolean placeBet(Bet bet)
+    Set<Bet> getAllBetsMade()
+    BetToken getBetToken()
+    int numberOFBetsMade()
+    sendInformationToAuthority()
+}
+
+class BettingRound {
+    BettingRoundID roundID
+    Set<Bet> bettingRounds
+}
+
+IBettingRound <|.. BettingRound : implements
+AbstractGame --> BettingRound : has
+BettingRound --> BettingRoundID : has
+
+class Bet {
+    BetID betID
+    MoneyAmount moneyAmount
+    Bet(BetID betID, MoneyAmount moneyAmount)
+    BetID getBetID()
+    MoneyAmount getMoneyAmount()
+}
+
+Bet --> MoneyAmount : has
+Bet <-- BettingRound : has
+BetID <-- Bet : has
+
+class BetResult {
+    Bet winningBet
+    MoneyAmount amountWon
+    BetResult(Bet winningBet, MoneyAmount amountWon)
+    Bet getWinningBet()
+    MoneyAmount getAmountWon()
+}
+
+BetResult --> MoneyAmount : has
+
+class MoneyAmount {
+    long amountInCents
+    Currency currency
+    MoneyAmount(long amountInCents)
+    long getAmountInCents()
+}
+
+interface IGame {
+    startBettingRound()
+    generateBettingRoundID()
+    acceptBet(Bet bet, IGamingMachine gamingMachine)
+    void determineWinner()
+    isBettingRoundFinished()
+}
+
+abstract AbstractGame {
+    IBetLoggingAuthority betLoggingAuthority;
+    IBetTokenAuthority betTokenAuthority
+    IGameRule gameRule
+    AbstractGame(Cashier cashier, IGameRule gameRule)
+    setGameRule(IGameRule gameRule)
+}
+
+class DefaultGame {
+    BettingRound bettingRound
+    List<GamingMachine> gamingMachines
+    DefaultGame(Cashier cashier, IGameRule gameRule)
+    BettingRound getBettingRound()
+    List<GamingMachine> getGamingMachines()
+    connectGamingMachine(GamingMachine gamingMachine)
+    startBettingRound()
+    boolean acceptBet(Bet bet, IGamingMachine gamingMachine)
+    determineWinner()
+    boolean isBettingRoundFinished()
+}
+
+IGame <|.. AbstractGame : implements
+IGame --> GameRule : has
+AbstractGame --> GamingMachine : connects
+AbstractGame <|-- DefaultGame : extends
+
+class GameRule {
+    int maxBetsPerRound
+    setMaxBetsPerRound(int maxBetsPerRound)
+}
+
+GameRule --|> IGameRule : implements
+
+interface IGameRule {
+    BetResult determineWinner(Integer randomWinValue, Set<Bet> bets)
+    int getMaxBetsPerRound()
+}
+
+IGameRule --> BetResult : has
+
+interface IGamblerCard {
+    Set<BetID> returnBetIDs()
+    Set<BetID> returnBetIDsAndClearCard()
+    BetID generateNewBetID()
+    int getNumberOfBetIDs()
+    CardID getCardID()
+    long getMoneyAmountInCents()
+    setMoneyAmountInCents(long moneyAmountInCents)
+}
+
+IGamblerCard --> MoneyAmount : has
+
+class GamblerCard {
+    CardID cardID
+    Set<BetID> betIDs
+    long moneyAmountInCents
+    GamblerCard()
+    CardID getCardID()
+    Set<BetID> getBetIDs()
+}
+
+CardID <-- GamblerCard : has
+
+interface IGamingMachine {
+    boolean placeBet(long amountInCents)
+    void acceptWinner(BetResult winResult)
+    GamingMachineID getGamingMachineID()
+    void connectCard(IGamblerCard card)
+    void disconnectCard()
+}
+
+IGamingMachine --> BetResult : has
+
+class GamingMachine {
+    GamingMachine(Cashier cashier)
+    setGame(IGame game)
+    Cashier getCashier()
+    setBet(Bet bet)
+}
+
+
+IGamingMachine <|-- GamingMachine : implements
+GamingMachine --> GamblerCard : connects
+GamingMachineID <-- GamingMachine : has
+
+IGamblerCard <|.. GamblerCard : implements
+
+class BetToken {
+    BettingRoundID bettingRoundID
+    UUID uniqueTokenID
+    Instant creationTime
+}
+
+class IDFactory {
+    GeneralID generateID(String idType)
+}
+
+abstract GeneralID {
+    UUID uniqueTokenID
+    Instant timeStamp
+    String getID()
+}
+
+class BettingRoundID {
+    int compareTo(GeneralID o)
+}
+
+class GamingMachineID {
+    int compareTo(GeneralID o)
+}
+
+class CardID {
+    int compareTo(GeneralID o)
+}
+
+class BetID {
+    int compareTo(GeneralID o)
+}
+
+IDFactory --> GeneralID : creates
+
+GeneralID <|-- BetID : extends
+GeneralID <|-- BettingRoundID : extends
+GeneralID <|-- GamingMachineID : extends
+GeneralID <|-- CardID : extends
+
+BetToken --> BettingRoundID : relates to
+
+@enduml
