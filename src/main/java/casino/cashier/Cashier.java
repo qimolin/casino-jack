@@ -27,7 +27,7 @@ public class Cashier implements ICashier {
      * Note: also use the appropiate required methods from the gambling authority API
      * @should return a gambling card
      * @should put cards in a set
-     * @return null
+     * @return new gamblerCard
      */
     @Override
     public IGamblerCard distributeGamblerCard() {
@@ -61,7 +61,7 @@ public class Cashier implements ICashier {
      * @should call setMoneyAmountInCents and return true
      * @param card
      * @param betToCheck
-     * @return
+     * @return true if bet is valid
      * @throws BetNotAcceptedException if bet amount is invalid
      */
     @Override
