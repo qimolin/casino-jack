@@ -20,3 +20,15 @@ Creating tests and implementation for the behaviour of specific classes at least
 * Mikel: defaultgame, gamblercard, BettingRoundID, GamingMachineID
 
 * Stoyan: gamingmachine, gamerule, idfactory, CardID 
+
+## Diagrams
+### C4 model
+#### Level 1
+![c4-level1](diagrams/images/c4_level1.png)
+#### Level 2
+![c4-level2](diagrams/images/c4_level2.png)
+#### Level 3
+![c4-level3](diagrams/images/c4_level3.png)
+
+### Class diagram
+![class-diagram](diagrams/images/class_diagram.png)
