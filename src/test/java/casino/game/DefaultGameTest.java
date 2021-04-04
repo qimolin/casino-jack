@@ -76,17 +76,19 @@ public class DefaultGameTest {
      * @see DefaultGame#startBettingRound()
      */
     @Test
-    @Disabled
     public void startBettingRound_shouldCreateANewBettingRoundUsingTheAPI() throws Exception {
-        GeneralID bettingRoundID = mock(BettingRoundID.class);
-        MockedStatic<IDFactory> mockedIDFactory = Mockito.mockStatic(IDFactory.class);
-        mockedIDFactory.when(() -> { IDFactory.generateID(anyString()); }).thenReturn(bettingRoundID);
-        when(currentRound.getBettingRoundID()).thenReturn((BettingRoundID) bettingRoundID);
+        BettingRoundID bettingRoundID = mock(BettingRoundID.class);
 
-        game.startBettingRound();
+        try (MockedStatic<IDFactory> mockedIDFactory = Mockito.mockStatic(IDFactory.class)) {
+            mockedIDFactory.when(() -> {
+                IDFactory.generateID("BETTINGROUNDID");
+            }).thenReturn(bettingRoundID);
 
-        assertThat(game.getBettingRound().getBettingRoundID()).isNotEqualTo(currentRound.getBettingRoundID());
-        verify(betTokenAuthority).getBetToken((BettingRoundID) bettingRoundID);
+            game.startBettingRound();
+
+            assertThat(game.getBettingRound().getBettingRoundID()).isNotEqualTo(currentRound.getBettingRoundID());
+            verify(betTokenAuthority).getBetToken(bettingRoundID);
+        }
     }
 
     /**
