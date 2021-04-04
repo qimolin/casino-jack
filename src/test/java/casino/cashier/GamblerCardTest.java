@@ -41,7 +41,6 @@ public class GamblerCardTest {
      * @see GamblerCard#GamblerCard()
      */
     @Test
-    @Disabled
     public void GamblerCard_shouldGenerateACardIDUponCreation() throws Exception {
         card = new GamblerCard();
 
@@ -67,7 +66,6 @@ public class GamblerCardTest {
      * @see GamblerCard#getNumberOfBetIDs()
      */
     @Test
-    @Disabled
     public void getNumberOfBetIDs_shouldReturnTheCountOfBetIDsStored() throws Exception {
         card = new GamblerCard();
 
